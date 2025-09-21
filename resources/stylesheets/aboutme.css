@@ -42,7 +42,7 @@ header nav li a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
 }
-#introduction img {;
+#introduction img {
     margin-right: 20px;
     width: 300px;
     height: auto;
