@@ -1,0 +1,64 @@
+/* Styles for the About Me page */
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #f9f3eb;
+}
+
+/* Header Styles */
+header {
+    text-align: center; 
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 50px;
+    color: #B99095;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+header nav li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+header nav li a {
+    text-decoration: none;
+    color: #B99095;
+}
+
+header nav li a:hover {
+    color: #A0E7E5;
+    text-decoration: underline;
+}
+
+/* Introduction Section */
+#introduction {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+}
+#introduction img {;
+    margin-right: 20px;
+    width: 300px;
+    height: auto;
+}
+
+#introduction p {
+    font-size: 20px;
+    line-height: 1.6;
+    display: block;
+}
+
+#introduction h2 {
+    margin-top: 20px;
+    font-size: 35px;
+    color: #FCB5AC;
+    text-decoration: underline;
+    text-align: center;
+    background-color: #FBE7C6;
+}
