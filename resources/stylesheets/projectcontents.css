@@ -1,3 +1,10 @@
+/* Styles for the Project Contents page */
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #f9f3eb;
+}
+
+
 aside {
     width: 15%;
     margin: 1em;

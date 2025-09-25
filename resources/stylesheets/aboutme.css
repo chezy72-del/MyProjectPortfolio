@@ -4,6 +4,10 @@ body {
     background-color: #f9f3eb;
 }
 
+li {
+        color: #3D5B59;
+}
+
 /* Header Styles */
 header {
     text-align: center; 
@@ -27,7 +31,7 @@ header nav li {
 
 header nav li a {
     text-decoration: none;
-    color: #B99095;
+    color: #FCB5AC;
 }
 
 header nav li a:hover {
@@ -36,29 +40,235 @@ header nav li a:hover {
 }
 
 /* Introduction Section */
+
 #introduction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
+    background-color: #FBE7C6;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 #B5E5CF, 0 6px 20px 0 #a0dfc2;
 }
+
 #introduction img {
     margin-right: 20px;
     width: 300px;
     height: auto;
+    float: left;
 }
 
 #introduction p {
     font-size: 20px;
-    line-height: 1.6;
-    display: block;
+    line-height: 1.2;
+    float:right;
+    width: 60%;
 }
 
-#introduction h2 {
+.location {
+    position: relative;
+    right: 30px;
+}
+
+/* Background Section*/
+
+#background {
+    box-shadow: 0 4px 8px 0 #B5E5CF, 0 6px 20px 0 #a0dfc2;
+}
+
+#Education {
+    width: 40%;
+}
+
+#Education li {
+    padding-top: 50px;
+    list-style-type: none;
+}
+
+#Education p{
+    float:inline-start;
+    width: 90%;
+}
+
+#Work {
+    position: relative;
+    left: 70px;
+    background-color: transparent;
+}
+
+#Work p{
+    float:inline-start;
+    width: 80%;
+    line-height: 1;
+}
+
+#Work li {
+    list-style-type: none;
+}
+
+/* Skills Sections */
+
+#skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    background-color: #FBE7C6;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 #B5E5CF, 0 6px 20px 0 #a0dfc2;
+}
+
+.skills {
+    margin-left: 40px;
+    margin-right: 80px;
+}
+
+#skills li {
+    font-size: 20px;
+    line-height: 1;
+    margin-bottom: 10px;
+    list-style-type: none;
+}
+
+span {
+    text-decoration: underline;
+}
+
+/* Section Styling */
+h2 {
     margin-top: 20px;
     font-size: 35px;
-    color: #FCB5AC;
+    color: #B99095;
     text-decoration: underline;
     text-align: center;
     background-color: #FBE7C6;
+    clear: left;
+    clear: right;
+    height: 65px;
+    padding-top: 15px;
+}
+
+h3 {
+    font-size: 30px;
+    color: #FCB5AC;
+    margin-bottom: 10px;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+}
+
+div {
+    display: flex;
+    align-items:flex-start;
+    justify-content: center;
+    padding: 20px;
+    background-color: #FBE7C6;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 80%;
+    overflow: scroll;
+}
+
+p {
+    font-size: 20px;
+    line-height: 1.2;
+    width: 60%;
+    color: #3D5B59;
+    text-align: center;
+}
+
+div li {
+    font-size: 25px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    list-style-type: square;
+}
+
+#section1 {
+    position: sticky;
+    top: 25px;
+    z-index: 0.2;
+}
+
+#section2 {
+    position: sticky;
+    top: 25px;
+    z-index: 0.4;
+}
+
+#section3 {
+    position: sticky;
+    top: 25px;
+    z-index: 0.6;
+}
+
+#section4 {
+    position: sticky;
+    top: 25px;
+    z-index: 0.8;
+}
+
+/*Hobbies Section*/
+
+#hobbies {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    background-color: #FBE7C6;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 #B5E5CF, 0 6px 20px 0 #a0dfc2;
+}   
+#hobbies img {
+    object-fit: cover;
+    width: 300px;
+    height: 300px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#hobbies li{
+    list-style-type: none;
+    padding-top: 20px;
+}
+
+#hobbies p{
+    position: relative;
+    left: 230px;    
+}
+
+figure {
+    display: inline-block;
+}
+
+figcaption {
+    color:white;
+    background-color: rgba(0, 0, 0, 40%);
+    position:relative;
+    top: -40px;
+    width: auto;
+}
+
+.hobbies {
+    margin-left: 20px;
+    margin-right: 45px;
+    text-align: center;
+    width: 200px;
+}
+
+
+/* Footer Section */
+
+footer {
+    position: relative;
+    left: 425px;
+
 }
