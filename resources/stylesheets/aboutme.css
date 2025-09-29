@@ -1,7 +1,17 @@
+/* Color Palette 
+background colour: #fae0bf - Light Peach
+#3D5B59 - Dark Teal
+#ACC0D3 - Light Blue
+#09A1A1 - Bright Teal
+#f3b973 - Soft Orange
+#D396A6 - Soft Pink
+#5484A4 - Medium Blue
+*/
+
 /* Styles for the About Me page */
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    background-color: #f9f3eb;
+    background-color: #fae0bf;
 }
 
 li {
@@ -11,12 +21,13 @@ li {
 /* Header Styles */
 header {
     text-align: center; 
+    background-color: #ACC0D3;
     padding: 20px;
 }
 
 header h1 {
     font-size: 50px;
-    color: #B99095;
+    color: #09A1A1;
     margin-bottom: 10px;
     text-transform: uppercase;
 }
@@ -31,26 +42,30 @@ header nav li {
 
 header nav li a {
     text-decoration: none;
-    color: #FCB5AC;
+    color: #5484A4;
 }
 
 header nav li a:hover {
-    color: #A0E7E5;
+    color: #09A1A1;
     text-decoration: underline;
 }
 
 /* Introduction Section */
+
+strong {
+    color: #3D5B59;
+}
 
 #introduction {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background-color: #FBE7C6;
+    background-color: #f3b973;
     border-radius: 10px;
     margin: 20px auto;
     width: 80%;
-    box-shadow: 0 4px 8px 0 #B5E5CF, 0 6px 20px 0 #a0dfc2;
+    box-shadow: 0 4px 8px 0 #ACC0D3, 0 6px 20px 0 #D396A6;
 }
 
 #introduction img {
@@ -72,14 +87,23 @@ header nav li a:hover {
     right: 30px;
 }
 
+#introduction img {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 #ACC0D3, 0 6px 20px 0 #D396A6;
+}
+
 /* Background Section*/
 
 #background {
-    box-shadow: 0 4px 8px 0 #B5E5CF, 0 6px 20px 0 #a0dfc2;
+    box-shadow: 0 4px 8px 0 #ACC0D3, 0 6px 20px 0 #D396A6;
+    background-color: #f3b973;
 }
 
 #Education {
     width: 40%;
+    background-color: transparent;
+    box-shadow: none;
+
 }
 
 #Education li {
@@ -96,6 +120,8 @@ header nav li a:hover {
     position: relative;
     left: 70px;
     background-color: transparent;
+    box-shadow: none;
+    
 }
 
 #Work p{
@@ -115,12 +141,12 @@ header nav li a:hover {
     flex-wrap: wrap;
     justify-content: center;
     padding: 20px;
-    background-color: #FBE7C6;
+    background-color: #f3b973;
     border-radius: 10px;
     margin: 20px auto;
     width: 80%;
     text-align: center;
-    box-shadow: 0 4px 8px 0 #B5E5CF, 0 6px 20px 0 #a0dfc2;
+    box-shadow: 0 4px 8px 0 #ACC0D3, 0 6px 20px 0 #D396A6;
 }
 
 .skills {
@@ -139,14 +165,21 @@ span {
     text-decoration: underline;
 }
 
+#skills p {
+    font-size: 18px;
+    line-height: 1.2;
+    width: 100%;
+    color: #5484A4;
+    text-align: center;
+}
+
 /* Section Styling */
 h2 {
     margin-top: 20px;
     font-size: 35px;
-    color: #B99095;
+    color: #EA6676;
     text-decoration: underline;
     text-align: center;
-    background-color: #FBE7C6;
     clear: left;
     clear: right;
     height: 65px;
@@ -155,7 +188,7 @@ h2 {
 
 h3 {
     font-size: 30px;
-    color: #FCB5AC;
+    color: #EA6676;
     margin-bottom: 10px;
     writing-mode: vertical-lr;
     text-orientation: upright;
@@ -166,18 +199,20 @@ div {
     align-items:flex-start;
     justify-content: center;
     padding: 20px;
-    background-color: #FBE7C6;
+    background-color: #f6c992;
     border-radius: 10px;
     margin: 20px auto;
     width: 80%;
     overflow: scroll;
+    box-shadow: 0 4px 8px 0 #ACC0D3, 0 6px 20px 0 #D396A6;
+
 }
 
 p {
     font-size: 20px;
     line-height: 1.2;
     width: 60%;
-    color: #3D5B59;
+    color: #5484A4;
     text-align: center;
 }
 
@@ -219,12 +254,12 @@ div li {
     flex-wrap: wrap;
     justify-content: center;
     padding: 20px;
-    background-color: #FBE7C6;
+    background-color: #f3b973;
     border-radius: 10px;
     margin: 20px auto;
     width: 100%;
     text-align: center;
-    box-shadow: 0 4px 8px 0 #B5E5CF, 0 6px 20px 0 #a0dfc2;
+    box-shadow: 0 4px 8px 0 #ACC0D3, 0 6px 20px 0 #D396A6;
 }   
 #hobbies img {
     object-fit: cover;
@@ -232,7 +267,7 @@ div li {
     height: 300px;
     margin: 10px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px 0 #ACC0D3, 0 6px 20px 0 #D396A6;
 }
 
 #hobbies li{
@@ -254,7 +289,8 @@ figcaption {
     background-color: rgba(0, 0, 0, 40%);
     position:relative;
     top: -40px;
-    width: auto;
+    left:10px;
+    width: 300px;
 }
 
 .hobbies {
