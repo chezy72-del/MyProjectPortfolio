@@ -58,7 +58,7 @@ strong {
 
 #introduction {
     display: flex;
-    align-items: center;
+    vertical-align: text-bottom;
     justify-content: center;
     padding: 20px;
     background-color: #f3b973;
@@ -80,16 +80,24 @@ strong {
     line-height: 1.2;
     float:right;
     width: 60%;
-}
-
-.location {
-    position: relative;
-    right: 30px;
+    margin: 0;
 }
 
 #introduction img {
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 #ACC0D3, 0 6px 20px 0 #D396A6;
+}
+
+#personalinfo {
+    text-align: left;
+    line-height: 1.5;
+    font-size: 22px;
+    color: #5484A4;
+    margin-left: 20px;
+    margin-top: 70px;
+    text-align: center;
+    box-shadow: none;
+    background-color: transparent;
 }
 
 /* Background Section*/
@@ -132,6 +140,17 @@ strong {
 
 #Work li {
     list-style-type: none;
+}
+
+.work_experience {
+    position: relative;
+    left: 70px;
+    top: 150px;
+}
+
+.education {
+    position: relative;
+    top: 250px;
 }
 
 /* Skills Sections */
@@ -192,6 +211,8 @@ h3 {
     margin-bottom: 10px;
     writing-mode: vertical-lr;
     text-orientation: upright;
+    position: relative;
+    top: 30px;
 }
 
 div {
