@@ -55,10 +55,10 @@
                 <pre><code>
                     std::cout << "The last square number is " << squares.back() << std::endl;
                 </code></pre>
-                <p>This was because I had used 'int' instead of 'long int' when defining my vectors.</p>
+                <p>This was because I had used <em>'int'</em> instead of <em>'long int'</em> when defining my vectors.</p>
                 <p>Once I changed this, I was able to get the correct answer of 42876575999894000.</p>
-                <h3>Solution</h3>
-                <pre><code>
+                <h3><button class="problem_0">Solution</button></h3>
+                <pre id="problem_0"><code>
 
                     #include <iostream>
                     #include <cmath>
@@ -75,15 +75,15 @@
                             if (squares[a] % 2 != 0){
                             odd_squares.push_back(squares[a]);
                             }
-                    }
+                        }
 
-                    long int odd_sum = 0;
-                    for (long int c = 0; c < odd_squares.size(); c++){
-                        odd_sum += odd_squares[c];
-                    }
+                        long int odd_sum = 0;
+                        for (long int c = 0; c < odd_squares.size(); c++){
+                            odd_sum += odd_squares[c];
+                        }
 
-                    std::cout << "The sum of odd squares is " << odd_sum << std::endl;
-                }
+                        std::cout << "The sum of odd squares is " << odd_sum << std::endl;
+                    }
                 </code></pre>
             </div>
 
