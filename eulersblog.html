@@ -19,11 +19,12 @@
             <li><a href="eulersblog.html">Project Euler Blog</a></li>
             </ul>
         </nav>
-    <header>
+    </header>
 
     <main>
-        <div id="intro"></div>
             <h2>Welcome to my Project Euler Blog</h2>
+        <div id="intro">
+            <div>
             <p>Hi, I'm Charlotte! Welcome to my blog where I document my journey through solving problems on Project Euler.</p>
             <p>I am new to the world of coding and was recommended to sign up to <a href="https://projecteuler.net/" target="_blank">Project Euler</a>.</p>
             <p>I jumped at the opportunity as it seemed like a perfect place to practise my coding, improve my logic and keep my maths skills sharp.</p>
@@ -31,8 +32,9 @@
             <p>Project Euler is a collection of challenging mathematical and computational problems that require more than just mathematical insights to solve. A good understanding of programming is also necessary.</p>
             <p>I will be sharing my solutions, thought processes, and any challenges I encounter along the way.</p>
             <p>Feel free to explore my blog and follow along as I tackle these intriguing problems!</p>
+            </div>
         </div>
-        <hr>
+        
         <div id="project_nav">
             <h2>Project Euler Problems</h2>
             <ul>
@@ -41,11 +43,12 @@
                 <li><a href="#forty_one_sixty">Problem 41-60</a></li>
             </ul>
         </div>
-        <hr>
 
         <div id="first_twenty"> 
-            <h2>Problem 0</h2>
-                <h3>Among the first 636 thousand square numbers, what is the sum of all the odd squares?</h3>
+            <h2 class="title">Problem 0</h2>
+            <h3>Among the first 636 thousand square numbers, what is the sum of all the odd squares?</h3>
+
+            <div class="problem">
                 <p>This is the initial porblem you need to solve in order to get started on Project Euler.</p>
                 <p>When I started writing my code for this problem I was getting the incorrect answer and couldn't work out why as I knew my maths logic was correct.</p>
                 <p>By using the code below, I found I was getting negative square numbers.</p>
@@ -54,7 +57,7 @@
                 </code></pre>
                 <p>This was because I had used 'int' instead of 'long int' when defining my vectors.</p>
                 <p>Once I changed this, I was able to get the correct answer of 42876575999894000.</p>
-                <h5>Solution</h5>
+                <h3>Solution</h3>
                 <pre><code>
 
                     #include <iostream>
@@ -82,11 +85,15 @@
                     std::cout << "The sum of odd squares is " << odd_sum << std::endl;
                 }
                 </code></pre>
+            </div>
 
-            <h2>Problem 1: Multiples of 3 or 5</h2>
-                <h3>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of all the multiples of 3 or 5 below 1000.</h3>
+            <h2 class="title">Problem 1: Multiples of 3 or 5</h2>
+            <h3>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of all the multiples of 3 or 5 below 1000.</h3>
+
+            <div class="problem">
                 <p>This was a great problem to start with as it was fairly straightforward and I was able to solve it quickly.</p>
-        
+    
+            </div>
         </div>
 
 

@@ -1,0 +1,130 @@
+/* Color Palette 
+background colour: #fae0bf - Light Peach
+#3D5B59 - Dark Teal
+#ACC0D3 - Light Blue
+#09A1A1 - Bright Teal
+#f3b973 - Soft Orange
+#D396A6 - Soft Pink
+#5484A4 - Medium Blue
+*/
+
+/* Styles for the About Me page */
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #fae0bf;
+    text-align: justify;
+}
+
+li {
+        color: #3D5B59;
+}
+
+/* Header Styles */
+header {
+    text-align: center; 
+    background-color: #ACC0D3;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 50px;
+    color: #09A1A1;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+header nav li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+header nav li a {
+    text-decoration: none;
+    color: #5484A4;
+}
+
+header nav li a:hover {
+    color: #09A1A1;
+    text-decoration: underline;
+}
+
+/* Code Section */
+
+pre {
+    background-color: hsla(344, 21%, 71%, 0.3);
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #3D5B59;
+}
+
+
+
+/* Titles */
+
+.title {
+    color: #3D5B59;
+    text-align: center;
+    text-decoration: underline;
+    padding-bottom: 0px;
+}
+
+h2 {
+    color: #3D5B59;
+    text-align: center;
+    text-decoration: underline;
+    padding-bottom: 20px;
+}
+
+h3 {
+    color: #09A1A1;
+    padding-top: 20px;
+    text-align: center;
+}
+
+/* Introduction Section */
+
+#intro {
+    display: flex;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px 0 #ACC0D3, 0 6px 20px 0 #D396A6;
+    width: 80%;
+}
+
+/* Project Navigation */
+#project_nav {
+    position: sticky;
+    top: 0;
+    background-color: #ACC0D3;
+    height: 120px;
+    z-index: 1;
+}
+
+#project_nav h2 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#project_nav li{
+    display: inline-block;
+    padding-right: 10px;
+}
+
+/* Problem Sections */
+.problem {
+    padding: 20px;
+    width: 60%;
+    position: relative;
+    left:20%;
+    box-shadow: 0 4px 8px 0 #ACC0D3, 0 6px 20px 0 #D396A6;
+
+}
+
+#first_twenty {
+    z-index: 0.5;
+}

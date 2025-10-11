@@ -8,10 +8,46 @@ background colour: #fae0bf - Light Peach
 #5484A4 - Medium Blue
 */
 
-/* Styles for the Project Contents page */
+/* Styles for the About Me page */
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    background-color: #f9f3eb;
+    background-color: #fae0bf;
+}
+
+li {
+        color: #3D5B59;
+}
+
+/* Header Styles */
+header {
+    text-align: center; 
+    background-color: #ACC0D3;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 50px;
+    color: #09A1A1;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+header nav li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+header nav li a {
+    text-decoration: none;
+    color: #5484A4;
+}
+
+header nav li a:hover {
+    color: #09A1A1;
+    text-decoration: underline;
 }
 
 
