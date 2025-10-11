@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<header>
+    <header>
     <h1>Project Euler's Blog</h1>
     <nav>
             <ul>
@@ -19,6 +19,78 @@
             <li><a href="eulersblog.html">Project Euler Blog</a></li>
             </ul>
         </nav>
+    <header>
+
+    <main>
+        <div id="intro"></div>
+            <h2>Welcome to my Project Euler Blog</h2>
+            <p>Hi, I'm Charlotte! Welcome to my blog where I document my journey through solving problems on Project Euler.</p>
+            <p>I am new to the world of coding and was recommended to sign up to <a href="https://projecteuler.net/" target="_blank">Project Euler</a>.</p>
+            <p>I jumped at the opportunity as it seemed like a perfect place to practise my coding, improve my logic and keep my maths skills sharp.</p>
+            <p>This is where I will document my journey through solving problems on Project Euler.</p>
+            <p>Project Euler is a collection of challenging mathematical and computational problems that require more than just mathematical insights to solve. A good understanding of programming is also necessary.</p>
+            <p>I will be sharing my solutions, thought processes, and any challenges I encounter along the way.</p>
+            <p>Feel free to explore my blog and follow along as I tackle these intriguing problems!</p>
+        </div>
+        <hr>
+        <div id="project_nav">
+            <h2>Project Euler Problems</h2>
+            <ul>
+                <li><a href="#first_twenty">Problem 0-20</a></li>
+                <li><a href="#twenty_one_forty">Problem 21-40</a></li>
+                <li><a href="#forty_one_sixty">Problem 41-60</a></li>
+            </ul>
+        </div>
+        <hr>
+
+        <div id="first_twenty"> 
+            <h2>Problem 0</h2>
+                <h3>Among the first 636 thousand square numbers, what is the sum of all the odd squares?</h3>
+                <p>This is the initial porblem you need to solve in order to get started on Project Euler.</p>
+                <p>When I started writing my code for this problem I was getting the incorrect answer and couldn't work out why as I knew my maths logic was correct.</p>
+                <p>By using the code below, I found I was getting negative square numbers.</p>
+                <pre><code>
+                    std::cout << "The last square number is " << squares.back() << std::endl;
+                </code></pre>
+                <p>This was because I had used 'int' instead of 'long int' when defining my vectors.</p>
+                <p>Once I changed this, I was able to get the correct answer of 42876575999894000.</p>
+                <h5>Solution</h5>
+                <pre><code>
+
+                    #include <iostream>
+                    #include <cmath>
+                        
+                    int main() {
+
+                        std::vector<long int> squares;
+                        for(long int i = 1; i <= 636000 ; i++){
+                            squares.push_back(i*i);
+                        }
+
+                        std::vector<long int> odd_squares;
+                        for(long int a = 0; a < squares.size(); a++){
+                            if (squares[a] % 2 != 0){
+                            odd_squares.push_back(squares[a]);
+                            }
+                    }
+
+                    long int odd_sum = 0;
+                    for (long int c = 0; c < odd_squares.size(); c++){
+                        odd_sum += odd_squares[c];
+                    }
+
+                    std::cout << "The sum of odd squares is " << odd_sum << std::endl;
+                }
+                </code></pre>
+
+            <h2>Problem 1: Multiples of 3 or 5</h2>
+                <h3>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of all the multiples of 3 or 5 below 1000.</h3>
+                <p>This was a great problem to start with as it was fairly straightforward and I was able to solve it quickly.</p>
+        
+        </div>
+
+
+    </main>
 
 </body>
 </html>
