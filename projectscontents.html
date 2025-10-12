@@ -78,14 +78,21 @@
         </form>
     </nav>
 
-    <section>
+    <section class="projects_section">
         
-        <div class="project_card python diff_intermediate">
+        <div class="project_card python diff_beginner">
             <img src="projects/Python/TrafficData/images/smartphone.finalscatter.png" alt="Project 1 Image">
             <a href="projects/Python/TrafficData/trafficdata.html"><h2>Visualising Traffic Safety Data</h2></a>
             <p>This project involves using Python to analyse traffic safety data to identify patterns and trends.</p>
         </div>
-        
+
+        <div class="project_card javascript diff_beginner">
+            <img src="#" alt="Project 2 Image">
+            <a href="projects/JavaScript/whaletalk.html"><h2>Whale Talk</h2></a>
+            <p>A simple JavaScript code that will change any text into whale talk. Just like Dory!</p>
+        </div>
+
+    </section>
 
 
 </main>
@@ -93,6 +100,7 @@
 <footer>
     <p>&copy; 2024 My Portfolio</p>
 </footer>
+
 <script>
     function filterProject() {
         const langPython = document.getElementById('lang_python').checked;
@@ -113,28 +121,28 @@
 
         projects.forEach(project => {
             const matchesLanguage =
-                (langPython && project.classList.contains('python')) ||
-                (langJavaScript && project.classList.contains('javascript')) ||
-                (langCpp && project.classList.contains('cpp')) ||
-                (langCsharp && project.classList.contains('csharp')) ||
-                (langHtml && project.classList.contains('html')) ||
-                (langCss && project.classList.contains('css')) ||
-                (langReact && project.classList.contains('react')) ||
-                (langSql && project.classList.contains('sql')) ||
-                (langR && project.classList.contains('r'));
+                (!langPython || project.classList.contains('python')) &&
+                (!langJavaScript || project.classList.contains('javascript')) &&
+                (!langCpp || project.classList.contains('cpp')) &&
+                (!langCsharp || project.classList.contains('csharp')) &&
+                (!langHtml || project.classList.contains('html')) &&
+                (!langCss || project.classList.contains('css')) &&
+                (!langReact || project.classList.contains('react')) &&
+                (!langSql || project.classList.contains('sql')) &&
+                (!langR || project.classList.contains('r'));
 
             const matchesDifficulty =
-                (diffBeginner || project.classList.contains('diff_beginner')) ||
-                (diffIntermediate || project.classList.contains('diff_intermediate')) ||
-                (diffAdvanced || project.classList.contains('diff_advanced'));
+                (!diffBeginner || project.classList.contains('diff_beginner')) &&
+                (!diffIntermediate || project.classList.contains('diff_intermediate')) &&
+                (!diffAdvanced || project.classList.contains('diff_advanced'));
 
-            if (matchesLanguage || matchesDifficulty) {
+            if (matchesLanguage && matchesDifficulty) {
                 project.style.display = 'inline-block';
             } else {
                 project.style.display = 'none';
             }
         });
-}</script>
+    }</script>
 
 </body>
 </html>

@@ -50,6 +50,17 @@ header nav li a:hover {
     text-decoration: underline;
 }
 
+/* Footer Styles */
+footer {
+    text-align: center;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    clear: left;
+}
+
+
+/* Filter Navigation Styles */
 
 .filter_nav {
     width: 100%;
@@ -102,7 +113,7 @@ header nav li a:hover {
     height: 300px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     text-align: center;
-    display: inline-block;
+    float: left;
 }
 
 .project_card h2 {
