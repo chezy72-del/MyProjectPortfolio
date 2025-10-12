@@ -112,7 +112,8 @@ h3 {
     top: 0;
     background-color: #ACC0D3;
     height: 120px;
-    z-index: 1;
+    z-index: 10;
+    text-align: center;
 }
 
 #project_nav h2 {
@@ -121,7 +122,10 @@ h3 {
 }
 #project_nav li{
     display: inline-block;
-    padding-right: 10px;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    text-align: center;
 }
 
 /* Problem Sections */
@@ -134,6 +138,22 @@ h3 {
 
 }
 
-#first_twenty {
-    z-index: 0.5;
+/* Solution Sections */
+
+a {
+    text-decoration: none;
+    color: #5484A4;
+}
+
+a:hover {
+    color: #09A1A1;
+    text-decoration: underline;
+}
+
+#problem_0, #problem_1, #problem_2, #problem_3, #problem_4, #problem_5, #problem_6, #problem_7, #problem_8, #problem_9, #problem_10 {
+  display: none;
+}
+
+#problem_0:target, #problem_1:target, #problem_2:target, #problem_3:target, #problem_4:target, #problem_5:target, #problem_6:target, #problem_7:target, #problem_8:target, #problem_9:target, #problem_10:target {
+  display: block;
 }

@@ -30,7 +30,7 @@
             <p>I jumped at the opportunity as it seemed like a perfect place to practise my coding, improve my logic and keep my maths skills sharp.</p>
             <p>This is where I will document my journey through solving problems on Project Euler.</p>
             <p>Project Euler is a collection of challenging mathematical and computational problems that require more than just mathematical insights to solve. A good understanding of programming is also necessary.</p>
-            <p>I will be sharing my solutions, thought processes, and any challenges I encounter along the way.</p>
+            <p>I will be sharing my solutions, thought processes, and any challenges I encounter along the way, in the hope to help further my own abilities and also guide you with my own misconceptions.</p>
             <p>Feel free to explore my blog and follow along as I tackle these intriguing problems!</p>
             </div>
         </div>
@@ -41,6 +41,8 @@
                 <li><a href="#first_twenty">Problem 0-20</a></li>
                 <li><a href="#twenty_one_forty">Problem 21-40</a></li>
                 <li><a href="#forty_one_sixty">Problem 41-60</a></li>
+                <li><a href="#sixty_one_eighty">Problem 61-80</a></li>
+                <li><a href="#eighty_one_hundred">Problem 81-100</a></li>
             </ul>
         </div>
 
@@ -52,39 +54,41 @@
                 <p>This is the initial porblem you need to solve in order to get started on Project Euler.</p>
                 <p>I decided to use c++ for this problem.</p>
                 <p>When I started writing my code for this problem I was getting the incorrect answer and couldn't work out why as I knew my maths logic was correct.</p>
-                <p>By using the code below, I found I was getting negative square numbers.</p>
+                <p>By using the code below, I found I was getting negative square numbers, which obviously made zero sense as all square numbers are positive.</p>
                 <pre><code>
-                    std::cout << "The last square number is " << squares.back() << std::endl;
+    std::cout << "The last square number is " << squares.back() << std::endl;
                 </code></pre>
                 <p>This was because I had used <em>'int'</em> instead of <em>'long int'</em> when defining my vectors.</p>
-                <p>Once I changed this, I was able to get the correct answer of 42876575999894000.</p>
-                <h3><button class="problem_0">Solution</button></h3>
+                <p>Once I changed this, I was able to get the correct answer.</p>
+                <h3><a href="#problem_0">Solution</a></h3>
+                
                 <pre id="problem_0"><code>
 
-                    #include <iostream>
-                    #include <cmath>
+    #include <iostream>
+    #include <cmath>
                         
-                    int main() {
+    int main() {
 
-                        std::vector<long int> squares;
-                        for(long int i = 1; i <= 636000 ; i++){
-                            squares.push_back(i*i);
-                        }
+        std::vector<long int> squares;
+        for(long int i = 1; i <= 636000 ; i++){
+            squares.push_back(i*i);
+        }
 
-                        std::vector<long int> odd_squares;
-                        for(long int a = 0; a < squares.size(); a++){
-                            if (squares[a] % 2 != 0){
-                            odd_squares.push_back(squares[a]);
-                            }
-                        }
+        std::vector<long int> odd_squares;
+        for(long int a = 0; a < squares.size(); a++){
+            if (squares[a] % 2 != 0){
+                odd_squares.push_back(squares[a]);
+            }
+        }
 
-                        long int odd_sum = 0;
-                        for (long int c = 0; c < odd_squares.size(); c++){
-                            odd_sum += odd_squares[c];
-                        }
+        long int odd_sum = 0;
+        for (long int c = 0; c < odd_squares.size(); c++){
+            odd_sum += odd_squares[c];
+        }
 
-                        std::cout << "The sum of odd squares is " << odd_sum << std::endl;
-                    }
+        std::cout << "The sum of odd squares is " << odd_sum << std::endl;
+        return 0;
+    }
                 </code></pre>
             </div>
 
@@ -92,8 +96,37 @@
             <h3>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of all the multiples of 3 or 5 below 1000.</h3>
 
             <div class="problem">
-                <p>This was a great problem to start with as it was fairly straightforward and I was able to solve it quickly.</p>
-    
+                 <p>I decided to stick with c++ to solve this problem.</p>
+                 <p>This was a great problem to start with as it was fairly straightforward and I was able to solve it fairly quickly.
+                    I used a for loop to iterate through all the numbers below 1000 and an if statement to check if each number was a multiple of 3 or 5.
+                    But found I still got the wrong answer. I'm starting to think this is a common theme with my coding journey so far!</p>
+                 <p>After editing the code to test with smaller numbers, I found that I was <strong>including</strong> 1000 in my calculations when I should not have been.</p>
+                 <p>Once I realised my mistake it was an easy fix and then I got the correct answer.</p>
+                    <h3><a href="#problem_1">Solution</a></h3> 
+                    <pre id="problem_1"><code>
+    #include <iostream>
+
+    int main() {
+        //Create variables
+        std::vector <int> below1000 = {};
+        int sum = 0; 
+
+        //Loop through numbers below 1000
+        for(int i = 1; i < 1000; i++) {
+            //Check if number is a multiple of 3 or 5
+            if(i % 3 == 0 || i % 5 == 0) {
+                below1000.push_back(i);
+                sum += i; //Add to sum
+            }
+       }
+
+        //Output result
+        std::cout << "The sum of all multiples of 3 or 5 below 1000 is: " << sum << std::endl;
+        return 0;
+    }
+                    </code></pre>
+                 
+               
             </div>
         </div>
 
