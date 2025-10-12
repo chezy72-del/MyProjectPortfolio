@@ -5,6 +5,7 @@
 </head>
 
 <body>
+    <script src="resources/jsscripts/projectscontents.js" defer></script>
 <header>
     <h1>Projects</h1>
     <nav>
@@ -20,58 +21,120 @@
 
 <main>
     <nav class="filter_nav">
-        <!--
-        Video to watch to learn how to link buttons to items
-        https://www.youtube.com/watch?v=cqAnMkbTQ2A
-        -->
         <p class="filter_header">Programming Language</p>
-        <form id="form_1">
+        <form id="form_1" >
             <div>
-                <input type="radio" id="lang_python" name="language">
+                <input type="checkbox" id="lang_python" name="language" onclick="filterProject()">
                 <label class="filter_type" for="lang_python">Python</label>
             </div>
             <div>
-                <input type="radio" id="lang_javascript" name="language">
+                <input type="checkbox" id="lang_javascript" name="language" onclick="filterProject()">
                 <label class="filter_type" for="lang_javascript">JavaScript</label>
             </div>
             <div>
-                <input type="radio" id="lang_cpp" name="language">
+                <input type="checkbox" id="lang_cpp" name="language" onclick="filterProject()">
                 <label class="filter_type" for="lang_cpp">C++</label>
             </div>
             <div>
-                <input type="radio" id="lang_csharp" name="language">
+                <input type="checkbox" id="lang_csharp" name="language" onclick="filterProject()">
                 <label class="filter_type" for="lang_csharp">C#</label>
+            </div>
+            <div>
+                <input type="checkbox" id="lang_html" name="language" onclick=" filterProject()">
+                <label class="filter_type" for="lang_html">Html</label>
+            </div>
+            <div>
+                <input type="checkbox" id="lang_css" name="language" onclick="filterProject()">
+                <label class="filter_type" for="lang_css">CSS</label>
+            </div>
+            <div>
+                <input type="checkbox" id="lang_react" name="language" onclick="filterProject()">
+                <label class="filter_type" for="lang_react">React</label>
+            </div>
+            <div>
+                <input type="checkbox" id="lang_sql" name="language" onclick="filterProject()">
+                <label class="filter_type" for="lang_sql">SQL</label>
+            </div>
+            <div>
+                <input type="checkbox" id="lang_r" name="language" onclick="filterProject()">
+                <label class="filter_type" for="lang_r">R</label>
             </div>
         </form>
         <hr>
         <p class="filter_header">Difficulty Level</p>
         <form id="form_2">
             <div>
-                <input type="radio" id="diff_beginner" name="difficulty">
+                <input type="checkbox" id="diff_beginner" name="difficulty" onclick="filterProject()">
                 <label class="filter_type" for="diff_beginner">Beginner</label>
             </div>
             <div>
-                <input type="radio" id="diff_intermediate" name="difficulty">
+                <input type="checkbox" id="diff_intermediate" name="difficulty" onclick="filterProject()">
                 <label class="filter_type" for="diff_intermediate">Intermediate</label>
             </div>
             <div>
-                <input type="radio" id="diff_advanced" name="difficulty">
+                <input type="checkbox" id="diff_advanced" name="difficulty" onclick="filterProject()">
                 <label class="filter_type" for="diff_advanced">Advanced</label>
             </div>
         </form>
     </nav>
 
     <section>
-        <div class="project_card">
-            <img src="resources/images/project1.png" alt="Project 1 Image">
-            <h2>Project Title 1</h2>
-            <p>Brief description of Project 1.</p>
-            <a href="projects/Python/TrafficData/trafficdata.html">View Project</a>
+        
+        <div class="project_card python diff_intermediate">
+            <img src="projects/Python/TrafficData/images/smartphone.finalscatter.png" alt="Project 1 Image">
+            <a href="projects/Python/TrafficData/trafficdata.html"><h2>Visualising Traffic Safety Data</h2></a>
+            <p>This project involves using Python to analyse traffic safety data to identify patterns and trends.</p>
         </div>
+        
+
+
 </main>
 
 <footer>
     <p>&copy; 2024 My Portfolio</p>
 </footer>
+<script>
+    function filterProject() {
+        const langPython = document.getElementById('lang_python').checked;
+        const langJavaScript = document.getElementById('lang_javascript').checked;
+        const langCpp = document.getElementById('lang_cpp').checked;
+        const langCsharp = document.getElementById('lang_csharp').checked;
+        const langHtml = document.getElementById('lang_html').checked;
+        const langCss = document.getElementById('lang_css').checked;
+        const langReact = document.getElementById('lang_react').checked;
+        const langSql = document.getElementById('lang_sql').checked;
+        const langR = document.getElementById('lang_r').checked;
+
+        const diffBeginner = document.getElementById('diff_beginner').checked;
+        const diffIntermediate = document.getElementById('diff_intermediate').checked;
+        const diffAdvanced = document.getElementById('diff_advanced').checked;
+
+        const projects = document.querySelectorAll('.project_card');
+
+        projects.forEach(project => {
+            const matchesLanguage =
+                (langPython && project.classList.contains('python')) ||
+                (langJavaScript && project.classList.contains('javascript')) ||
+                (langCpp && project.classList.contains('cpp')) ||
+                (langCsharp && project.classList.contains('csharp')) ||
+                (langHtml && project.classList.contains('html')) ||
+                (langCss && project.classList.contains('css')) ||
+                (langReact && project.classList.contains('react')) ||
+                (langSql && project.classList.contains('sql')) ||
+                (langR && project.classList.contains('r'));
+
+            const matchesDifficulty =
+                (diffBeginner || project.classList.contains('diff_beginner')) ||
+                (diffIntermediate || project.classList.contains('diff_intermediate')) ||
+                (diffAdvanced || project.classList.contains('diff_advanced'));
+
+            if (matchesLanguage || matchesDifficulty) {
+                project.style.display = 'inline-block';
+            } else {
+                project.style.display = 'none';
+            }
+        });
+}</script>
+
 </body>
 </html>

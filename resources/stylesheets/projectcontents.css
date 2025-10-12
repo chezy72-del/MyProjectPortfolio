@@ -52,14 +52,13 @@ header nav li a:hover {
 
 
 .filter_nav {
-    width: 15%;
-    margin: 1em;
-    padding: 1em;
+    width: 100%;
     border: 1px solid #09A1A1;
-    background-color: #ACC0D3;
-    display: flex;
-    flex-direction: column;
+    background-color: #D396A6;
     justify-content: flex-start;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 #filter {
@@ -73,23 +72,24 @@ header nav li a:hover {
 
 .filter_header {
     font-size: 20px;
-    text-align: left;
+    text-align: center;
     margin-bottom: 20px;
     margin-top: 10px;
     font-weight: bold;
-    color: #09A1A1;
+    color: #077272;
 }
 
 .filter_type {
     font-size: 20px;
     padding: 10px;
-    color: #5484A4;
+    color: #3a5d74;
 }
 
-#form_1 {
+#form_1, #form_2 {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
 }
 
 /* Project Card Styles */
@@ -99,18 +99,34 @@ header nav li a:hover {
     margin: 15px;
     background-color: #D396A6;
     width: 250px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    height: 300px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     text-align: center;
+    display: inline-block;
 }
 
 .project_card h2 {
     font-size: 24px;
-    color: #09A1A1;
-    margin-bottom: 10px;
+    color: #077272;
 }
 
 .project_card p {
     font-size: 16px;
-    color: #5484A4;
-    margin-bottom: 15px;
+    color: #3a5d74;
+}
+
+.project_card img {
+    width: 200px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline #077272;
 }
