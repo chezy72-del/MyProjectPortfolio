@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/../../resources/stylesheets/projects.css">
+    <link rel="stylesheet" href="../../../resources/stylesheets/projects.css">
     <title>Traffic Data Analysis</title>
 </head>
 
@@ -12,11 +12,11 @@
     <h1>Visualising Traffic Safety Data</h1>
     <nav>
             <ul>
-            <li><a href="../index.html">Title Page</a></li>
-            <li><a href="../aboutme.html">About Me</a></li>
-            <li><a href="../projectscontents.html">Projects</a></li>
-            <li><a href="../contactme.html">Contact Me</a></li>
-            <li><a href="../eulersblog.html">Project Euler Blog</a></li>
+            <li><a href="../../../index.html">Title Page</a></li>
+            <li><a href="../../../aboutme.html">About Me</a></li>
+            <li><a href="../../../projectscontents.html">Projects</a></li>
+            <li><a href="../../../contactme.html">Contact Me</a></li>
+            <li><a href="../../../eulersblog.html">Project Euler Blog</a></li>
             </ul>
         </nav>
     </header>
@@ -25,54 +25,327 @@
         <h2>Traffic Safety Data Analysis Project</h2>
         <div id="intro">
             <div>
-            <p>This project involves analyzing traffic safety data to identify patterns and trends.</p>
-            <p>The goal is to use Python to process and visualize the data, providing insights on if there is a correlation between smartphone usage and traffic accidents.</p>
-            <p>The first dataset can be found on <a href="https://cdan.dot.gov/query">the National Highway Traffic Safety Administration’s website.</a></p>
-            <p>The second dataset can be found on <a href="https://www.pewresearch.org/internet/fact-sheet/mobile/">the Pew Research Center’s website.</a></p>
+                <p>This project involves analysing traffic safety data to identify patterns and trends.</p>
+                <p>The goal is to use Python to process and visualize the data, providing insights on if there is a correlation between smartphone usage and traffic accidents.</p>
+                <p>The first dataset can be found on <a href="https://cdan.dot.gov/query">the National Highway Traffic Safety Administration’s website.</a></p>
+                <p>The second dataset can be found on <a href="https://www.pewresearch.org/internet/fact-sheet/mobile/">the Pew Research Center’s website.</a></p>
+            </div>
+
+        <h2 class="sectiontitle">Project Hypothesis</h2>
+            <div>
+                <p class="overallhyp">My hypothesis is that as smartphone usage increases, the number of traffic accidents will also increase due to distracted driving.</p>
             </div>
         </div>
 
         <div id="data_analysis">
-            <h2 class="title">Data Analysis Steps</h2>
+            <h2 class="sectiontitle">Project Method</h2>
 
             <div class="step">
-                <h3>Step 1: Import Libraries</h3>
+                <h3>Import Libraries</h3>
                 <p>Import the necessary libraries for data analysis and visualization.</p>
                 <pre><code>
-                    import pandas as pd
-                    import datetime as dt
-                    from scipy.stats import pearsonr
-                    from sklearn.linear_model import LinearRegression
-                    import seaborn as sns
-                    import matplotlib.pyplot as plt
+    import pandas as pd
+    import datetime as dt
+    from scipy.stats import pearsonr
+    from sklearn.linear_model import LinearRegression
+    import seaborn as sns
+    import matplotlib.pyplot as plt
 
 
-                    %matplotlib inline
-                    # set plot theme and palette
-                    sns.set_theme()
-                    sns.set_palette('colorblind')
+    %matplotlib inline
+    # set plot theme and palette
+    sns.set_theme()
+    sns.set_palette('colorblind')
                 </code></pre>
-                <div class="image">
-                <img src="../../resources/images/trafficdata/import_libraries.png" alt="Import Libraries Code Example">
+                    
+            </div>
+
+            <div class="step">
+                <h3>Traffic Safety Data Inspection</h3>
+                <p>Look at the head of both datasets to have an idea of the information the datasets give you.</p>
+                <pre><code>
+    traffic=pd.read_csv('traffic.csv')
+    traffic.head()
+                </code></pre>
+                <img class="data" src="images/traffic.head.png" alt="Traffic Data Head">
+                <p>Check the datatypes of the columns to ensure they are correctly formatted.</p>
+                <pre><code>
+    traffic.info()
+                </code></pre>
+                <img class="data" src="images/traffic.dtypes.png" alt="Traffic Data Dtypes">
+                <p>Change the datatype of the 'Date' column to datetime format.</p>
+                <pre><code>
+    traffic['Date']=pd.to_datetime(traffic['Date'])
+    traffic.info()
+                </code></pre>
+                <img class="data" src="images/traffic.newtypes.png" alt="Traffic Data New Dtypes">
+            </div>
+
+            <div class="step">
+                <h3>Traffic Safety Analysis</h3>
+                <div class="hypothesis">
+                    <h3>Hypothesis</h3>
+                    <p>My hypothesis is that the number of crashes will increase over the years as I believe cars are more affordable and therefore more cars are on the road.</p>
+                </div>
+                <div class="method">
+                    <h3>Method</h3>
+                    <p>To test this hypothesis, I will calculate the number of crashes per 100,000 people for each year and create a line graph to visualise the trend over time.</p>
+                    <pre><code>
+    sns.lineplot(x='Date', y='Crashes_per_100k', data=traffic)
+    plt.show()
+                    </code></pre>
+                    <img class ="graph" src="images/traffic.lineplot.png" alt="Traffic Data Line Plot">
+                </div>
+                <div class="result">
+                    <h3>Results</h3>
+                    <p>From the line graph, it is clear that there is a general downward trend in the number of crashes per 100,000 people from 2006 to 2012, with crashes increasing again from 2012 to 2020.
+                    Looking at the data in 2020, there is a clear outlier where the number of crashes per 100,000 people is significantly lower than in previous years. This could be due to the COVID-19 pandemic, which led to reduced travel and changes in driving behavior.
+                    On top of this, each year seems to fluxuate which could be due to seasons throughout the year.</p>
+                    <p>Comparing the data to my hypothesis, my hypothesis is correct after the year 2012. If I wanted to look into this further I would have to look at car production rates over these years and plot a scattergraph with this dataset.</p>
+                    <p>As I noticed there are fluctuations throughout each year, I look further into the crashes per season.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>Seasonal Traffic Safety Analysis</h3>
+                <div class="hypothesis">
+                    <h3>Hypothesis</h3>
+                    <p>My hypothesis is that the number of crashes will be higher in the winter months due to adverse weather conditions.</p>
+                </div>
+                <div class="method">
+                    <h3>Method</h3>
+                    <p>To test this hypothesis, I will calculate the number of crashes per 100,000 people for each season and create a boxplot to visualise the trend.</p>
+                <pre><code>
+    sns.boxplot(x='Crashes_per_100k', y='Season', data=traffic[traffic.Date.dt.year!=2020])
+    plt.show()
+                </code></pre>
+                <img class ="graph" src="images/traffic.season.png" alt="Traffic Data Boxplot">
+                </div>
+                <div class="result">
+                    <h3>Results</h3>
+                    <p>From analysing the boxplot, winter has the highest number of crashes at over 200 crashes per 100,000. 
+                        Additionally, the median number of crashes in winter is higher than in the other seasons at almost 170 per 100,000, indicating that winter tends to have more crashes overall and thus helping to prove my hypothesis.</p>
+                    <p>Looking at the other seasons, autumn has the second highest median number of crashes, followed by spring and then summer. 
+                        This could be due to a variety of factors, such as weather conditions, road conditions, and driver behavior during different seasons.
+                    <p>
+                        Futhermore, you can clearly see that the interquartile range (IQR) for winter is similarly sized to autumn's IQR and spring's IQR but the IQR for summer is smaller.
+                        This suggests that while winter has the highest number of crashes, the variability in crash numbers is similar to that of autumn and spring, whereas summer has less variability in crash numbers.
+                    </p>
+                    <p>Overall, this boxplot provides valuable insights into the seasonal patterns of traffic crashes and can help inform strategies for improving road safety during different times of the year.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>Smartphone and Traffic Safety Data Inspection</h3>
+                    <p>To invetigate the correlation between smartphone ownership and traffic accidents, I have a dataset that has both tables in.</p>
+                    <pre><code>
+    smartphones=pd.read_csv('crashes_smartphones.csv')
+    smartphones.head()
+                    </code></pre>
+                    <img class="data" src="images/smartphone.head.png" alt="Smartphone Data Head">
+                    <p>Check the datatypes of the columns to ensure they are correctly formatted.</p>
+                    <pre><code>
+    smartphones.info()
+                    </code></pre>
+                    <img class="data" src="images/smartphones.dtypes.png" alt="Smartphone Data Dtypes">
+                    <p>Change the datatype of the 'Year' column to datetime format.</p>
+                    <pre><code>
+    smartphones['Smartphone_Survey_Date']=pd.to_datetime(smartphones['Smartphone_Survey_Date'])
+    smartphones.dtypes
+                    </code></pre>
+                    <img class="data" src="images/smartphones.newtypes.png" alt="Smartphone Data New Dtypes">
+                    <p>Looking at the data for smartphones and traffic safety, traffic safety has 180 rows compared to only 28 in smartphones, luckily neither dataset has missing data. Sample size can affect results and make the conclusions drawn from them less reliable.</p>                
+            </div>
+            <div class="step">
+                <h3>Visualising Smartphone Data</h3>
+                <div class="hypothesis">
+                    <h3>Hypothesis</h3>
+                    <p>My hypothesis is that over time smartphone usage will increase due to technological developments and phones becoming more of an essential item than a luxury.</p>
+                </div>
+                <div class="method">
+                    <h3>Method</h3>
+                    <p>To test this hypothesis, I will create a line graph to visualise the trend of smartphone usage over time.</p>
+                    <pre><code>
+    sns.lineplot(x='Smartphone_Survey_Date', y='Smartphone_usage', data=smartphones)
+    plt.show()
+                    </code></pre>
+                    <img class ="graph" src="images/smartphone.line.png" alt="Smartphone Data Line Plot">
+                </div>
+                <div class="result">
+                    <h3>Results</h3>
+                    <p>From the line graph, it is clear that there is an upward trend in smartphone usage from 2011 to 2019, with smartphone usage increasing from around 30 in 2011 to around 80 in 2019.
+                        This supports my hypothesis that smartphone usage will increase over time due to technological developments and phones becoming more of an essential item than a luxury.
+                    </p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>Correlation Between Smartphone Usage and Traffic Accidents</h3>
+                <div class="hypothesis">
+                    <h3>Hypothesis</h3>
+                    <p>My hypothesis is that as smartphone usage increases, the number of traffic accidents will also increase due to distracted driving.</p>
+                </div>
+                <div class="method">
+                    <h3>Method</h3>
+                    <p>To test this hypothesis, I will plot smartphone usage against the number of crashes per 100,000 people on a scattergraph. 
+                        I will also plot a line of best fit in order to visualise the correlation between the two variables.
+                    </p>
+                        
+                    <pre><code>
+    sns.regplot(x='Smartphone_usage', y='Crashes_per_100k', data=smartphones)
+    plt.show()
+                    </code></pre>
+                    <img class ="graph" src="images/smartphone.scatter.png" alt="Smartphone Data Scatter Plot">
+                    <p>I will also calculate the Pearson's correlation coefficient and the associated p-value.</p>
+                    <pre><code>
+    corr, p = pearsonr(smartphones.Smartphone_usage, smartphones.Crashes_per_100k)
+    print("Pearson's r =",  round(corr,3))
+    print("p = ", round(p,3))                    
+                    </code></pre>
+                    <img class ="pearson" src="images/smartphone.pearsons.png" alt="Smartphone Data Pearson's r">
+                </div>
+                <div class="result">
+                    <h3>Results</h3>
+                    <p>From the scattergraph, we can visually see there is a positive correlation between smartphone usage and the number of crashes per 100,000 people, with a Pearson's r value of 0.513.
+                        This indicates a moderately strong positive correlation between the two variables, suggesting that as smartphone usage increases, the number of traffic accidents also tends to increase.
+                    </p>
+                    <p>The p-value of 0.005 indicates that this correlation is statistically significant, meaning that it is unlikely to have occurred by chance.
+                        Therefore, I can reject the null hypothesis and conclude that there is a significant correlation between smartphone usage and the number of traffic accidents.
+                    </p>
+                    <p>Overall, these results support my hypothesis that as smartphone usage increases, the number of traffic accidents will also increase due to distracted driving.</p>
+                </div>
+            </div>
+
+                <div class="step">
+                    <h3>Linear Regression Analysis</h3>
+                    <div class="hypothesis">
+                        <h3>Outlier Prediction</h3>
+                        <p>As noted previously, there is a clear outlier in number of crashes per 100,000 in the year 2020, which is significantly lower than in previous years.
+                            This could be due to the COVID-19 pandemic, which led to reduced travel and changes in driving behavior.
+                            Therefore, I will exclude this data point from the linear regression analysis in order to avoid skewing the results. 
+                            Then I shall compare the results of the linear regression analysis with and without the outlier to see how it affects the results.
+                        </p>
+                    </div>
+                    <div class="method">
+                        <h3>Method</h3>
+                        <p>First I shall prepare the data for linear regression and look at the y-intercept and the gradient of the linear regression line equation.</p>
+                        <pre><code>
+    X = smartphones['Smartphone_usage'].to_numpy().reshape(-1, 1)
+    y = smartphones['Crashes_per_100k'].to_numpy().reshape(-1, 1)
+
+    lm=LinearRegression()
+    lm.fit(X, y)
+
+    print("Coefficients: \n",lm.intercept_, lm.coef_)
+                        </code></pre>
+                        <img class ="pearson" src="images/smartphone.coefficients.png" alt="Smartphone Data Coefficients">
+                        <p>Using the y-intercept and gradient, I can make a prediction of where 2020 would be if it followed the same pattern.</p>
+                        <pre><code>
+    y_pred=lm.intercept_ + lm.coef_*80
+    print("My 2020 crash prediction is", y_pred)
+                        </code></pre>
+                        <img class ="pearson" src="images/smartphone.prediction.png" alt="Smartphone Data Prediction">
+                        <p>Next I will plot both the predicted value and the actual value on the previous regression plot to see how differing the results are.</p>
+                        <pre><code>
+    sns.regplot(x = 'Smartphone_usage', y = 'Crashes_per_100k', data = smartphones)
+    sns.scatterplot(x=[81,81], y=[174.20,157.89], hue=['predicted','actual'], 
+        style=['predicted','actual'], markers=['X','o'], palette=['navy','orange'], s=200)
+    plt.legend(title='2020')
+    plt.show()
+                        </code></pre>
+                        <img class ="graph" src="images/smartphone.finalscatter.png" alt="Smartphone Data Final Scatter Plot">                        
+                    </div>
+                    <div class="result">
+                        <h3>Results</h3>
+                        <p>From the coefficients of the linear regression line, we can see that the y-intercept is 120.664 (3dp) and the gradient is 0.661 (3dp).
+                        </p>
+                        <p>Using these coefficients, I predicted that if smartphone usage was 80% in 2020, the number of crashes per 100,000 people would be approximately 174 (nearest integer).
+                            However, the actual number of crashes per 100,000 people in 2020 was only 157.89, which is significantly lower than the predicted value.
+                            This suggests that there were other factors at play in 2020 that led to a decrease in traffic accidents, such as reduced travel and changes in driving behavior due to the COVID-19 pandemic.
+                        </p>
+                        <p>Overall, this analysis highlights the importance of considering external factors when interpreting data and making predictions.</p>
+                    </div>
+                </div>
+
+                <div id="Conclusion">
+                    <h2 class="sectiontitle">Conclusion</h2>
+                    <div>
+                        <h4>Project Oveview</h4>
+                        <p>
+                            The central aim of this project was to test the hypothesis that as smartphone usage increase, the number of traffic accidents will also increase due to the effects of distracted driving. 
+                            Through a detailed analysis involving time-series data, correlation studies, and regression modeling, the findings robustly confirm a statistically significant positive correlation, thereby supporting the hypothesis. 
+                            However, the comprehensive investigation also highlighted the critical role of external, confounding variables that modify this relationship in real-world scenarios, demanding a nuanced interpretation of the initial findings.
+                        </p>
+                        <h4>Validation of the Core Hypothesis</h4>
+                        <p>
+                            The primary statistical evidence for the hypothesis stems from the correlation analysis between smartphone usage (measured as percentage of ownership/usage) and the rate of crashes per 100,000 people. 
+                            The scattergraph analysis yielded a Pearson's r value of 0.513. This metric signifies a moderately strong positive correlation between the two variables. 
+                            Statistically, this means that as the measured prevalence of smartphone use rises, there is a distinct tendency for the frequency of traffic accidents to rise alongside it. 
+                            This quantitative relationship directly backs the underlying premise of the hypothesis—that the increasing availability of handheld devices leads to a corresponding increase in the distraction-related risks associated with driving.
+                        </p>
+                        <p>        
+                            Crucially, the statistical significance of this correlation was established by the derived p-value of 0.005. 
+                            Because this p-value is far less than the conventional significance level of 0.05, we can confidently reject the null hypothesis, which would have proposed no relationship exists. 
+                            The low p-value confirms that the observed positive relationship is highly unlikely to have occurred by chance, thus establishing a legitimate statistical link. 
+                            The overall conclusion drawn from this core statistical analysis is definitive: a significant positive correlation exists between smartphone usage and the number of traffic accidents, directly supporting the project's foundational hypothesis, especially for the time period following 2012 where the accident trend aligns more closely with the consistent upward trend in device usage.
+                        </p>
+                        <h4>Interpreting the Linear Regression Model</h4>
+                        <p>
+                            The exploration extended beyond simple correlation into predictive modeling using a linear regression line, the coefficients of which offer deeper insight into the quantitative relationship. 
+                            The calculated linear regression line was defined by a y-intercept of 120.664 (to 3 decimal places) and a gradient of 0.661 (to 3 decimal places).
+                        </p>
+                        <p>
+                            Using the derived model, a projected smartphone usage of 80% in 2020 led to a predicted accident rate of approximately 174 crashes per 100,000 people. 
+                            However, the actual recorded rate for 2020 was significantly lower at 158. 
+                            This substantial divergence between prediction and reality provides a powerful demonstration that correlation does not equate to sole causation. 
+                            The model, based on historical trends where the primary explanatory variable was increasing smartphone usage, failed to account for a dramatic, unprecedented external shock to the system: the COVID-19 pandemic.
+                        </p>
+                        <h4>The Influence of Contextual Factors: Pandemic and Seasonal Effects</h4>
+                        <p>The discrepancy observed in 2020 necessitates the discussion of confounding variables. 
+                            The reduced traffic accidents in 2020, despite high smartphone usage, is attributed to external factors such as reduced travel, widespread lockdowns, and fundamental changes in driving behaviour. 
+                            With fewer vehicles on the road, the statistical probability of accidents decreases, regardless of individual driver distraction levels. 
+                            This highlights a crucial caveat in the hypothesis: while distracted driving may increase the risk per driver-mile, a global reduction in total driver-miles can override this effect on the macro-level accident count. 
+                            This finding underscores the necessity of incorporating macroeconomic and societal variables when creating robust predictive models for traffic safety.
+                        </p>
+                        <p>
+                            In addition to the pandemic’s influence, the project’s exploration into crash rates over time and across seasons further enriched the contextual understanding. 
+                            The time-series data for crashes from 2006 to 2020 initially showed a general downward trend from 2006 to 2012, followed by an increasing trend up to 2019 (before the 2020 outlier). 
+                            This non-linear pattern suggests that multiple factors are at play, including car production rates, vehicle safety technology improvements, and changing infrastructure, which competed with the distraction effect in the earlier part of the observed decade.
+                        </p>
+                        <p>
+                            The seasonal analysis provided yet another layer of complexity. 
+                            The boxplot visualization clearly indicated that winter has the highest median number of crashes (approximately 170 per 100,000 people), followed by autumn, spring, and finally summer. 
+                            This strongly suggests that factors like adverse weather conditions (ice, snow, rain, reduced visibility) are potent accident multipliers, surpassing even the consistent factor of human-induced smartphone distraction in terms of median accident rate. 
+                            The seasonal variability illustrates that the hypothesis, while statistically verified, operates within a dynamic system where environmental and road conditions significantly modulate the final outcome.
+                        </p>
+                        <h4>Reflection and Future Research Directions</h4>
+                        <p>In summary, the project successfully validated the hypothesis through strong statistical evidence: increased smartphone usage is significantly and positively correlated with a rise in traffic accidents. 
+                            This supports the general public health concern regarding distracted driving.
+                        </p>
+                        <p>
+                            However, the analysis also demonstrated that the relationship is not one of simple, isolated causation. 
+                            The predictive model was vulnerable to external shocks (the pandemic) and its real-world expression is heavily influenced by systemic factors (seasonal weather).
+                        </p>
+                        <p>
+                            For future research, several avenues could be explored to build upon these findings:
+                        </p>
+                        <ol>
+                            <li>Refined Variable Measurement: Instead of relying on overall smartphone usage, future studies should seek data that more directly measures distracted driving behaviour (e.g., tickets issued for phone use, or real-time data from driving apps).</li>
+                            <li>Multivariate Modeling: To create a truly robust predictive model, the linear regression should be expanded into a multiple regression model to incorporate confounding variables identified here, such as seasonal indicators, vehicle miles traveled (VMT), and economic indicators (e.g., employment rates affecting commuting).</li>
+                            <li>Longitudinal Study of Legislation: An interesting follow-up would be to study the impact of specific anti-distracted driving laws introduced in various jurisdictions, analyzing the change in the correlation coefficient before and after the legislation’s implementation.</li>
+                        </ol>
+                        <p>
+                            Ultimately, while the statistical link is undeniable, the conclusion of this project is that tackling distracted driving requires a holistic approach that integrates technology, policy, driver education, and an acknowledgement of the environmental and societal contexts in which driving occurs.
+                        </p>
+                    </div>
                 
                 </div>
 
             </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Charlotte Richards</p>
+    </footer>
+</body>
 
-            <div class="step">
-                <h3>Step 2: Data Inspecttion</h3>
-                <p>Look at the head of both datasets to have an idea of the information the datasets give you.</p>
-                <pre><code>
-
-            </div>
-
-            <div class="step">
-                <h3>Step 3: Data Cleaning</h3>
-                <p>Remove any inconsistencies or errors in the data to ensure accuracy.</p>
-            </div>
-
-            <div class="step">
-                <h3>Step 4: Data Visualization</h3>
-                <p>Create visual representations of the data using libraries like Matplotlib and Seaborn.</p>
-                <pre><code>
 </html>

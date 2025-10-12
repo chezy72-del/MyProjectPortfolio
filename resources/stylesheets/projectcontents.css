@@ -51,13 +51,12 @@ header nav li a:hover {
 }
 
 
-aside {
+.filter_nav {
     width: 15%;
     margin: 1em;
     padding: 1em;
-    border: 1px solid #37b225;
-    background-color: #dc0f0f;
-    color: #ffffcc;
+    border: 1px solid #09A1A1;
+    background-color: #ACC0D3;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -78,16 +77,40 @@ aside {
     margin-bottom: 20px;
     margin-top: 10px;
     font-weight: bold;
-    text-decoration: underline;
+    color: #09A1A1;
 }
 
 .filter_type {
     font-size: 20px;
     padding: 10px;
+    color: #5484A4;
 }
 
 #form_1 {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+/* Project Card Styles */
+.project_card {
+    border-radius: 5px;
+    padding: 15px;
+    margin: 15px;
+    background-color: #D396A6;
+    width: 250px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.project_card h2 {
+    font-size: 24px;
+    color: #09A1A1;
+    margin-bottom: 10px;
+}
+
+.project_card p {
+    font-size: 16px;
+    color: #5484A4;
+    margin-bottom: 15px;
 }

@@ -8,7 +8,7 @@ background colour: #fae0bf - Light Peach
 #5484A4 - Medium Blue
 */
 
-/* Styles for the About Me page */
+/* Styles */
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     background-color: #fae0bf;
@@ -30,6 +30,7 @@ header h1 {
     color: #09A1A1;
     margin-bottom: 10px;
     text-transform: uppercase;
+    background-color: transparent;
 }
 
 header nav li {
@@ -50,7 +51,66 @@ header nav li a:hover {
     text-decoration: underline;
 }
 
+/*Heading Styles */
 
+.sectiontitle {
+    text-align: center;
+    color: #3D5B59;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #D396A6;
+}
+
+h2, h3, h4 {
+    color: #3D5B59;
+    text-align: center;
+}
+
+h3 {
+    text-decoration: underline;
+}
+
+/* section styles */
+div {
+    width: 80%;
+    position: relative;
+    left: 10%;
+}
+
+.step p {
+    width: 80%;
+    position: relative;
+    left: 10%;
+    padding: 0;
+}
+
+p {
+    color: #3D5B59;
+    text-align: justify;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding-left: 30px;
+}
+
+.step {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 #ACC0D3, 0 6px 20px 0 #D396A6;
+    margin-bottom: 20px;
+}
+
+.hypothesis, .result, .method {
+    background-color: #f5c78d;
+    padding: 10px 0;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.overallhyp {
+    text-align: center;
+    font-size: large;
+}
 
 /* Code Section */
 
@@ -60,4 +120,45 @@ pre {
     border-radius: 4px;
     font-family: 'Courier New', Courier, monospace;
     color: #3D5B59;
+    width: 80%;
+    margin: 20px auto;
+    word-wrap: break-word;
+}
+
+/* images */
+.data {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 150px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.graph {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.pearson {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Conclusion Section */
+
+ol {
+    color: #3D5B59;
+    text-align: justify;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    margin-left: 40px;
 }
