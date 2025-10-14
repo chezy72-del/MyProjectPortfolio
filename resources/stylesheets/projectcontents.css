@@ -119,11 +119,13 @@ footer {
 .project_card h2 {
     font-size: 24px;
     color: #077272;
+    height: 50px;
 }
 
 .project_card p {
     font-size: 16px;
     color: #3a5d74;
+    text-align: justify;
 }
 
 .project_card img {
@@ -132,6 +134,7 @@ footer {
     object-fit: cover;
     border-radius: 5px;
     margin-bottom: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 a {

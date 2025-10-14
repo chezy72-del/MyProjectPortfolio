@@ -171,3 +171,24 @@ ol {
     margin-bottom: 20px;
     margin-left: 40px;
 }
+
+/* Terminal input/output styles and animation */
+#input {
+    width: 60%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin-right: 0.5rem;
+}
+#demo {
+    min-height: 1.5rem;
+    margin-top: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+.fade-in {
+    animation: fadeIn 450ms ease-out both;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}

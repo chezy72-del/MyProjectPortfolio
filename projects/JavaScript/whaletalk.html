@@ -17,20 +17,90 @@
 </header>
 
 <main>
-<script>
-$('body').terminal({
-    hello: function(what) {
-        this.echo('Hello, ' + what +
-                  '. Wellcome to this terminal.');
-    }
-}, {
-    greetings: 'My First Web Terminal'
-});
-</script>
+
+    <section class="project_section">
+        <h2>Project Overview</h2>
+        <p>In this project, I created a simple program that translates English text into "whale talk" by extracting and repeating certain vowels. The program processes the input string, filters out non-vowel characters, and constructs a new string that represents how whales might "speak".</p>
+    </section>
+
+    <section class="project_section">
+        <h2>Key Features</h2>
+        <ul>
+            <li>Extracts vowels from the input text.</li>
+            <li>Repeats specific vowels ('e' and 'u') to mimic whale sounds.</li>
+            <li>Outputs the translated whale talk as a single string.</li>
+        </ul>
+    </section>
+
+    <p>Enter text and click Translate (or press Enter) to convert to whale talk.</p>
+
+    <div>
+        <input id="input" type="text" placeholder="Insert text here">
+        <button onclick="myFunction()">Translate</button>
+    </div>
+
+    <p id="demo"></p>
+
+    <script>
+        function myFunction() {
+            // Read text from the input field (fall back to default if empty)
+            const inputEl = document.getElementById('input');
+            let text = inputEl ? inputEl.value : '';
+            if (!text) {
+                return; // do nothing if input is empty
+            }
+            // Work with a lowercase copy for matching
+            const input = text.toLowerCase();
+            const vowels = ['a', 'e', 'i', 'o', 'u'];
+            // Create an empty array
+            let resultArray = [];
+
+            // Loop through each character of the input and check vowels
+            for (let i = 0; i < input.length; i++) {
+                for (let j = 0; j < vowels.length; j++) {
+                    // checks for e and u: then doubles them
+                    if (input[i] === vowels[j]) {
+                        if (input[i] === 'e' || input[i] === 'u') {
+                            resultArray.push(input[i], input[i]);
+                        } else {
+                            resultArray.push(input[i]);
+                        }
+                    }
+                }
+            }
+
+            // Declare a variable that joins and capitalises the string
+            let resultString = resultArray.join('').toUpperCase();
+
+            const demoEl = document.getElementById("demo");
+            if (demoEl) {
+                demoEl.textContent = resultString;
+                // restart animation
+                demoEl.classList.remove('fade-in');
+                // trigger reflow to allow re-adding the class
+                void demoEl.offsetWidth;
+                demoEl.classList.add('fade-in');
+            }
+        }
+
+        // Allow pressing Enter in the input to trigger translation
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputEl = document.getElementById('input');
+            if (inputEl) {
+                inputEl.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        myFunction();
+                    }
+                });
+            }
+        });
+    </script>
+    
 </main>
 
 <footer>
-    <p>&copy; 2024 My Portfolio</p>
+    <p>&copy; 2025 My Portfolio</p>
 </footer>
 </body>
 </html>
