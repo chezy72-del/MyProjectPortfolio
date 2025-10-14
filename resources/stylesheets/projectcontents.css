@@ -103,6 +103,13 @@ footer {
     margin-bottom: 20px;
 }
 
+/* Section Styles */
+
+section {
+    position: relative;
+    left:5%;
+}
+
 /* Project Card Styles */
 .project_card {
     border-radius: 5px;

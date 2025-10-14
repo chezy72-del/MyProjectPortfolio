@@ -9,7 +9,7 @@
 
 <body>
     <header>
-    <h1>Visualising Traffic Safety Data</h1>
+    <h1>Projects</h1>
     <nav>
             <ul>
             <li><a href="../../../index.html">Title Page</a></li>
@@ -26,7 +26,7 @@
         <div id="intro">
             <div>
                 <p>This project involves analysing traffic safety data and smartphone usage to identify patterns and trends.</p>
-                <p>The goal is to use Python to process and visualize the data, providing insights on if there is a correlation between smartphone usage and traffic accidents.</p>
+                <p>The goal is to use Python to process and visualise the data, providing insights on if there is a correlation between smartphone usage and traffic accidents.</p>
                 <p>The first dataset can be found on <a href="https://cdan.dot.gov/query">the National Highway Traffic Safety Administration’s website.</a></p>
                 <p>The second dataset can be found on <a href="https://www.pewresearch.org/internet/fact-sheet/mobile/">the Pew Research Center’s website.</a></p>
             </div>
@@ -42,7 +42,7 @@
 
             <div class="step">
                 <h3>Import Libraries</h3>
-                <p>Import the necessary libraries for data analysis and visualization.</p>
+                <p>Import the necessary libraries for data analysis and visualisation.</p>
                 <pre><code>
     import pandas as pd
     import datetime as dt
@@ -62,7 +62,7 @@
 
             <div class="step">
                 <h3>Traffic Safety Data Inspection</h3>
-                <p>Look at the head of both datasets to have an idea of the information the datasets give you.</p>
+                <p>Look at the head of the dataset to have an idea of the information the dataset give you.</p>
                 <pre><code>
     traffic=pd.read_csv('traffic.csv')
     traffic.head()
@@ -202,7 +202,7 @@
     print("Pearson's r =",  round(corr,3))
     print("p = ", round(p,3))                    
                     </code></pre>
-                    <img class ="pearson" src="images/smartphone.pearsons.png" alt="Smartphone Data Pearson's r">
+                    <img class ="results" src="images/smartphone.pearsons.png" alt="Smartphone Data Pearson's r">
                 </div>
                 <div class="result">
                     <h3>Results</h3>
@@ -238,13 +238,13 @@
 
     print("Coefficients: \n",lm.intercept_, lm.coef_)
                         </code></pre>
-                        <img class ="pearson" src="images/smartphone.coefficients.png" alt="Smartphone Data Coefficients">
+                        <img class ="results" src="images/smartphone.coefficients.png" alt="Smartphone Data Coefficients">
                         <p>Using the y-intercept and gradient, I can make a prediction of where 2020 would be if it followed the same pattern.</p>
                         <pre><code>
     y_pred=lm.intercept_ + lm.coef_*80
     print("My 2020 crash prediction is", y_pred)
                         </code></pre>
-                        <img class ="pearson" src="images/smartphone.prediction.png" alt="Smartphone Data Prediction">
+                        <img class ="results" src="images/smartphone.prediction.png" alt="Smartphone Data Prediction">
                         <p>Next I will plot both the predicted value and the actual value on the previous regression plot to see how differing the results are.</p>
                         <pre><code>
     sns.regplot(x = 'Smartphone_usage', y = 'Crashes_per_100k', data = smartphones)
@@ -344,7 +344,7 @@
             </div>
     </main>
     <footer>
-        <p>&copy; 2024 Charlotte Richards</p>
+        <p>&copy; 2025 My Portfolio</p>
     </footer>
 </body>
 

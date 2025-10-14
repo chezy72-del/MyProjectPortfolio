@@ -52,7 +52,7 @@ header nav li a:hover {
 }
 
 /* Footer Styles */
-footer {
+footer p {
     text-align: center;
     width: 100%;
     position: relative;
@@ -135,7 +135,10 @@ h3 {
     position: relative;
     left:20%;
     box-shadow: 0 4px 8px 0 #ACC0D3, 0 6px 20px 0 #D396A6;
+}
 
+p {
+    font-size: 18px;
 }
 
 /* Solution Sections */

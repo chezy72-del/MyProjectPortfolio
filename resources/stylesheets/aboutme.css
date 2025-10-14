@@ -51,7 +51,7 @@ header nav li a:hover {
 }
 
 /* Footer Styles */
-footer {
+footer p {
     text-align: center;
     width: 100%;
     position: relative;

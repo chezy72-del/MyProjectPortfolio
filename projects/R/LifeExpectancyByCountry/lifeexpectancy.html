@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../resources/stylesheets/projects.css">
+    <title>Life Expectancy</title>
+</head>
+
+<body>
+    <header>
+    <h1>Projects</h1>
+    <nav>
+            <ul>
+            <li><a href="../../../index.html">Title Page</a></li>
+            <li><a href="../../../aboutme.html">About Me</a></li>
+            <li><a href="../../../projectscontents.html">Projects</a></li>
+            <li><a href="../../../contactme.html">Contact Me</a></li>
+            <li><a href="../../../eulersblog.html">Project Euler Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Life Expectancy Project</h2>
+        <div id="intro">
+            <div>
+                <p>Over the course of the past few centuries, technological and medical advancements have helped increase the life expectancy of humans. 
+                    However, as of now, the average life expectancy of humans varies depending on what country you live in.</p>
+                <p>In this project, I will investigate a dataset containing information about the average life expectancy in 158 different countries. 
+                    I will specifically look at how a country’s economic success might impact the life expectancy in that area.</p>
+            </div>
+
+        <h2 class="sectiontitle">Project Hypothesis</h2>
+            <div>
+                <p class="overallhyp">My hypothesis is that there will be a positive correlation between a country's economic success and the life expectancy.</p>
+            </div>
+        </div>
+
+        <div id="data_analysis">
+            <h2 class="sectiontitle">Project Method</h2>
+
+            <div class="step">
+                <h3>Import Libraries</h3>
+                <p>Import the necessary libraries for data analysis and visualisation.</p>
+                <pre><code>
+    ```{r message=FALSE, warning=FALSE, error=TRUE}
+    # load packages
+    library(ggplot2)
+    library(readr)
+    library(dplyr)
+    ```
+                </code></pre>
+                    
+            </div>
+
+            <div class="step">
+                <h3>Data Inspection</h3>
+                <p>Look at the head of the dataset to have an idea of the information the dataset give you.</p>
+                <pre><code>
+    ```{r error=TRUE}
+    # import and inspect data
+    data <- read_csv("country_data.csv")
+    head(data)
+    ```
+                </code></pre>
+                <img class="data" src="images/1dataHead.png" alt="Traffic Data Head">
+            </div>
+
+            <div class="step">
+                <h3>Life Expectancy Analysis</h3>
+                <p>Find the quartiles of the data in order to get an idea of how the data is spread.</p>
+                <pre><code>
+    ```{r error=TRUE}
+    # life expectancy
+    life_expectancy <- data %>% pull(life_expectancy)
+    # life expectancy quartiles
+    life_expectancy_quartiles <- quantile(life_expectancy, c(0.25, 0.5, 0.75))
+    print(life_expectancy_quartiles)
+    ```
+                </code></pre>
+                <img class="results" src="images/2Quartiles.png" alt="Life Expectancy Quartiles">
+                <p>From the quartiles, we can see that the median life expectancy is 72.52 years, with the first quartile being 62.33 years and the third quartile being 75.44 years.</p>
+                <p>This means that 50% of countries have a life expectancy between 62.33 and 75.44 years.</p>
+
+                <p>Next, I will create a histogram to visualise the distribution of life expectancy across countries.</p>
+                <pre><code>
+    ```{r error=TRUE}
+    # plot histogram of life expectancy
+    hist(life_expectancy)
+    ```
+                </code></pre>
+                <img class="graph" src="images/3Histogram.png" alt="Life Expectancy Histogram">
+                <p>The histogram shows that the life expectancy is right-skewed, with a majority of countries having a life expectancy between 60 and 80 years.</p>
+            </div>
+
+            <div class="step">
+                <h3>GDP Data Analysis</h3>
+                <p>Next, I will look at the GDP data to see how it is distributed.</p>
+                <p>First I shall split the data into two groups, the low GDP which are the countries that are less than or equal to the median and the high GDP which are the countries greater than the median.</p>
+                <p>In order to do this I must first find the median.</p>
+                <pre><code>
+    ```{r error=TRUE}
+    # gdp
+    gdp <- data %>% pull(GDP)
+    head(gdp)
+    # median gdp
+    median_gdp <- median(gdp)
+    print(median_gdp)
+    ```
+                </code></pre>
+                <img class="results" src="images/4Median.png" alt="GDP Median">
+                <p>The median GDP is 2938.078.</p>
+                <p>Now I can split the data into two groups, the low GDP and high GDP.</p>
+                <p>I shall first look at the low GDP and find the quartiles of that data.</p>
+                <pre><code>
+    ```{r error=TRUE}
+    # low gdp
+    low_gdp <- data %>% filter(GDP <= median_gdp) %>% pull(life_expectancy)
+    # low gdp quartiles
+    low_gdp_quartiles <- quantile(low_gdp, c(0.25, 0.5, 0.75))
+    print(low_gdp_quartiles)
+    ```
+                </code></pre>
+                <img class="results" src="images/5LowGDPQuartiles.png" alt="Low GDP Quartiles">
+                <p>Now I shall look at the high GDP and find the quartiles of that data.</p>
+                <pre><code>
+    ```{r error=TRUE}
+    # high gdp
+    high_gdp <- data %>% filter(GDP > median_gdp) %>% pull(life_expectancy)
+    # high gdp quartiles
+    high_gdp_quartiles <- quantile(high_gdp, c(0.25, 0.5, 0.75))
+    print(high_gdp_quartiles)
+
+    ```
+                </code></pre>
+                <img class="results" src="images/6HighGDPQuartiles.png" alt="High GDP Quartiles">
+                <p>From the quartiles, we can see that the median life expectancy for low GDP countries is 64.34 years, with the first quartile being 56.34 years and the third quartile being 71.74 years.</p>
+                <p>For high GDP countries, the median life expectancy is 75.16 years, with the first quartile being 72.97 years and the third quartile being 80.52 years.</p>
+                <p>This means that 50% of low GDP countries have a life expectancy between 56.34 and 71.74 years, while 50% of high GDP countries have a life expectancy between 72.97 and 80.52 years.</p>
+                <p>Next, I will create histograms to visualise the distribution of life expectancy for both low and high GDP countries.</p>
+                <pre><code>
+    # plot low gdp histogram
+    hist(low_gdp, xlab="Life Expectancy", col='red')
+    # plot high gdp histogram
+    hist(high_gdp, xlab="Life Expectancy", col='blue')
+    ```
+                </code></pre>
+                <img class="graph" src="images/7LowGDPHistogram.png" alt="Low GDP Histogram">
+                <img class="graph" src="images/8HighGDPHistogram.png" alt="High GDP Histogram">
+                <p>The histograms show that the life expectancy for low GDP countries is slightly left-skewed skewed, however the life expectancy for high GDP countries is very left-skewed, with a majority of countries having a life expectancy between 70 and 85 years.</p>
+            </div>
+
+    </div>
+
+    <div id="conclusion">
+        <h2 class="sectiontitle">Conclusion</h2>
+        <p>In conclusion, my hypothesis was correct. There is a positive correlation between a country's economic success and the life expectancy.</p>
+        <p>From the data analysis, we can see that high GDP countries have a significantly higher life expectancy than low GDP countries.</p>
+        <p>This suggests that economic success plays a crucial role in determining the quality of healthcare, nutrition, and overall living conditions, which in turn impacts life expectancy.</p>
+    </div>
+
+    </main>
+    <footer>
+        <p>&copy; 2025 My Portfolio</p>
+    </footer>
+</body>
+
+</html>
