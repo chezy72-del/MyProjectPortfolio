@@ -51,6 +51,14 @@ header nav li a:hover {
     text-decoration: underline;
 }
 
+#logo {
+    float: left;
+    height: 280px;
+    position: absolute;
+    top: 0;
+    z-index: 4;
+}
+
 /* Footer Styles */
 footer p {
     text-align: center;
@@ -159,4 +167,8 @@ a:hover {
 
 #problem_0:target, #problem_1:target, #problem_2:target, #problem_3:target, #problem_4:target, #problem_5:target, #problem_6:target, #problem_7:target, #problem_8:target, #problem_9:target, #problem_10:target {
   display: block;
+}
+
+h4 {
+    font-size: 20px;
 }
