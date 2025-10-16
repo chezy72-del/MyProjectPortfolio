@@ -59,12 +59,17 @@ header nav li a:hover {
 }
 
 /* Footer Styles */
-footer p {
-    text-align: center;
-    width: 100%;
+footer {
+    margin-top: 30px;
+    margin-bottom: 30px;
     position: relative;
     bottom: 0;
-    clear: left;
+    color:#5484A4;
+}
+
+footer p {
+    position:relative;
+    left: 400px;
 }
 
 
@@ -247,7 +252,7 @@ div {
 
 }
 
-p {
+main p {
     font-size: 20px;
     line-height: 1.2;
     width: 60%;

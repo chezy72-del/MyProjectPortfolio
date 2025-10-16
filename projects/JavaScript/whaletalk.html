@@ -25,15 +25,29 @@
     </nav>
 </header>
 
+    <img class="underconstruction" src="../../resources/images/underconstruction.png">
 
 <main>
-    <h1>Whale Talk</h1>
+    <h2>Whale Talk</h2>
     <p>Ever wanted to talk to whales like Dory? Well with this code you can!</p>
     <p>This is a JavaScript project where it takes text and translates it into whale talk.</p>
 
     <section class="project_section">
-        <h2>Project Overview</h2>
+        <h2 class="sectiontitle">Project Overview</h2>
         <p>In this project, I created a simple program that translates English text into "whale talk" by extracting and repeating certain vowels. The program processes the input string, filters out non-vowel characters, and constructs a new string that represents how whales might "speak".</p>
+    </section>
+
+    <h2 class="sectiontitle">Result</h2>
+    <div class="step">
+    <h2>Enter text and click Translate (or press Enter) to convert to whale talk.</h2>
+
+        <div class="display"><input id="input" type="text" placeholder="Insert text here"></div>
+        <div class="display"><button onclick="myFunction()">Translate</button></div>
+
+    <p id="demo"></p>
+    </div>
+    <section>
+        <h2 class="sectiontitle">Method</h2>
     </section>
 
     <section class="project_section">
@@ -45,14 +59,6 @@
         </ul>
     </section>
 
-    <p>Enter text and click Translate (or press Enter) to convert to whale talk.</p>
-
-    <div>
-        <input id="input" type="text" placeholder="Insert text here">
-        <button onclick="myFunction()">Translate</button>
-    </div>
-
-    <p id="demo"></p>
 
     <script>
         function myFunction() {

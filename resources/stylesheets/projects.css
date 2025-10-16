@@ -8,6 +8,11 @@ background colour: #fae0bf - Light Peach
 #5484A4 - Medium Blue
 */
 
+/* underconstruction */
+.underconstruction {
+    height: 200px;
+}
+
 /* Styles */
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -15,7 +20,7 @@ body {
 }
 
 li {
-        color: #3D5B59;
+    color: #3D5B59;
 }
 
 /* Header Styles */
@@ -60,13 +65,14 @@ header nav li a:hover {
 }
 
 /* Footer Styles */
-footer p{
+footer {
     justify-content: center;
     text-align: center;
     width: 100%;
     position: relative;
     bottom: 0;
     clear: left;
+    color: #5484A4;
 }
 
 /*Heading Styles */
@@ -102,9 +108,9 @@ div {
     padding: 0;
 }
 
-p {
+main p {
     color: #3D5B59;
-    text-align: justify;
+    text-align: center;
     line-height: 1.6;
     margin-bottom: 20px;
     padding-left: 30px;
@@ -185,8 +191,9 @@ ol {
 #input {
     width: 60%;
     padding: 0.5rem;
-    font-size: 1rem;
+    font-size: 30px;
     margin-right: 0.5rem;
+    text-align: center;
 }
 #demo {
     min-height: 1.5rem;
@@ -200,4 +207,31 @@ ol {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(6px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+button {
+    font-size: 30px;
+    background-color: #09A1A1;
+    height: 40px;
+    color: white;
+}
+
+button:hover {
+    background-color: #3D5B59;
+}
+
+input {
+    height: 40px;
+}
+
+#inputsection {
+    position: relative;
+    right: 50px;
+}
+
+div .display{
+    clear: right;
+    clear: left;
+    text-align: center;
+    margin-top: 20px;
 }

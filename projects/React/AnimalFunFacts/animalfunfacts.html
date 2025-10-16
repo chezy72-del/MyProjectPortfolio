@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="animalfunfacts.css">
+    <title>Animal Fun Facts</title>
+    <!-- React and Babel (for in-browser JSX transpilation) -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <logo>
+        <img id="logo" src="../../../resources/images/Logo.png">
+    </logo>
+    <header>
+    <h1>Projects</h1>
+    <nav>
+            <ul>
+            <li><a href="../../../index.html">Title Page</a></li>
+            <li><a href="../../../aboutme.html">About Me</a></li>
+            <li><a href="../../../projectscontents.html">Projects</a></li>
+            <li><a href="../../../contactme.html">Contact Me</a></li>
+            <li><a href="../../../eulersblog.html">Project Euler Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Fun Animal Facts</h2>
+        <p>This is my first project that uses React to create an interactive app that gives you animal facts when you click an animal.</p>
+        <h2 class="sectiontitle">Result</h2>
+        <section class="display">
+        <div id="app"></div>
+        </section>
+        <h2 class="sectiontitle">Method</h2>
+        
+        <div id="main" class="step">
+            <h3>Set Up</h3>
+            <p>Before I did anything I had to do the initial setup and configuration for a React application's rendering process.</p>
+            <pre><code>
+    //initial set up
+    const container = document.getElementById('app');
+    const root = ReactDOM.createRoot(container);
+    const title = '';                
+            </code></pre>            
+        </div>
+        
+        <div id="main" class="step">
+            <h3>Create Dictionary of Animal Facts</h3>
+            <p>The first thing I created was a dictionary where all the animal facts are stored, in order to call upon them depending on what animal is selected.</p>
+            <pre><code>
+    const animals = {
+        dolphin: {
+            image: 'dolphin.png',
+            facts: ['Dolphins have been shown to give distinct names to each other!', 'Dolphins are known to display their own culture!', 
+                'Dolphins have two stomachs!']
+        },
+        lobster: {
+            image: 'lobster.png',
+            facts: ['Lobsters taste with their legs!', 'Lobsters chew with their stomachs!', 'Lobsters can live as long as 100 years.']
+        },
+        starfish: {
+            image: 'starfish.png',
+            facts: ['Starfish can have up to 40 arms!', 'Starfish have no brain and no blood!', 'Starfish can regenerate their own arms!']
+        }
+    };    
+            </code></pre>
+        </div>
+
+        <div id="main" class="step">
+            <h3>Image Creation</h3>
+            <p>Next, I used JSX to but together the main display for the app, and placed the individual animals on top.</p>
+            <pre><code>
+    //Create a background
+    const background = (
+        &ltimg
+        className='background'
+        alt='ocean'
+        src='./ocean.png' /&gt
+    )
+    //image array for each animal
+    const images = [];
+    for (const animal in animals){
+        const image = (
+            &ltimg 
+            onClick={displayFact}
+            key={animal} 
+            className='animal'
+            alt={animal}
+            src={`./${animals[animal].image}`}
+            aria-label={animal}
+            role='button'/%gt
+            )
+            images.push(image)
+    };
+    //Ternary conditional to decide on title
+    const animalFacts = (
+        &ltdiv>
+            &lth1>
+                {title === '' ? 'Click an animal for a fun fact!' : title}
+            &lt/h1>
+            {background}
+            &ltp id='fact'>&lt/p>
+            &ltdiv className='animals'>{images}&lt/div>
+        &lt/div>
+    );    
+            </code></pre>
+        </div>
+
+        <div id="main" class="step">
+            <h3>Event Listener Function</h3>
+            <p>Finally, I created an event listener function that would, depending on what animal you click, would give you a random fact from the dictionary about that animal.</p>
+            <pre><code>
+    //event listener function
+    function displayFact(e) {
+        const animal = e.target.alt;
+        const index = Math.floor(Math.random() * animals[animal].facts.length);
+        const funFact = animals[animal].facts[index];
+        const p = document.getElementById('fact');
+        p.innerHTML = funFact;
+    }
+    //Render code
+    root.render(animalFacts);
+            </code></pre>
+            
+        </div>
+
+    </main>
+
+    <!-- Inline the component script so Babel doesn't fetch an external file (avoids file:// CORS issues) -->
+    <script type="text/babel">
+    // Animal Facts
+    const animals = {
+        dolphin: {
+            image: 'dolphin.png',
+            facts: ['Dolphins have been shown to give distinct names to each other!', 'Dolphins are known to display their own culture!', 'Dolphins have two stomachs!']
+        },
+        lobster: {
+            image: 'lobster.png',
+            facts: ['Lobsters taste with their legs!', 'Lobsters chew with their stomachs!', 'Lobsters can live as long as 100 years.']
+        },
+        starfish: {
+            image: 'starfish.png',
+            facts: ['Starfish can have up to 40 arms!', 'Starfish have no brain and no blood!', 'Starfish can regenerate their own arms!']
+        }
+    };
+
+    // create variables to link to html
+    const container = document.getElementById('app');
+    const root = ReactDOM.createRoot(container);
+    const title = '';
+    //Create a background
+    const background = (
+        <img
+        className='background'
+        alt='ocean'
+        src='./ocean.png' />
+    )
+
+    //event listener function
+    function displayFact(e) {
+        const animal = e.target.alt;
+        const index = Math.floor(Math.random() * animals[animal].facts.length);
+        const funFact = animals[animal].facts[index];
+        const p = document.getElementById('fact');
+        p.innerHTML = funFact;
+    }
+
+    //image array for each animal
+    const images = [];
+    for (const animal in animals){
+        const image = (
+            <img 
+            onClick={displayFact}
+            key={animal} 
+            className='animal'
+            alt={animal}
+            src={`./${animals[animal].image}`}
+            aria-label={animal}
+            role='button'/>
+            )
+            images.push(image)
+    };
+    //Ternary conditional to decide on title
+    const animalFacts = (
+        <div>
+            <h1>
+                {title === '' ? 'Click an animal for a fun fact!' : title}
+            </h1>
+            {background}
+            <p id='fact'></p>
+            <div className='animals'>{images}</div>
+        </div>
+    );
+
+    root.render(animalFacts);
+    </script>
+
+    <footer>
+        <p>&copy; 2025 My Portfolio</p>
+    </footer>
+</body>
+</html>
