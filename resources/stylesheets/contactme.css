@@ -18,6 +18,25 @@ li {
         color: #3D5B59;
 }
 
+/*Heading Styles */
+
+.sectiontitle {
+    text-align: center;
+    color: #3D5B59;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #D396A6;
+}
+
+h1, h2, h3, h4 {
+    color: #3D5B59;
+    text-align: center;
+}
+
+h3 {
+    text-decoration: underline;
+}
+
 /* Header Styles */
 header {
     text-align: center; 
@@ -65,7 +84,48 @@ footer {
     position: relative;
     bottom: 0;
     clear: left;
+    color:#09A1A1;
 }
 
-/*Email Section */
+/* Website Link Styles */
 
+.website_link {
+    border-radius: 5px;
+    padding: 15px;
+    margin: 15px;
+    background-color: #D396A6;
+    width: 250px;
+    height: 300px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    float: left;
+}
+
+.website_link h2 {
+    font-size: 24px;
+    color: #077272;
+    height: 30px;
+}
+
+.website_link p {
+    font-size: 16px;
+    color: #3a5d74;
+    text-align: justify;
+}
+
+.website_link img {
+    width: 200px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline #077272;
+}

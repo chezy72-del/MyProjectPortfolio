@@ -140,14 +140,82 @@
             <h3>By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.</h3>
 
             <div class="problem">
-                 <h4>Language used: C++</h4>
-                 <p>Accidentally skipped 2 - Will complete at a later date.</p>
-                    <h3><a href="#problem_2">My Solution</a></h3> 
-                    <pre id="problem_2"><code>
-    
-                    </code></pre>
-                 
-               
+                <h4>Language used: C++</h4>
+                <p>When I saw this problem, I thought 'easy'. Again, Project Euler has taught me to eat my words as even though the logic of how to complete this seems easy, getting my code to do what I want is less so.</p>
+                <p>My intinct was to first create a vector by using a for and while loop to add the two previous elements to create the next. I first tried this with a smaller value so it would be easier to see if my code works correctly.
+                    I tried to do a while loop nested inside a for loop.</p>
+                <pre><code>
+    for(int i=2; i <= 20; i++){
+        int c = 0;
+        while(c <= 40){
+            c = fib_seq[i-1] + fib_seq[i-2];
+            fib_seq.push_back(c);
+        }
+    }
+                </code></pre>
+                <p>But this just created an endless loop, so I tried doing a for loop inside a while loop to see if I got a complete Fibonacci sequence.</p>
+                <pre><code>
+    int c;
+    while(c <= 40){
+        c = 0;
+        for(int i=2; i <= 20; i++){
+            c = fib_seq[i-1] + fib_seq[i-2];
+            fib_seq.push_back(c);
+    }
+                </code></pre>
+                <p>Despite not creating an endless loop and populating my fib_seq vector, because the for loop is inside the while loop it completely ignores the while condition and just completes the process until it has created 21 elements.
+                    My next thought is to stick with a for loop, but nest an if conditional inside.</p>
+                <p><em>It worked!</em> After a slight adaptation of my original code, giving c the value of the 3 and swapping the order of the executed code, I have a Fibonacci sequence that doesn't exceed 40.
+                Continuing on the path of <strong>using a smaller value to make it easier to check</strong> I now plan to create a new vector of just the even values. To do this I will do a for loop with a nested if conditional checking the remainder when divided by 2.</p>
+                <pre><code>
+    //for loop and if conditional to fill the even_fib vector
+    for(int i = 0; i < fib_seq.size(); i++){
+        if(fib_seq[i]%2==0){
+            even_fib.push_back(fib_seq[i]);
+        }
+    }
+                </code></pre>
+                <p>Next, I had to find the sum of all the even numebrs and print to console. Once I completed this and checked that I got the correct answer, it was time to change the number from 40 to 4000000 and get the answer.</p>
+                <p>I happy to say that I got the correct answer!</p>
+                <h3><a href="#problem_2">My Solution</a></h3> 
+                <pre id="problem_2"><code>
+    #include<iostream>
+    #include<vector>
+
+    int main() {
+
+    //Create vectors for sequences
+    std::vector<int>fib_seq={1, 2};
+    std::vector<int>even_fib;
+
+    //for loop and if conditional to fill the fib_seq vector
+    int c = 3;
+    for(int i = 3; i <= 20000; i++){
+        if (c <= 4000000){
+            fib_seq.push_back(c);
+            c = fib_seq[i-1] + fib_seq[i-2];
+        }
+    }
+
+    //for loop and if conditional to fill the even_fib vector
+    for(int i = 0; i < fib_seq.size(); i++){
+        if(fib_seq[i]%2==0){
+            even_fib.push_back(fib_seq[i]);
+        }
+    }
+
+    //for loop to find the sum of all the even terms
+    int even_sum = 0;
+    for(int i = 0; i < even_fib.size(); i++){
+        even_sum += even_fib[i];
+    }
+
+    //print sum of even_fib
+    std::cout << "The sum of all the even values less than or equal to 4 000 000 is " << even_sum;
+
+    }
+                </code></pre>
+                    
             </div>
         </div>
 
