@@ -12,6 +12,7 @@
 <logo>
     <img id="logo" src="../../resources/images/Logo.png">
 </logo>
+    <iframe width="1326" height="746" src="https://www.youtube.com/embed/IezD9WMvULM" title="Finding Nemo &quot;Speaking Whale&quot; Clip" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <header>
     <h1>Projects</h1>
     <nav>
@@ -25,8 +26,6 @@
     </nav>
 </header>
 
-    <img class="underconstruction" src="../../resources/images/underconstruction.png">
-
 <main>
     <h2>Whale Talk</h2>
     <p>Ever wanted to talk to whales like Dory? Well with this code you can!</p>
@@ -34,7 +33,8 @@
 
     <section class="project_section">
         <h2 class="sectiontitle">Project Overview</h2>
-        <p>In this project, I created a simple program that translates English text into "whale talk" by extracting and repeating certain vowels. The program processes the input string, filters out non-vowel characters, and constructs a new string that represents how whales might "speak".</p>
+        <p>In this project, I created a simple program that translates English text into "whale talk" by extracting and repeating certain vowels. 
+            The program processes the input string, filters out non-vowel characters, and constructs a new string that represents how whales might "speak".</p>
     </section>
 
     <h2 class="sectiontitle">Result</h2>
@@ -50,15 +50,57 @@
         <h2 class="sectiontitle">Method</h2>
     </section>
 
-    <section class="project_section">
-        <h2>Key Features</h2>
-        <ul>
-            <li>Extracts vowels from the input text.</li>
-            <li>Repeats specific vowels ('e' and 'u') to mimic whale sounds.</li>
-            <li>Outputs the translated whale talk as a single string.</li>
-        </ul>
-    </section>
+    <div class="step">
+        <p>First thing I did was get the program to read the text from the input field. I also added a conditional to tell the code to do nothing if the text field is empty.</p>
+        <pre><code>
+    // Read text from the input field (fall back to default if empty)
+    const inputEl = document.getElementById('input');
+    let text = inputEl ? inputEl.value : '';
+    if (!text) {
+        return; // do nothing if input is empty
+    }
+        </code></pre>
+    </div>
 
+    <div class="step">
+        <p>Next I used .toLowerCase() to transform all the text into lowercase and created arrays for the vowels and an empty array for the code to place the resulting "whale talk".</p>
+        <pre><code>
+    // Work with a lowercase copy for matching
+    const input = text.toLowerCase();
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
+    // Create an empty array
+    let resultArray = [];
+        </code></pre>
+    </div>
+
+    <div class="step">
+        <p>After getting everything set up, it is time to do a for loop using the vowel array to get to only focus on the vowels in the text.
+            The rule for converting to "whale talk" is to remove all consonants and doubling the vowel if it is 'e' or 'u'.</p>
+        <pre><code>
+    // Loop through each character of the input and check vowels
+    for (let i = 0; i < input.length; i++) {
+        for (let j = 0; j < vowels.length; j++) {
+            // checks for e and u: then doubles them
+            if (input[i] === vowels[j]) {
+                if (input[i] === 'e' || input[i] === 'u') {
+                    resultArray.push(input[i], input[i]);
+                } else {
+                    resultArray.push(input[i]);
+                }
+            }
+        }
+    }
+        </code></pre>
+    </div>
+
+    <div class="step">
+        <p>Finally it is time to print the string to console. However, in order to write an array as a string you must use the .join() function.</p>
+        <pre><code>
+    // Declare a variable that joins and capitalises the string
+    let resultString = resultArray.join('').toUpperCase();
+        </code></pre>
+    </div>
+    
 
     <script>
         function myFunction() {
