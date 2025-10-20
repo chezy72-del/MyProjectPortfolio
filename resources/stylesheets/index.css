@@ -11,6 +11,7 @@ background colour: #fae0bf - Light Peach
 /* Styles for the About Me page */
 body {
     background-color: #fae0bf;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 /*Startup logo Styles */
@@ -21,4 +22,23 @@ body {
     top: -300px;
     right: 10px;
     rotate: 5deg;
+    z-index: 1;
+}
+
+/* Link Style */
+a {
+    font-size: 30px;
+    color: white;
+    text-shadow: 0 0 10px black;
+    text-decoration: none;
+    position: absolute;
+    top: 470px;
+    left: 730px;
+    z-index: 2;
+}
+
+a:active {
+    color:black; 
+    text-shadow: 0 0 15px white;
+
 }
