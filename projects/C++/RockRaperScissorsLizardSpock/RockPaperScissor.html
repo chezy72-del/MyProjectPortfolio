@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+    <link rel="stylesheet" href="../../../resources/stylesheets/projects.css">
+</head>
+
+<body>
+<logo>
+    <img id="logo" src="../../../resources/images/Logo.png">
+</logo>
+
+    <iframe src="https://www.youtube.com/embed/_PUEoDYpUyQ" title="The Big Bang Theory - Sheldon explains Kripke Rock, Paper, Scissors, Lizard, Spock [HD]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<header>
+    <h1>Projects</h1>
+    <nav>
+        <ul>
+            <li><a href="../../../index.html">Title Page</a></li>
+            <li><a href="../../../aboutme.html">About Me</a></li>
+            <li><a href="../../../projectscontents.html">Projects</a></li>
+            <li><a href="../../../contactme.html">Contact Me</a></li>
+            <li><a href="../../../eulersblog.html">Project Euler Blog</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h1 class="projecttitle">Rock Paper Scissors Lizard Spock</h1>
+
+    <section>
+        <h2 class="sectiontitle">Project Overview</h2>
+        <p>This is a C++ implementation of the classic game Rock Paper Scissors Lizard Spock. 
+            As I am still in the beginning of my journey I have not yet worked out how to get my webpage to run my C++ code. 
+            So even though I initially created this code on C++, I have rewritten (with the help of AI) the code to run using JavaScript so it can be played here.
+            If you want to see the complete C++ code then <a href="RPS.cpp">click here</a>.</p>
+        <p>The game allows a user to play against the computer, which makes random choices.</p>
+        <p>The concept of this game came from The Big Bang Theory, if you want to learn the rules please watch the video in the header.</p>
+    </section>
+
+    <h2 class="sectiontitle">Result</h2>
+    <div class="step">
+    <h2>1) Rock ✊<br>2) Paper ✋<br>3) Scissors ✌️<br>4) Lizard 🦎<br>5) Spock 🖖</h2>
+    <h2>Enter number 1-5 below to play against the computer.</h2>
+
+        <div class="display"><input id="input" type="text" placeholder="Insert number here"></div>
+        <div class="display"><button onclick="myFunction()">Rock Paper Scissors Shoot!</button></div>
+
+    <p id="demo"></p>
+    </div>
+    <section>
+
+    <h2 class="sectiontitle">Method</h2>
+    <div class="step">
+
+        <p>The first thing I did to make this program is to create a variable to store the users choice and also one that will select a random number which be the computers choice.</p>
+        <pre><code>
+    int computer = rand() % 5 + 1; //random number between 1-5
+    int user = 0;
+        </code></pre>
+    </div>
+
+    <div class="step">
+        <p>Next is I put in some prompt to appear in the terminal, which would collect the users choice.</p>
+        <pre><code>
+    //user prompts
+    std::cout << "=================================\n";
+    std::cout << "Rock Paper Scissors Lizard Spock!\n";
+    std::cout << "=================================\n";
+
+    std::cout << "1) Rock ✊\n";
+    std::cout << "2) Paper ✋\n";
+    std::cout << "3) Scissors ✌️\n";
+    std::cout << "4) Lizard 🦎\n";
+    std::cout << "5) Spock 🖖\n";
+
+    std::cout << "shoot!: ";
+    std::cin >> user;
+
+        </code></pre>
+    </div>
+
+    <div class="step">
+        <p>Finally, I created conditionals based on what the user selected to decide the victor of the round.</p>
+        <pre><code>
+    //conditionals about victor
+    //User = Computer Tie
+    if (user==computer) {
+        std::cout << "It's a tie!\n";
+    }
+    //user picks rock
+    if (user==1) {
+        if (computer==3) {
+            std::cout << "Rock crushes scissors. You win!\n";
+        } else if (computer==4) {
+            std::cout << "Rock crushes lizard. You win!\n";
+        } else {
+            std::cout << "You lose!\n";
+        }
+    }
+    //user picks paper
+    if (user==2) {
+        if (computer==1) {
+            std::cout << "Paper covers rock. You win!\n";
+        } else if (computer==5) {
+            std::cout << "Paper disproves Spock. You win!\n";
+        } else {
+            std::cout << "You lose!\n";
+        }
+    }
+    //user picks scissors
+    if (user==3) {
+        if (computer==2) {
+            std::cout << "Scissors cuts paper. You win!\n";
+        } else if (computer==4) {
+            std::cout << "Scissors decapitates lizard. You win!\n";
+        } else {
+            std::cout << "You lose!\n";
+        }
+    }
+    //user picks lizard
+    if (user==4) {
+        if (computer==5) {
+            std::cout << "Lizard poisons Spock. You win!\n";
+        } else if (computer==2) {
+            std::cout << "Lizard eat paper. You win!\n";
+        } else {
+            std::cout << "You lose!\n";
+        }
+    }
+    //user picks Spock
+    if (user==5) {
+        if (computer==3) {
+            std::cout << "Spock smashes scissors. You win!\n";
+        } else if (computer==1) {
+            std::cout << "Spock vaporises rock. You win!\n";
+        } else {
+            std::cout << "You lose!\n";
+        }
+    }
+        </code></pre>
+    </div>
+
+    <script>
+        function myFunction(){
+            // helper to log to console and page
+            function pageLog() {
+                const demo = document.getElementById('demo');
+                const msg = Array.from(arguments).join(' ');
+                console.log(msg);
+                if (demo) {
+                    demo.innerHTML += msg.replace(/\n/g, '<br>') + '<br>';
+                }
+            }
+
+            // Clear previous results at the start of each round
+            const demoEl = document.getElementById('demo');
+            if (demoEl) demoEl.innerHTML = '';
+
+            // Read text from the input field
+            const inputEl = document.getElementById('input');
+            let text = inputEl ? inputEl.value.trim() : '';
+            if (!text) {
+                pageLog('Please enter a number between 1 and 5.');
+                if (inputEl) inputEl.focus();
+                return; // do nothing if input is empty
+            }
+
+            const user = parseInt(text, 10);
+            if (isNaN(user) || user < 1 || user > 5) {
+                pageLog('Invalid choice:', text, '- enter a number between 1 and 5.');
+                if (inputEl) inputEl.focus();
+                return;
+            }
+
+            // random number generator and user variable (1-5)
+            let computer = Math.floor(Math.random() * 5) + 1; // random number between 1-5
+
+            // User = Computer Tie
+            if (user === computer) {
+                pageLog('You picked:', user);
+                pageLog('Computer picked:', computer);
+                pageLog("It's a tie!");
+                if (inputEl) { inputEl.value = ''; inputEl.focus(); }
+                return;
+            }
+
+            // user picks rock
+            if (user === 1) {
+                if (computer === 3) {
+                    pageLog('You picked:', user);
+                    pageLog('Computer picked:', computer);
+                    pageLog('Rock crushes scissors. You win!');                
+                } else if (computer === 4) {
+                    pageLog('You picked:', user);
+                    pageLog('Computer picked:', computer);
+                    pageLog('Rock crushes lizard. You win!');
+                } else {
+                    pageLog('You picked:', user);
+                    pageLog('Computer picked:', computer);
+                    pageLog('You lose!');
+                }
+            }
+            // user picks paper
+            else if (user === 2) {
+                if (computer === 1) {
+                    pageLog('You picked:', user);
+                    pageLog('Computer picked:', computer);
+                    pageLog('Paper covers rock. You win!');
+                } else if (computer === 5) {
+                    pageLog('You picked:', user);
+                    pageLog('Computer picked:', computer);
+                    pageLog('Paper disproves Spock. You win!');
+                } else {
+                    pageLog('You picked:', user);
+                    pageLog('Computer picked:', computer);
+                    pageLog('You lose!');
+                }
+            }
+            // user picks scissors
+            else if (user === 3) {
+                if (computer === 2) {
+                    pageLog('You picked:', user);
+                    pageLog('Computer picked:', computer);
+                    pageLog('Scissors cuts paper. You win!');
+                } else if (computer === 4) {
+                    pageLog('You picked:', user);
+                    pageLog('Computer picked:', computer);
+                    pageLog('Scissors decapitates lizard. You win!');
+                } else {
+                    pageLog('You picked:', user);
+                    pageLog('Computer picked:', computer);
+                    pageLog('You lose!');
+                }
+            }
+            // user picks lizard
+            else if (user === 4) {
+                if (computer === 5) {
+                    pageLog('You picked:', user);
+                    pageLog('Computer picked:', computer);
+                    pageLog('Lizard poisons Spock. You win!');
+                } else if (computer === 2) {
+                    pageLog('You picked:', user);
+                    pageLog('Computer picked:', computer);
+                    pageLog('Lizard eats paper. You win!');
+                } else {
+                    pageLog('You picked:', user);
+                    pageLog('Computer picked:', computer);
+                    pageLog('You lose!');
+                }
+            }
+            // user picks Spock
+            else if (user === 5) {
+                if (computer === 3) {
+                    pageLog('You picked:', user);
+                    pageLog('Computer picked:', computer);
+                    pageLog('Spock smashes scissors. You win!');
+                } else if (computer === 1) {
+                    pageLog('You picked:', user);
+                    pageLog('Computer picked:', computer);
+                    pageLog('Spock vaporises rock. You win!');
+                } else {
+                    pageLog('You picked:', user);
+                    pageLog('Computer picked:', computer);
+                    pageLog('You lose!');
+                }
+            }
+
+            // clear input and focus for next round
+            if (inputEl) { inputEl.value = ''; inputEl.focus(); }
+
+        }
+
+    </script>
+
+
+</body>
+</html>

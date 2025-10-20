@@ -87,6 +87,7 @@ p {
     text-align: center;
     line-height: 1.6;
     margin-bottom: 20px;
+    font-size: 20px;
 }
 
 .step {
@@ -105,6 +106,13 @@ p {
 
 section {
     height: 600px;
+}
+
+.projecttitle {
+    text-align: center;
+    color:#3D5B59;
+    font-size: 40px;
+    text-decoration: underline;
 }
 
 /* Code Section */
