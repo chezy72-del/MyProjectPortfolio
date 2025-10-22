@@ -157,6 +157,16 @@ main p {
     font-size: large;
 }
 
+#intro a {
+    color:#5484A4;
+    text-decoration: none;
+}
+
+#intro a:hover { 
+    color:#09A1A1;
+    text-decoration: underline;
+}
+
 /* Code Section */
 
 pre {
