@@ -1,0 +1,84 @@
+/* Global styles */
+* {
+    font-family: helvetica, sans-serif;
+}
+
+/* Header styles */
+header {
+    background-image: url("images/pattern.webp");
+    background-repeat: no-repeat;
+    background-color: rgb(191, 109, 200);
+    text-align: center;
+    width: 100%;
+    height: 270px;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+
+header h1 {
+    font-size:100px;
+    text-shadow: 2px 2px 4px #000000;
+    color:khaki;
+}
+
+/* Main content styles */
+main {
+    position: relative;
+    top: 280px;
+    z-index: 0;
+}
+
+main h2{
+    color: white;
+    font-size: 32px;
+    text-align: center;
+    clear: right;
+    font-weight: bold;
+    
+}
+
+main .brush{ 
+    background-color: mediumspringgreen;
+}
+
+main .frames {
+    background-color: lightcoral;
+}
+
+main .paint {
+    background-color: skyblue;
+}
+
+main p{
+    font-size: 20px;
+    margin: 50px;
+    text-align: center;
+    color: rgb(13, 9, 9);
+    padding: 10px 10px 10px 30px;
+}
+
+main .price {
+    font-weight: bold;
+    color: blue;
+}
+/* Image styles */
+img {
+    height: 300px;
+    border-radius: 20px;
+    margin: 20px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+figure {
+    text-align: center;
+}
+
+figcaption {
+    font-size: 20px;
+    font-weight: bold;
+    caption-side: bottom;
+    text-align: center;
+    color: rgb(13, 9, 9);
+}
+
