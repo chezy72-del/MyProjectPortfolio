@@ -286,6 +286,85 @@
             </div>
         </div>
 
+       <div>
+            <h2 class="title">Problem 4: Largest Palindrome Product</h2>
+            <h3>A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 x 99.</h3>
+            <h3>Find the largest palindrome made from the product of two 3-digit numbers.</h3>
+            <div class="problem">
+                <p>My first instinct was to create two empty arrays; one for all the products of 3-digit numbers and the other for all the palindrone products.
+                    After creating these I used a for loop and the <em>.toString()</em> function to convert each item in the arrange to strings and then compare them with the reverse by using <em>.split('').reverse().join('')</em>.
+                    Then once checking they were the same I used the <em>.push()</em> function to put them into the palindroneProduct array.</p>
+                <pre><code>
+    for (let i = 0; i < products.length; i++){
+        //original converted to string
+        const original = products[i].toString();
+        //reverse the original
+        const reverse = original.split('').reverse().join("");
+        //check if they are equal with a conditional
+        if (original === reverse) {
+            palindroneProducts.push(products[i]);
+        }
+    }
+                </code></pre>
+                <p>Everything seemed to be going well until I found the index of the last value and that number wasn't correct. Suddenly it hit me! I hadn't sorted the array, so I quickly fixed this with <em>.sort()</em> function and tried again. 
+                Still the wrong answer, at this point I had to take to the internet and do some research. It turns out .sort() only works on strings. So after using the below code to sort my values, I finally for the correct answer.</p>
+                <pre><code>
+    //order the array in ascending order
+    palindroneProducts.sort(function(a,b) {return a - b});  
+                </code></pre>
+                <h3><a href="#problem_4">My Solution</a></h3> 
+                    <pre id="problem_4"><code>
+    //Array for all products
+    var products = [];
+    palindroneProducts = [];
+
+    for(let a = 100; a < 1000; a++) {
+        for (let b = 100; b < 1000; b++)
+            products.push(a*b);
+    }
+
+    for (let i = 0; i < products.length; i++){
+        //original converted to string
+        const original = products[i].toString();
+        //reverse the original
+        const reverse = original.split('').reverse().join("");
+        //check if they are equal with a conditional
+        if (original === reverse) {
+            palindroneProducts.push(products[i]);
+        }
+    }
+
+    //order the array in ascending order
+    palindroneProducts.sort(function(a,b) {return a - b});
+
+    //find the index of the final number
+    const index = (palindroneProducts.length)-1;
+
+    //print to console
+    console.log(palindroneProducts[index]);
+                    </code></pre>
+            </div>
+
+        </div>        
+
+<!--      Blank layout for problem  
+        <div>
+            <h2 class="title">Title</h2>
+            <h3>Problem example</h3>
+            <h3>Problem</h3>
+            <div class="problem">
+                <p>Description</p>
+                <pre><code>
+                
+                </code></pre>
+                <h3><a href="#problem_X">My Solution</a></h3> 
+                    <pre id="problem_X"><code>
+
+                    </code></pre>
+            </div>
+
+        </div>
+-->
     </main>
 
 </body>
