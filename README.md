@@ -6,6 +6,7 @@ This is a working website which will be updated regularly with my completed proj
 ### Features
 * Animated title page
 * About me page
+* Contact page with a link to GitHub and LinkedIn
 * Project contents page
 * Eulers first 100 problems blog
 
