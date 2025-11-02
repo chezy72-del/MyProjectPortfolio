@@ -266,3 +266,30 @@ div .display{
     text-align: center;
     margin-top: 20px;
 }
+
+/* List style section */
+.list {
+    width: 80%;
+    text-align: center;
+    list-style-type: none;
+    flex-direction: row;
+    align-items: center;
+    display: inline-flex;
+    flex-wrap: wrap;  
+    justify-content: space-around; 
+}
+
+ol {
+    text-align: left;
+    margin-inline-start: 0;
+    
+}
+
+.list-item {
+    width: 150px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    border: #09A1A1 2px solid;
+    align-content: center;
+}

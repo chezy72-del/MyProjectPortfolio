@@ -25,11 +25,140 @@
     </header>
 
     <main>
+        <h1 class = "projecttitle">Flexbox Style Project</h1>
+        <div id="intro">
+            <p>This is a design project where the foundation of the app is already given and the goal of the project is to use my new Flexbox knowledge to style the page and make it self adapting.</p>
+            <p>Here you can see the <a href="originalToDo.html">original webpage</a>.</p>
+            <p>Here you can see the <a href="finalToDo.html">final webpage</a></p>
+        </div>
+
+        <h2 class="sectiontitle">Method</h2>
+
+        <div class="step">
+            <p>The first thing that I needed to do in this project was to change the display to either inline or inline-flex depending on the element.
+                The container of the to do list needed to be inline-flex so that the to do list section and the reminder section could sit side by side.
+                The rows withing the to do list needed to be flex so that they could sit side by side within the week container.
+            </p>
+            <pre><code>
+    .container {
+        display: inline-flex;
+    }
+    .row {
+        display: flex;
+    }
+            </code></pre>
+        </div>
+
+        <div class="step">
+            <p>The next adaptation that I did was to let the week section and the remainder section to grow if the app was to be made bigger so that they fill the size of the screen.</p>
+            <pre><code>
+    .week {
+        flex-grow: 3;
+    }
+    .reminders {
+        flex-grow: 2;
+    }
+            </code></pre>            
+        </div>
+
+        <div class="step">
+            <p>Currently all the rows are on a single row, I want each day of the week to be under each other, so I used a flex-direction to change the direaction to a column.</p>
+            <pre><code>
+    .week {
+        flex-direction: column;
+    }
+            </code></pre>            
+        </div>
+
+        <div class="step">
+            <p>I then wanted to get the boxes in the row to wrap to the next line if the screen was too small to fit them inline with each other.</p>
+            <pre><code>
+    .row {
+        flex-wrap: wrap;
+    }
+            </code></pre>            
+        </div>
+
+        <div class="step">
+            <p>After wrapping the text, I realised that the boxes weren't in the correct position on the main axis, so I used justify-content to centralise the items. 
+                Additionally, I used the justify-content to add some space around the items within the row.
+            </p>
+            <p>I find when I first started learning CSS, I often make a mistake when centering anything or changing the colour as I kept spelling everything in British English as apposed to American English.
+                But I'm happy to say these mistakes are getting fewer and farther between.</p>
+            <pre><code>
+    .square {
+        justify-content: center;
+    }
+    .row {
+        justify-content: space-around;
+    }
+            </code></pre>            
+        </div>
+
+        <div class="step">
+            <p>My final step on this project is to align the items along the cross axis, to do this I used align-items on the row and square class.</p>
+            <pre><code>
+    .row {
+        align-items: center;
+    }
+    .square {
+        align-items: center;
+    }
+            </code></pre>            
+        </div>
+
+        <h2 class="sectiontitle">Conclusion</h2>
+        <div class="step">
+            <p>Overall, I really enjoyed doing this mini project and getting a better understanding of how useful Flexbox is on websites. 
+                I am looking forward to continuing my Full Stack Career course and seeing what else I will be able to apply to future websites.</p>
+            <p>Throughout this project I used:</p>
+            <ul class="list">
+                <div class="list-item">
+                    <li>display:</li>
+                    <ol>
+                        <li>inline-flex</li>
+                        <li>flex</li>
+                    </ol>
+                </div>
+                <div class="list-item">
+                <li>justify-content:</li>
+                <ol>
+                    <li>center</li>
+                    <li>space-around</li>
+                </ol>
+                </div>
+                <div class="list-item">
+                <li>align-items:</li>
+                <ol>
+                    <li>center</li>
+                </ol>
+                </div>
+                <div class="list-item">
+                <li>flex-grow:</li>
+                <ol>
+                    <li>2</li>
+                    <li>3</li>
+                </ol>
+                </div>
+                <div class="list-item">
+                <li>flex-direction:</li>
+                <ol>
+                    <li>column</li>
+                </ol>
+                </div>
+                <div class="list-item">
+                <li>flex-wrap:</li>
+                <ol>
+                    <li>wrap</li>
+                </ol>
+                </div>
+            </ul>
+        </div>
 
     </main>
 
     <footer>
-    <p>&copy; 2025 My Portfolio</p>
-</footer>
+        <p>&copy; 2025 My Portfolio</p>
+    </footer>
 </body>
 </html>
