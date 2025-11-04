@@ -49,6 +49,8 @@
             </ul>
         </div>
 
+<!--Problem 0-->
+
         <div id="first_twenty"> 
             <h2 class="title">Problem 0: Sum of the Odd Squares</h2>
             <h3>Among the first 636 thousand square numbers, what is the sum of all the odd squares?</h3>
@@ -94,6 +96,9 @@
     }
                 </code></pre>
             </div>
+
+<!--Problem 1-->
+
             <div>
             <h2 class="title">Problem 1: Multiples of 3 or 5</h2>
             <h3>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. </h3>
@@ -133,6 +138,8 @@
                
             </div>
         </div>
+
+<!--Problem 2-->
 
         <div>
             <h2 class="title">Problem 2: Even Fibonacci Numbers</h2>
@@ -219,6 +226,8 @@
             </div>
         </div>
 
+<!--Problem 3-->
+
         <div>
             <h2 class="title">Problem 3: Largest Prime Factor</h2>
             <h3>The prime factors of 13195 are 5, 7, 13 and 19.</h3>
@@ -286,6 +295,8 @@
             </div>
         </div>
 
+<!--Problem 4-->
+
        <div>
             <h2 class="title">Problem 4: Largest Palindrome Product</h2>
             <h3>A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 x 99.</h3>
@@ -348,8 +359,10 @@
 
         </div>        
 
+<!--Problem 5-->
+
         <div>
-            <h2 class="title">Smallest Multiple</h2>
+            <h2 class="title">Problem 5: Smallest Multiple</h2>
             <h3>2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.</h3>
             <h3>What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?</h3>
             <div class="problem">
@@ -435,6 +448,85 @@
             </div>
 
         </div>
+
+<!--Problem 6-->
+
+        <div>
+            <h2 class="title">Problem 6: Sum Square Difference</h2>
+            <h3>The sum of the squares of the first ten natural numbers is, <br>1<sup>2</sup> + 2<sup>2</sup> + ... + 10<sup>2</sup> = 385.<br>
+                The square of the sum of the first ten natural numbers is, <br>(1 + 2 + ... + 10)<sup>2</sup> = 55<sup>2</sup> = 3025.<br>
+                Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is <br>3025 - 385 = 2640.</h3>
+            <h3>Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.</h3>
+            <div class="problem">
+                <h4>Language used: C++</h4>
+                <p>I really liked the look of this one, as my maths brain very quickly started to split the two variables up and started writing a for loop to go through the numbers 1 to 100.
+                    Despite feeling confident in my ability to solve this problem, history has shown me that even though I have the correct logic, my code doesn't always work out as inteneded, so I made sure to check that each part was working after each step by using the number in the example and printing my variables to the console for comparison.
+                </p>
+                <pre><code>
+    // Testing 
+    std::cout << "sum of the square is " << sum_of_square << "\n";
+    std::cout << "sum of the first 10 numbers is " << sum  << "\n";
+    std::cout << "square of the sum is " << square_of_sum  << "\n";
+                </code></pre>
+                <p>Another thought I had while completing this problem was I didn't know how big the numbers were going to be, so to ensure that the values were included I used <em>long int</em>, as I was not falling into that trap again.</p>
+                <p>One final thought was I wanted the difference to be positive, I could easily just copy the answer and ignore a negative symbol, but if I was serious about improving my coding I decided to put a conditional into my code.</p>
+                <pre><code>
+    //Ensure difference is postiive
+    if (diff < 0) { 
+        diff = diff * -1; 
+    }
+                </code></pre>
+                <h3><a href="#problem_6">My Solution</a></h3> 
+                    <pre id="problem_6"><code>
+#include <iostream>
+#include <cmath>
+
+//    Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
+
+int main() {
+
+    // Create variables for both values
+    long int sum_of_square = 0;
+    long int sum = 0;
+    long int square_of_sum;
+
+    // Make a loop for sum of square numbers
+    for (int i = 1; i <= 100; i++) {
+        sum_of_square = sum_of_square + (i * i);
+    }
+
+    // Make a loop for the sum
+    for (int j = 1; j <= 100; j++) {
+        sum = sum + j;
+    }
+
+    // Square the sum
+    square_of_sum = sum * sum; 
+
+    // Testing 
+    std::cout << "sum of the square is " << sum_of_square << "\n";
+    std::cout << "sum of the first 100 numbers is " << sum  << "\n";
+    std::cout << "square of the sum is " << square_of_sum  << "\n";
+
+    // Difference between
+    long int diff = sum_of_square - square_of_sum; 
+
+    //Ensure difference is postiive
+    if (diff < 0) { 
+        diff = diff * -1; 
+    }
+
+    // Solution
+    std::cout << "The difference bettwen the sum of the quares and the square of the sum is " << diff << "\n";
+
+}
+                    </code></pre>
+            </div>
+
+        </div>
+
+<!--Problem 7-->
+
 <!--      Blank layout for problem section
         <div>
             <h2 class="title">Title</h2>
