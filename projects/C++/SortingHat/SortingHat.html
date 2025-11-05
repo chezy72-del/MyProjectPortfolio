@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+    <link rel="stylesheet" href="../../../resources/stylesheets/projects.css">
+</head>
+
+<body>
+<logo>
+    <img id="logo" src="../../../resources/images/Logo.png">
+</logo>
+<iframe width="1326" height="550" src="https://www.youtube.com/embed/DK2N8M_CMJE" title="&quot;Griffindor!&quot; - Sorting Hat" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<header>
+    <h1>Projects</h1>
+    <nav>
+        <ul>
+            <li><a href="../../../index.html">Title Page</a></li>
+            <li><a href="../../../aboutme.html">About Me</a></li>
+            <li><a href="../../../projectscontents.html">Projects</a></li>
+            <li><a href="../../../contactme.html">Contact Me</a></li>
+            <li><a href="../../../eulersblog.html">Project Euler Blog</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <h1 class="projecttitle">Harry Potter Sorting Hat Quiz</h1>
+    <section>
+        <h2 class="sectiontitle">Project Overview</h2>
+        <p>This is a C++ implementation that sorts the user into a Hogwarts house depending on their responses to some questions. 
+            As I am still in the beginning of my journey I have not yet worked out how to get my webpage to run my C++ code. 
+            So even though I initially created this code on C++, I have rewritten (with the help of AI) the code to run using JavaScript so it can be completed here.
+            If you want to see the complete C++ code then <a href="SortingHat.cpp">click here</a>.</p>
+        <p>The concept of this quiz is from Harry Potter, if you want a preview of a house sorting please watch the video in the header.</p>
+    </section>
+
+    <h2 class="sectiontitle">Result</h2>
+    <div class="step">
+
+        <p id="demo"></p>
+    </div>
+
+    <h2 class="sectiontitle">Method</h2>
+    <div class="step">
+        <p>The first thing that I needed to do was declare the variables for each house and all the possible answers.</p>
+        <pre><code>
+    // Declare houses
+    int gryffindor=0;
+    int hufflepuff=0;
+    int ravenclaw=0;
+    int slytherin=0;
+
+    //Declare answers
+    int answer1;
+    int answer2;
+    int answer3;
+    int answer4;
+        </code></pre>
+    </div>
+
+    <div class="step">
+        <p>The next step in creating this quiz is to introduce the quiz to the user. Once they have been welcomed it was time to ask the first question and assign their answer to the answer1 variable.</p>
+        <pre><code>
+    //User interaction
+    std::cout << "The Sorting Hat Quiz!\n";
+    //Question 1
+    std::cout << "Q1) When I'm dead, I want people to remember me as:\n1) The Good\n2) The Great\n3) The Wise\n4) The Bold\nYour answer: ";
+    std::cin >> answer1;
+        </code></pre>
+        <p>Each question followed the same process. Print the question and then asign their answer to the matching variable.</p>
+    </div>
+
+
+    <div class="step">
+        <p>Now that the questions has been created, I had to write if conditionals that changes the score of each house depending on which answer the user gave. For this I used <em>if</em>, <em>else if</em> and <em>else</em> conditionals.</p>
+        <pre><code>
+    //House score update
+    if (answer1 == 1) {
+        hufflepuff++;
+    } else if (answer1 == 2) {
+        slytherin++;
+    } else if (answer1 == 3) {
+        ravenclaw++;
+    } else if (answer1 == 4) {
+        gryffindor++;
+    } else {
+        std::cout << "Invalid input.\nYour answer: ";
+        std::cin >> answer1;
+    }
+        </code></pre>
+        <p>This process was repeated for each questions.</p>
+    </div>
+
+    <div class="step">
+        <p>Finally, it was time to let the user know which house they were sorted into. To do this I used if conditionals to check which house had the highest score before printing the house to the console.</p>
+        <pre><code>
+    //House reveal
+    int max=0;
+    std::string house;
+
+    if (gryffindor > max) {  
+        max = gryffindor;
+        house = "Gryffindor"; 
+    }
+
+    if (hufflepuff > max) {
+        max = hufflepuff;
+        house = "Hufflepuff";
+    }
+
+    if (ravenclaw > max) {
+        max = ravenclaw;
+        house = "Ravenclaw";
+    }
+
+    if (slytherin > max) {
+        max = slytherin;
+        house = "Slytherin";
+    }
+
+    std::cout << house << "!\n";
+        </code></pre>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 My Portfolio</p>
+    </footer>
+
+    <!-- Sorting Hat quiz script: presents questions, collects responses, computes house scores and shows result in #demo -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const container = document.querySelector('main .step') || document.querySelector('main');
+        const demo = document.getElementById('demo');
+
+        const questions = [
+            {
+                text: "Q1) When I'm dead, I want people to remember me as:",
+                choices: ["The Good","The Great","The Wise","The Bold"],
+                // each index contains an array of houses to increment
+                houses: [["hufflepuff"],["slytherin"],["ravenclaw"],["gryffindor"]]
+            },
+            {
+                text: "Q2) Dawn or Dusk?",
+                choices: ["Dawn","Dusk"],
+                houses: [["gryffindor","ravenclaw"],["slytherin","hufflepuff"]]
+            },
+            {
+                text: "Q3) Which kind of instrument most pleases your ear?",
+                choices: ["The violin","The trumpet","The piano","The drum"],
+                houses: [["slytherin"],["hufflepuff"],["ravenclaw"],["gryffindor"]]
+            },
+            {
+                text: "Q4) Which road tempts you most?",
+                choices: ["The wide, sunny grassy lane","The narrow, dark, lantern-lit alley","The twisting, leaf-strewn path through woods","The cobbled street lined (ancient buildings)"],
+                houses: [["hufflepuff"],["slytherin"],["gryffindor"],["ravenclaw"]]
+            }
+        ];
+
+        // Create quiz UI
+        const quizDiv = document.createElement('div');
+        quizDiv.id = 'sorting-quiz';
+        quizDiv.style.maxWidth = '700px';
+        quizDiv.style.marginTop = '1rem';
+
+        const qText = document.createElement('h3');
+        quizDiv.appendChild(qText);
+
+        const choicesDiv = document.createElement('div');
+        quizDiv.appendChild(choicesDiv);
+
+        const navDiv = document.createElement('div');
+        navDiv.style.marginTop = '0.6rem';
+        const nextBtn = document.createElement('button');
+        nextBtn.textContent = 'Next';
+        nextBtn.type = 'button';
+        navDiv.appendChild(nextBtn);
+        quizDiv.appendChild(navDiv);
+
+    // insert the quiz into the .step container before the demo paragraph
+    // Use `demo` (a child of the container) as the reference node to avoid DOM errors
+    container.insertBefore(quizDiv, demo);
+
+        let idx = 0;
+        const scores = { gryffindor: 0, hufflepuff: 0, ravenclaw: 0, slytherin: 0 };
+
+        function renderQuestion(i) {
+            const q = questions[i];
+            qText.textContent = q.text;
+            choicesDiv.innerHTML = '';
+            const form = document.createElement('form');
+            form.id = 'qform';
+            q.choices.forEach((c, ci) => {
+                const label = document.createElement('label');
+                label.style.display = 'block';
+                label.style.margin = '0.4rem 0';
+                const input = document.createElement('input');
+                input.type = 'radio';
+                input.name = 'choice';
+                input.value = ci;
+                input.id = 'choice-' + ci;
+                label.appendChild(input);
+                const span = document.createElement('span');
+                span.textContent = ' ' + c;
+                label.appendChild(span);
+                form.appendChild(label);
+            });
+            choicesDiv.appendChild(form);
+
+            // Update button text on last question
+            nextBtn.textContent = (i === questions.length - 1) ? 'Submit' : 'Next';
+        }
+
+        function recordAnswerAndAdvance() {
+            const form = document.getElementById('qform');
+            if (!form) return;
+            const checked = form.querySelector('input[name="choice"]:checked');
+            if (!checked) {
+                alert('Please choose an answer to continue.');
+                return;
+            }
+            const choiceIndex = Number(checked.value);
+            const toIncrement = questions[idx].houses[choiceIndex] || [];
+            toIncrement.forEach(h => { if (scores[h] !== undefined) scores[h]++; });
+
+            idx++;
+            if (idx < questions.length) {
+                renderQuestion(idx);
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            // Follow the same tie-breaking order as original C++: gryffindor, hufflepuff, ravenclaw, slytherin
+            let max = -1;
+            let house = '';
+            const order = ['gryffindor','hufflepuff','ravenclaw','slytherin'];
+            order.forEach(h => {
+                if (scores[h] > max) { max = scores[h]; house = h; }
+            });
+
+            // Capitalize first letter
+            const pretty = house.charAt(0).toUpperCase() + house.slice(1);
+            demo.innerHTML = `<strong>${pretty}!</strong>`;
+            // hide quiz
+            quizDiv.style.display = 'none';
+        }
+
+        nextBtn.addEventListener('click', recordAnswerAndAdvance);
+        // start
+        renderQuestion(0);
+    });
+    </script>
+
+
+
+</main>
+
+</body>
+</html>
