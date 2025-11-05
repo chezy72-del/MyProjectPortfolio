@@ -293,3 +293,72 @@ ol {
     border: #09A1A1 2px solid;
     align-content: center;
 }
+
+.introlist {
+    text-align: center; 
+    list-style-position: inside;
+    color: #3D5B59;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding-left: 30px;
+    font-size: 20px;
+}
+
+/* Sorting Hat quiz styles - light, site-matching appearance */
+#sorting-quiz {
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    margin: 0 13.5rem 1rem;
+    color: #3D5B59;
+}
+
+#sorting-quiz h3 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 24px;
+    margin: 0 0 0.6rem 0;
+    text-align: left;
+}
+
+#sorting-quiz form label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background-color 160ms ease;
+    cursor: pointer;
+}
+
+#sorting-quiz form label:hover {
+    background-color: rgba(9,161,161,0.06);
+}
+
+#sorting-quiz input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #09A1A1; /* modern browsers */
+}
+
+#sorting-quiz .choices {
+    margin-bottom: 0.6rem;
+}
+
+#sorting-quiz button {
+    font-size: 18px;
+    background-color: #09A1A1;
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#sorting-quiz button:hover {
+    background-color: #3D5B59;
+}
+
+/* Make quiz responsive on small screens */
+@media (max-width: 600px) {
+    #sorting-quiz { width: 94%; padding: 0.8rem; }
+    button { font-size: 16px; height: 40px; }
+}
