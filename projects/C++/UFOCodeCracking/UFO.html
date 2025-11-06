@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../resources/stylesheets/projects.css">
+    <link rel="stylesheet" href="ufo.css">
+    <title>UFO: The Game</title>
+</head>
+
+<body>
+    <logo>
+        <img id="logo" src="../../../resources/images/Logo.png">
+    </logo>
+    <header>
+    <h1>Projects</h1>
+    <nav>
+            <ul>
+            <li><a href="../../../index.html">Title Page</a></li>
+            <li><a href="../../../aboutme.html">About Me</a></li>
+            <li><a href="../../../projectscontents.html">Projects</a></li>
+            <li><a href="../../../contactme.html">Contact Me</a></li>
+            <li><a href="../../../eulersblog.html">Project Euler Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class = "projecttitle">UFO: The Game</h1>
+        <div id="intro">
+        <p>This is an interactive C++ project where you have to guess the codeword within 7 guesses otherwise you will be abducted by aliens.
+            This project is a spin off from the classic game of hangman, if you are unsure how to play hangman please watch the video in the header. 
+            As I am still in the beginning of my journey I have not yet worked out how to get my webpage to run my C++ code. 
+            So even though I initially created this code on C++, I have rewritten (with the help of AI) the code to run using JavaScript so it can be completed here.
+        </p>
+        <p>The main purpose of this projetc is to get used to using different files to declare functions and then define then on another before calling them on the main file.
+            The reason why this would be beneficial is as projects get larger it is easier to manage when they are on different files.
+            If you want to see the complete C++ code then click the following: <a href="ufo.cpp">main cpp</a>, <a href="ufo_functions.hpp">declaring functions hpp</a> and <a href="ufo_functions.cpp">defining functions cpp</a>.</p>
+        </div>
+
+        <h2 class="sectiontitle">Result</h2>
+
+        <div class="step">
+
+            <p id="demo"></p>
+        </div>
+
+
+        <h2 class="sectiontitle">Method</h2>
+
+        <div class="step">
+            <p></p>
+            <pre><code>
+
+            </code></pre>
+        </div>
+
+        <div class="step">
+            <p></p>
+            <pre><code>
+
+            </code></pre>            
+        </div>    
+
+
+
+
+        
+    <!-- UFO game script: replicates the C++ UFO Code Cracking game in-browser -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const demo = document.getElementById('demo');
+
+        // Game state
+        const codeword = 'abduction';
+        let answer = Array(codeword.length).fill('_');
+        let misses = 0;
+        const maxMisses = 6;
+        const incorrect = [];
+
+        // ASCII art for misses (copied/adapted from original C++ for flavor)
+        // Backslashes are doubled (\\) in the JS source so a single backslash displays in the page correctly.
+        const missArt = [
+`                .                            
+                |                            
+            .-"^"-.                       
+            /_....._\\                       
+       .-"'         '"-.                  
+        (  ooo  ooo  ooo  )                   
+          '-.,_________,.-'    ,-----------.   
+              /     \\        (  Send help! ) 
+             /   0   \\      / '-----------'  
+            /  --|--  \\    /                 
+           /     |     \\                     
+         /     / \\     \\                   
+         /               \\                   
+`,
+`                .                            
+                |                            
+            .-"^"-.                       
+            /_....._\\                       
+       .-"'         '"-.                  
+        (  ooo  ooo  ooo  )                   
+          '-.,_________,.-'    ,-----------.   
+              /  0  \\        (  Send help! ) 
+             / --|-- \\      / '-----------'  
+            /    |    \\    /                 
+          /    / \\    \\                    
+          /             \\                    
+         /               \\                   
+`,
+`                .                            
+                |                            
+            .-"^"-.                       
+            /_....._\\                       
+       .-"'         '"-.                  
+        (  ooo  ooo  ooo  )                   
+          '-.,_________,.-'    ,-----------.   
+              /--|--\\        (  Send help! ) 
+             /   |   \\      / '-----------'  
+           /   / \\   \\    /                
+           /           \\                     
+          /             \\                    
+         /               \\                   
+`,
+`                .                            
+                |                            
+            .-"^"-.                       
+            /_....._\\                       
+       .-"'         '"-.                  
+        (  ooo  ooo  ooo  )                   
+          '-.,_________,.-'    ,-----------.   
+              /  |  \\        (  Send help! ) 
+            /  / \\  \\      / '-----------' 
+            /         \\    /                 
+           /           \\                     
+          /             \\                    
+         /               \\                   
+`,
+`                .                            
+                |                            
+            .-"^"-.                       
+            /_....._\\                       
+       .-"'         '"-.                  
+        (  ooo  ooo  ooo  )                   
+          '-.,_________,.-'    ,-----------.   
+             / / \\ \\        (  Send help! )
+             /       \\      / '-----------'  
+            /         \\    /                 
+           /           \\                     
+          /             \\                    
+         /               \\                   
+`,
+`                .                            
+                |                            
+            .-"^"-.                       
+            /_....._\\                       
+       .-"'         '"-.                  
+        (  ooo  ooo  ooo  )                   
+          '-.,_________,.-'    ,-----------.   
+              /     \\        (  Send help! ) 
+             /       \\      / '-----------'  
+            /         \\    /                 
+           /           \\                     
+          /             \\                    
+         /               \\                   
+`
+        ];
+
+        // Build UI inside demo
+        function buildUI() {
+            demo.innerHTML = '';
+            const container = document.createElement('div');
+            container.id = 'ufo-game';
+
+            const greet = document.createElement('p');
+            greet.innerHTML = '<strong>UFO: The Game</strong><br>Guess the letters to save your friend before the UFO takes them. You have 7 attempts.';
+            container.appendChild(greet);
+
+            const artPre = document.createElement('pre');
+            artPre.id = 'miss-art';
+            artPre.style.whiteSpace = 'pre-wrap';
+            artPre.textContent = missArt[misses];
+            container.appendChild(artPre);
+
+            const statusDiv = document.createElement('div');
+            statusDiv.id = 'status';
+            statusDiv.style.margin = '0.6rem 0';
+            container.appendChild(statusDiv);
+
+            const form = document.createElement('div');
+            form.style.display = 'flex';
+            form.style.justifyContent = 'center';
+            form.style.gap = '0.6rem';
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.id = 'guess-input';
+            input.maxLength = 1;
+            input.placeholder = 'Enter a letter';
+            input.style.height = '36px';
+            input.style.fontSize = '18px';
+            form.appendChild(input);
+
+            const guessBtn = document.createElement('button');
+            guessBtn.id = 'guess-btn';
+            guessBtn.type = 'button';
+            guessBtn.textContent = 'Guess';
+            form.appendChild(guessBtn);
+
+            const restartBtn = document.createElement('button');
+            restartBtn.id = 'restart-btn';
+            restartBtn.type = 'button';
+            restartBtn.textContent = 'Restart';
+            restartBtn.style.display = 'none';
+            form.appendChild(restartBtn);
+
+            container.appendChild(form);
+
+            const message = document.createElement('p');
+            message.id = 'message';
+            message.style.minHeight = '1.2rem';
+            message.style.fontWeight = '600';
+            container.appendChild(message);
+
+            demo.appendChild(container);
+
+            // Event listeners
+            guessBtn.addEventListener('click', makeGuess);
+            input.addEventListener('keydown', function(e) { if (e.key === 'Enter') makeGuess(); });
+            restartBtn.addEventListener('click', resetGame);
+
+            renderStatus();
+        }
+
+        function renderStatus() {
+            const artPre = document.getElementById('miss-art');
+            if (artPre) artPre.textContent = missArt[Math.min(misses, maxMisses)];
+
+            const statusDiv = document.getElementById('status');
+            statusDiv.innerHTML = '';
+            const incorrectP = document.createElement('p');
+            incorrectP.textContent = 'Incorrect Guesses: ' + (incorrect.length ? incorrect.join(' ') : '(none)');
+            statusDiv.appendChild(incorrectP);
+
+            const codeP = document.createElement('p');
+            codeP.textContent = 'Codeword: ' + answer.join(' ');
+            statusDiv.appendChild(codeP);
+        }
+
+        function makeGuess() {
+            const input = document.getElementById('guess-input');
+            const msg = document.getElementById('message');
+            const restartBtn = document.getElementById('restart-btn');
+            const val = (input.value || '').toLowerCase();
+            input.value = '';
+            msg.textContent = '';
+            if (!val || !/^[a-z]$/.test(val)) { msg.textContent = 'Please enter a single letter (a-z).'; return; }
+
+            // Already guessed
+            if (incorrect.includes(val) || answer.includes(val)) { msg.textContent = 'You already guessed that letter.'; return; }
+
+            // Check if in codeword
+            let found = false;
+            for (let i = 0; i < codeword.length; i++) {
+                if (codeword[i] === val) { answer[i] = val; found = true; }
+            }
+
+            if (found) {
+                msg.textContent = 'Correct!';
+            } else {
+                msg.textContent = 'Incorrect! The tractor beam pulls the person in further.';
+                incorrect.push(val);
+                misses++;
+            }
+
+            renderStatus();
+            checkEnd();
+        }
+
+        function checkEnd() {
+            const msg = document.getElementById('message');
+            const guessBtn = document.getElementById('guess-btn');
+            const restartBtn = document.getElementById('restart-btn');
+            if (answer.join('') === codeword) {
+                msg.innerHTML = '\nHooray! You saved the person and earned a medal of honor!';
+                guessBtn.disabled = true;
+                restartBtn.style.display = '';
+            } else if (misses > maxMisses) {
+                msg.innerHTML = "\nOh no! The UFO just flew away with another person! The codeword was: " + codeword;
+                guessBtn.disabled = true;
+                restartBtn.style.display = '';
+            }
+        }
+
+        function resetGame() {
+            answer = Array(codeword.length).fill('_');
+            misses = 0;
+            incorrect.length = 0;
+            const guessBtn = document.getElementById('guess-btn');
+            const restartBtn = document.getElementById('restart-btn');
+            guessBtn.disabled = false;
+            restartBtn.style.display = 'none';
+            document.getElementById('message').textContent = '';
+            renderStatus();
+        }
+
+        // Initialize UI
+        buildUI();
+    });
+    </script>
+    
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My Portfolio</p>
+    </footer>
+</body>
+</html>

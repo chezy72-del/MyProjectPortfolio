@@ -1,0 +1,52 @@
+/* UFO game styles - light and matching site palette */
+#ufo-game {
+    padding: 1rem 1rem;
+    border-radius: 10px;
+    margin: 0 1rem 1rem;
+    color: #3D5B59;
+    text-align: center;
+}
+
+#ufo-game p {
+    margin: 0.4rem 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#ufo-game pre {
+    background-color: rgba(173,192,211,0.08);
+    padding: 8px;
+    border-radius: 8px;
+    overflow-x: auto;
+    max-width: 100%;
+    color: #3D5B59;
+    margin: 0.6rem auto;
+}
+
+#ufo-game #status p {
+    margin: 0.2rem 0;
+    font-size: 18px;
+}
+
+#ufo-game input[type='text'] {
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(61,91,89,0.15);
+    width: 120px;
+}
+
+#ufo-game button {
+    font-size: 16px;
+    background-color: #09A1A1;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#ufo-game button:hover { background-color: #3D5B59; }
+
+@media (max-width: 600px) {
+    #ufo-game { width: 94%; padding: 0.8rem; }
+    #ufo-game input[type='text'] { width: 90px; }
+}
