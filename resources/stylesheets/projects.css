@@ -208,6 +208,15 @@ pre {
     border-radius: 10px;
 }
 
+.redline {
+    height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    border-radius: 10px;
+}
+
 /* Conclusion Section */
 
 ol {

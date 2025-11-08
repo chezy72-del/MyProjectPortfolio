@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../resources/stylesheets/projects.css">
+    <script src="../../../resources/jsscripts/projects.js" defer></script>
     <title>Excursion App Promotion</title>
 </head>
 
@@ -30,26 +31,145 @@
             <p>In this project, I created a web page which advertises a product called “Excursion.”
                 I used my growing toolset including HTML, CSS, Command Line Interface, Git, and GitHub.
                 The web page I built advertises a mobile app which helps users record and share their experiences, so I used video and landscape imagery to set the scene. 
-                A landing page is a vital tool in marketing a product these days, and the goal will be to entice potential customers into using the product.</p>
-            <p>At the beginning of the project I was given this redline of how the owner would like it to be designed, and it's my job to make their dreams a reality.</p>
-            <img src="resources/excursion_redline.png" alt="Redline of Excursion App Promotion Page">
-            <p>Below you will find the steps I took to make the web page and <a href="excursion.html"></a>here</a> is the link to the finalised website page.</p>
+                A landing page is a vital tool in marketing a product these days, and the goal will be to entice potential customers into using the product.
+                The main task for this project was to practice GIT commands, so I added, committed, merged and fetched everything using the terminal for pracise as opposed to using the side bar in visual studio code.</p>
+            <p>At the beginning of the project I was given this redline (click to enlarge) of how the owner would like it to be designed, and it's my job to make their dreams a reality.</p>
+            <img class="redline" src="resources/excursion_redline.png" alt="Redline of Excursion App Promotion Page" onclick="enlargeImg()" onmouseout="resetImg()">
+            <p>Below you will find the steps I took to make the web page and <a href="excursion.html">here</a> is the link to the finalised website page.</p>
         </div>
 
         <h2 class="sectiontitle">Method</h2>
 
         <div class="step">
-            <p></p>
+            <h2>HTML code</h2>
+            <p>The first thing I needed to do was the right the html code for the website ensuring that everything was there. 
+                In the header section I was sure to link the CSS stylesheet for the web page.
+            </p>
             <pre><code>
+    &ltt!DOCTYPE html>
+    &lthtml lang="en">
+    &lthead>
+        &ltlink rel="stylesheet" href="excursion.css">
+        &lttitle>Excursion App Promotion&gt/title>
+    &lt/head>
 
+    &ltheader>
+        &lth1>Discover hidden places in the world around you&lt/h1>
+    &lt/header>
+
+    &ltbody>
+        &ltmain>
+            &ltdiv>
+                &lth1>Discover hidden places in the world around you&lt/h1>
+                &lta href="#">Download Excursion (Coming Soon!)&lt/a>
+                &ltvideo autoplay muted loop src="resources/excursion.mp4">Example of app&lt/video>
+            &lt/div>
+
+            &ltdiv>
+                &lth2>Your personal travel guide&lt/h2>
+                &ltp>Excursions remembers places you like, and recommends new points of interest around you.&lt/p>
+                &ltimg src="resources/camp.jpg" class="camp" />
+            &lt/div>
+
+            &ltfigure>
+                &ltimg src="resources/phone.png" class="littlephone" />
+            &lt/figure>
+
+            &ltdiv>
+                &lth2>Coming Soon for iPhone and Android&lt/h2>
+                &lta href="#">Download Excursion (Coming Soon!)&lt/a>
+            &lt/div>
+        &lt/main>
+
+        &ltfooter>
+            &ltp>&copy; Excursion&lt/p>
+        &lt/footer>
+    &lt/body>
+&lt/html>
             </code></pre>
+            <p>
+                I added classes onto the images to that I could style them individually. 
+                I also ensured that the video played automatically, muted and on a loop so that it was engaging for the user.
+                Addditonally, I used self closing tage for images as this was a new thing that I has learnt.
+            </p>
         </div>
 
         <div class="step">
-            <p></p>
+            <h2>CSS Styling</h2>
+            <p>After ensuring the content was including in the HTML file, I then turned to the stylesheet to match the redline given.</p>
+            <p>The first thing I did was style the background and headers on the page.</p>
             <pre><code>
+    body {
+        background-color: black;
+        font-family: 'verdana', sans-serif;
+        text-align: center;
+    }
 
-            </code></pre>            
+    h1 {
+        font-weight: normal;
+        font-size: 50px;
+        color: white;
+    }
+
+    h2 {
+        color: white;
+        font-weight: 300;
+        font-size: 42px;
+    }
+            </code></pre> 
+            <p>
+                Next, I styled the <em>divs</em> in order to make sure they were in the column direction.
+            </p>   
+            <pre><code>
+    div {
+    display: inline-flex;
+    flex-direction: column;
+}
+            </code></pre>    
+            
+            <p>
+                My next step was to style the text and the links so they matched the redline. I make the download into a link, even though currently it does not go anywhere. 
+                This will make adapting it later a lot easier.
+            </p>
+            <pre><code>
+    a {
+        color:aquamarine;
+        font-size: 16px;
+        text-decoration: underline;
+    }
+
+    p {
+        color: grey;
+        font-size: 21px;
+    }
+            </code></pre>
+
+            <p>
+                Then, I looked at the images and video to ensure they were the correct size and shape. 
+                I took a little artistic licence on the camp picture and added a glow effect to match the imagary.
+            </p>   
+            <pre><code>
+    video {
+        height: 600px;
+    }
+
+    .camp {
+        box-shadow: 0 0 50px 10px rgba(231, 189, 4, 0.2);
+    }
+
+    .littlephone {
+        width: 80px;
+    }
+            </code></pre>  
+
+            <p>Finally, it was time to style the footer.</p>
+            <pre><code>
+    footer {
+        text-align: right;
+        color: grey;
+    }
+            </code></pre>
+
         </div>
 
         
