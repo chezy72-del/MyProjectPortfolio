@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../resources/stylesheets/projects.css">
+    <title>Medical Insurance</title>
+</head>
+
+<body>
+    <logo>
+        <img id="logo" src="../../../resources/images/Logo.png">
+    </logo>
+    <header>
+    <h1>Projects</h1>
+    <nav>
+            <ul>
+            <li><a href="../../../index.html">Title Page</a></li>
+            <li><a href="../../../aboutme.html">About Me</a></li>
+            <li><a href="../../../projectscontents.html">Projects</a></li>
+            <li><a href="../../../contactme.html">Contact Me</a></li>
+            <li><a href="../../../eulersblog.html">Project Euler Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class = "projecttitle">Medical Insurance List Project</h1>
+        <div id="intro">
+            <p>This project involves creating a medical insurance list using Python. The goal is to manage and analyse insurance data effectively. 
+                Throughout this project I practised my new skills of added data to a list, slicing a list, sorting a list and more in order to gain meaningful insights from the data.
+                The data I am working with in this project is only small but as I progress through my learning I shall work with larger data samples.</p>
+        </div>
+
+        <h2 class="sectiontitle">Method</h2>
+
+        <div class="step">
+            <p>The first thing I need to do is write the initial data set. 
+                Afetr this, I was made aware of a new person that I had to add to the lists using <em>.append()</em>.
+            </p>
+            <pre><code>
+    names = ["Mohamed", "Sara", "Xia", "Paul", "Valentina", "Jide", "Aaron", "Emily", "Nikita", "Paul"]
+    insurance_costs = [13262.0, 4816.0, 6839.0, 5054.0, 14724.0, 5360.0, 7640.0, 6072.0, 2750.0, 12064.0]
+
+    ## Add a new person to the arrays
+    names.append("Priscilla")
+    insurance_costs.append(8320.0)
+            </code></pre>
+        </div>
+
+        <div class="step">
+            <p>The next task in the project was to combine and sort the data, I combined the data in two ways as this allowed me to both sort in alphebetical order and also by cost. 
+                Sorting it in two ways would allow me to answer a multitude of questions depending on the insights I was searching for. </p>
+            <pre><code>
+    ## Combine insurance cost and names into a list and sort
+    # Sorted by cost
+    medical_records_by_cost=(list(zip(insurance_costs, names)))
+    medical_records_by_cost.sort()
+    print(medical_records_by_cost)
+    # Sorted by name
+    medical_records_by_name = list(zip(names, insurance_costs))
+    medical_records_by_name.sort()
+    print(medical_records_by_name)
+            </code></pre>            
+        </div>
+
+        <div class="step">
+            <p>Next I was asked to find how much data we have in our sample. 
+                Given that the data I am working with is only small, to find the length would be easy enoguh to count. 
+                However as I am practising my python, I decided to use <em>len</em> also with a statement so it is clear what the number is representing when printed.</p>
+            <pre><code>
+    ## Find out how many medical records we have
+    num_medical_records = len(medical_records_by_cost)
+    print("There are ", num_medical_records, " medical records.")
+            </code></pre>            
+        </div>
+
+        <div class="step">
+            <p>Next I was practising selecting a specific value in a data depending on the index. 
+                I chose to select the first medical record in the list sorted by name to see the details of that person.
+            </p>
+            <pre><code>
+    ## Select the first medical record
+    first_medical_record = medical_records_by_name[0]
+    print("Here is the first medical record: ", first_medical_record)
+            </code></pre>            
+        </div>
+
+        <div class="step">
+            <p>Then I practised my slicing of a list, I used this to find the most expensive, cheapest and also the middle 5 to practise different ways to use the index.</p>
+            <pre><code>
+    ## Slice the list to find the cheapest three, the middle five and the most expensive three
+    cheapest_three = medical_records_by_cost[:3]
+    middle_five_records = medical_records_by_cost[2:7]
+    priciest_three = medical_records_by_cost[-3:]
+    print("Here are the three cheapest insurance costs in our medical records: ", cheapest_three)
+    print("Here are the middle five insurance costs in our medical records: ", middle_five_records)
+    print("Here are the three most expensive insurance costs in our medical records: ", priciest_three)
+            </code></pre>      
+            <p>As you can see, I used a negative index to find the most expensive as the cost was sorting in ascending order.</p>      
+        </div>
+
+        <div class="step">
+            <p>Finally, I practised the <em>.count()</em> method. I used this to count how many instances of a specific name was in the data.
+            First I tried to count in just medical_records_by_name, however after getting 0 as the answer, I realised you have to specify which index in the list to search or use the name data.</p>
+            <pre><code>
+    ## Count how many Pauls are in the data
+    occurrences_paul = names.count("Paul")
+    print("There are ", occurrences_paul, " individuals with the name Paul in our medical records.")
+            </code></pre>            
+        </div>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My Portfolio</p>
+    </footer>
+</body>
+</html>
