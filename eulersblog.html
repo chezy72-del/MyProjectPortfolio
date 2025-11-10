@@ -41,17 +41,25 @@
         <div id="project_nav">
             <h2>Project Euler Problems</h2>
             <ul>
-                <li><a href="#first_twenty">Problem 0-20</a></li>
-                <li><a href="#twenty_one_forty">Problem 21-40</a></li>
-                <li><a href="#forty_one_sixty">Problem 41-60</a></li>
-                <li><a href="#sixty_one_eighty">Problem 61-80</a></li>
-                <li><a href="#eighty_one_hundred">Problem 81-100</a></li>
+                <li><a href="#first_ten">Problem 0-10</a></li>
+                <li><a href="#eleven_twenty">Problem 11-20</a></li>
+                <li><a href="#twenty_one_thirty">Problem 21-30</a></li>
+                <li><a href="#thirty_one_fourty">Problem 31-40</a></li>
+                <li><a href="#fouty_one_fifty">Problem 41-50</a></li>
+                <li><a href="#fifty_one_sixty">Problem 51-60</a></li>
+                <li><a href="#sixty_one_seventy">Problem 61-70</a></li>
+                <li><a href="#seventy_one_eighty">Problem 71-80</a></li>
+                <li><a href="#eighty_one_ninety">Problem 81-90</a></li>
+                <li><a href="#ninety_one_hundred">Problem 91-100</a></li>
             </ul>
         </div>
 
 <!--Problem 0-->
+        <div id="first_ten" class="break_section">
+            <h2>First Ten Problems</h2>
+        </div>
 
-        <div id="first_twenty"> 
+        <div> 
             <h2 class="title">Problem 0: Sum of the Odd Squares</h2>
             <h3>Among the first 636 thousand square numbers, what is the sum of all the odd squares?</h3>
 
@@ -526,6 +534,113 @@ int main() {
         </div>
 
 <!--Problem 7-->
+
+        <div>
+            <h2 class="title">Problem 7: 10001st Prime</h2>
+            <h3>By listing the first six prime numbers: 2, 3, 5, 7, 11 and 13, we can see that the 6th prime is 13.</h3>
+            <h3>What is the 10001st prime number?</h3>
+            <div class="problem">
+                <h4>Language used: Python</h4>
+                <p>
+                    I decided to mix up my chosen language on this problem as I was making progress with Python and about to start loops in my lessons, so I decided to do a little prelearning and look into how to write a loop in Python.
+                    I found Python to be very similar to the other languages however with a slight change of the condition not being in brackets.
+                    As I needed to use the square to shorted the amount of iterations I imported the <em>math labrary</em>.
+                </p>
+                <pre><code>
+    import math
+                </code></pre>
+
+                <p>
+                    One I had the math library I had to start building my loop function that would loop through the numbers and check if they are prime. I used an if conditional nested within a for loop and then pushed all prime numbers into a list using <em>.eppend()</em>.
+                    After this it was a basic task of printing the number with the 10000th index to the console.
+                </p>
+
+                <h3><a href="#problem_7">My Solution</a></h3> 
+                    <pre id="problem_7"><code>
+    import math
+    prime_number = [2]
+    for num in range(3,1000000,2):
+        if all(num%i!=0 for i in range(2,int(math.sqrt(num))+1)):
+            prime_number.append(num)
+
+    print(prime_number[10000])  
+                    </code></pre>
+            </div>
+
+        </div>
+
+<!--Problem 8-->
+
+<!--      Blank layout for problem section
+        <div>
+            <h2 class="title">Title</h2>
+            <h3>Problem example</h3>
+            <h3>Problem</h3>
+            <div class="problem">
+                <h4>Language used: Z</h4>
+                <p>Description</p>
+                <pre><code>
+                
+                </code></pre>
+                <h3><a href="#problem_X">My Solution</a></h3> 
+                    <pre id="problem_X"><code>
+
+                    </code></pre>
+            </div>
+
+        </div>
+-->
+
+<!--Problem 9-->    
+
+<!--      Blank layout for problem section
+        <div>
+            <h2 class="title">Title</h2>
+            <h3>Problem example</h3>
+            <h3>Problem</h3>
+            <div class="problem">
+                <h4>Language used: Z</h4>
+                <p>Description</p>
+                <pre><code>
+                
+                </code></pre>
+                <h3><a href="#problem_X">My Solution</a></h3> 
+                    <pre id="problem_X"><code>
+
+                    </code></pre>
+            </div>
+
+        </div>
+-->
+
+<!--Problem 10-->
+
+<!--      Blank layout for problem section
+        <div>
+            <h2 class="title">Title</h2>
+            <h3>Problem example</h3>
+            <h3>Problem</h3>
+            <div class="problem">
+                <h4>Language used: Z</h4>
+                <p>Description</p>
+                <pre><code>
+                
+                </code></pre>
+                <h3><a href="#problem_X">My Solution</a></h3> 
+                    <pre id="problem_X"><code>
+
+                    </code></pre>
+            </div>
+
+        </div>
+-->
+
+<!--        
+        <div id="eleven_twenty" class="break_section">
+            <h2>Problem Eleven to Twenty</h2>
+        </div>
+-->
+
 
 <!--      Blank layout for problem section
         <div>
