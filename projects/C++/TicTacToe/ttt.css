@@ -1,0 +1,58 @@
+
+/* Tic Tac Toe styles to match site palette */
+#ttt-panel {
+	padding: 12px;
+	border-radius: 10px;
+	color: #3D5B59;
+	display: inline-block;
+}
+
+#ttt-status {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 18px;
+	margin-bottom: 8px;
+	text-align: center;
+}
+
+#ttt-grid {
+	display: grid;
+    padding: 8px;
+	grid-template-columns: repeat(3, 80px);
+	grid-gap: 8px;
+    justify-content: center;
+}
+
+.ttt-cell {
+	width: 80px;
+	height: 80px;
+	font-size: 34px;
+	background: #f5c78d;
+	border: 2px solid rgba(9,161,161,0.12);
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.ttt-cell:disabled {
+	background: rgba(61,91,89,0.06);
+	cursor: default;
+}
+
+.ttt-restart {
+	display: block;
+	margin: 8px auto 0;
+	background-color: #09A1A1;
+	color: white;
+	border: none;
+	padding: 6px 12px;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+@media (max-width: 480px) {
+	#ttt-grid {
+		grid-template-columns: repeat(3, 56px);
+		grid-gap: 6px;
+	}
+	.ttt-cell { width:56px; height:56px; font-size:22px; }
+}
+

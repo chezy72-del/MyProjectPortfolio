@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../resources/stylesheets/projects.css">
+        <link rel="stylesheet" href="ttt.css">
+    <title>Tic Tac Toe</title>
+</head>
+
+<body>
+    <logo>
+        <img id="logo" src="../../../resources/images/Logo.png">
+    </logo>
+    <iframe width="1326" height="746" src="https://www.youtube.com/embed/USEjXNCTvcc" title="How to play Tic Tac Toe" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <header>
+    <h1>Projects</h1>
+    <nav>
+            <ul>
+            <li><a href="../../../index.html">Title Page</a></li>
+            <li><a href="../../../aboutme.html">About Me</a></li>
+            <li><a href="../../../projectscontents.html">Projects</a></li>
+            <li><a href="../../../contactme.html">Contact Me</a></li>
+            <li><a href="../../../eulersblog.html">Project Euler Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class = "projecttitle">Tic Tac Toe</h1>
+        <div id="intro">
+            <p>
+                This is a C++ project, I found the project difficult as I wasn't given step to go through in order to create the game and was just given the task to "create the game Tic Tac Toe".
+                I completed this whole came on C++ however I am still learning react so struggle to adapt it so it can be played through a website, but with the help of AI and my C++ code I have the game below for you to play.
+                If you are unsure of the rules of Tic Tac Toe, please watch the video in the header.
+            </p>
+            <p>
+                As I recently learned how to seperate my functions, my declaring of variables and my main app, my code is spread across three files. 
+                To see my C++ in full please click the following links: <a href="ttt.cpp">main app</a>, <a href="tttfunc.cpp">functions</a> and <a href="ttt.hpp">declaring variables and functions</a>. 
+            </p>
+        </div>
+
+        <h2 class="sectiontitle">Result</h2>        
+        <div id="game"></div>
+
+        <script src="ttt.js" defer></script>
+
+        <h2 class="sectiontitle">Method</h2>
+
+        <div class="step">
+            <p>
+                The first thing I had to do was workout what the best way to put together the game would be. 
+                I know there are plenty of ways in which to complete this project but first I thought about the vairables I would need.
+                The board itself, an introduction, check if the board is filled, check if a player has won, etc.
+            </p>
+            <p>
+                I checked that each function would work, and wrote a comment to myself next the function so I can keep track of which ones I had checked.
+            </p>
+            <pre><code>
+    #include &ltiostream>
+    #include &ltvector>
+
+    // Create vector for board
+    std::vector&ltstd::vector&ltchar>> board {
+        {'0','1','2'}, 
+        {'3','4','5'}, 
+        {'6','7','8'}};
+
+    // Variable to track player moves for each turn
+    int current_player = 1;
+    std::vector&ltint> move;
+
+    // Declare functions to track game status
+    bool is_winner(); //works
+    bool filled_up(); //works
+    void introduction(); //works
+    void take_turn(); //works
+    void set_position(); //works
+    void update_board(); //works
+    void change_player(); //works
+    void draw(); //works
+    void end_game(); //works
+
+            </code></pre>
+        </div>
+
+        <div class="step">
+            <p>Next was to start creating the functions in order for the game to, well, function. 
+                I made many mistakes in the functions and when I checked if they worked it didn't always work first time.
+                According to Codecademy, they said the project would take 36 minutes, however it was looking more like 5 hours for myself, 
+                and while that is a ridiculous amount of time for such a small project, it was a massive learning curve for me and I feel like my programming and understanding has improved immensely because of it.
+            </p>
+            <p>
+                In the function file, I was sure to include the <em>ttt.hpp</em> file so that they could link to the predeclared functions and variables.
+            </p>
+            <pre><code>
+    #include &ltiostream>
+    #include &ltvector>
+    #include "ttt.hpp"
+
+    // Introduction
+    void introduction() {
+        std::cout << "\n  Welcome to Tic Tac Toe!\n";
+        std::cout << "____________________________\n\n";
+        std::cout << "Player 1 is X and Player 2 is O\n";
+        std::cout << "The board positions are numbered as follows:\n\n";
+        draw();
+        std::cout << "Let the game begin!\n";
+    }
+
+    // Create board to play Tic Tac Toe
+    void draw() {
+        std::cout << " " << board[0][0] << " | " << board[0][1] << " | " << board[0][2] << " \n";
+        std::cout << "___________\n";
+        std::cout << " " << board[1][0] << " | " << board[1][1] << " | " << board[1][2] << " \n";
+        std::cout << "___________\n";
+        std::cout << " " << board[2][0] << " | " << board[2][1] << " | " << board[2][2] << " \n\n";
+    }
+
+    // Function to check for a win
+    bool is_winner() {
+        // Check rows, columns, and diagonals
+        if ((board[0][0] == board[0][1] && board[0][1] == board[0][2]) ||
+            (board[1][0] == board[1][1] && board[1][1] == board[1][2]) ||
+            (board[2][0] == board[2][1] && board[2][1] == board[2][2]) ||
+            (board[0][0] == board[1][0] && board[1][0] == board[2][0]) ||
+            (board[0][1] == board[1][1] && board[1][1] == board[2][1]) ||
+            (board[0][2] == board[1][2] && board[1][2] == board[2][2]) ||
+            (board[0][0] == board[1][1] && board[1][1] == board[2][2]) ||
+            (board[0][2] == board[1][1] && board[1][1] == board[2][0])) {
+            return true;
+            ;
+        }
+        return false;
+    }
+
+    // Function to check if board is filled up
+    bool filled_up() {
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
+                if(board[i][j] != 'X' && board[i][j] != 'O'){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    // Function for player to take turn
+    void take_turn() {
+        int position;
+        std::cout << "Player " << current_player << " enter your move (0-8): ";
+        std::cin >> position;
+            for(int i = 0; i < move.size(); i++) {
+                if(position == move[i]) {
+                    std::cout << "Position already taken. Choose another position: ";
+                    std::cin >> position;
+                    i = -1; // Reset loop to check again
+                }
+            }
+        move.push_back(position);
+    }
+
+    // Function to set position on board
+    void set_position() {
+        int pos = move.back();
+        char symbol = (current_player == 1) ? 'X' : 'O';
+        board[pos / 3][pos % 3] = symbol;
+    }
+
+    // Function to update board after each turn
+    void update_board() {
+        draw();
+    }
+
+    // Function to change player
+    void change_player() {
+        if(current_player == 1) {
+            current_player = 2;
+        } else {
+            current_player = 1;
+        }
+    }
+
+    // Function to end game
+    void end_game() {
+        if(is_winner()) {
+            std::cout << "Player " << current_player << " wins!\n";
+        } else if(filled_up()) {
+            std::cout << "The game is a draw!\n";
+        }
+    }
+            </code></pre>     
+            
+            <p>A problem I realised I missed when initially writing my code was that I didn't make allowances for another player picking the same tile.
+                So to fix this I included an <em>if</em> conditional to check if that position had already been chosen.
+            </p>
+            <pre><code>
+    for(int i = 0; i < move.size(); i++) {
+        if(position == move[i]) {
+            std::cout << "Position already taken. Choose another position: ";
+            std::cin >> position;
+            i = -1; // Reset loop to check again
+        }
+    }
+            </code></pre>
+        </div>
+
+        <div class="step">
+            <p>Finally, it was time to put all the functions together in my main map. 
+                I including the function file so that it knew to reference those functions and starting putting everything together.</p>
+            <p>
+                A benefit of putting the functions and declaring in seperate files means it makes the main app a lot easier to read.
+            </p>
+            <pre><code>
+    #include &ltiostream>
+    #include &ltvector>
+    #include "tttfunc.cpp"
+
+    int main() {
+
+    // Introduction to game
+        introduction();
+
+    // Game loop  
+    while(!is_winner() && !filled_up()) {
+        take_turn();
+        set_position();
+        update_board();
+        if(!is_winner()) {
+            change_player();
+        } 
+    }
+
+
+    // End game message
+    end_game();
+    }            
+            </code></pre>      
+            
+            <p>
+                Another issue that arose was that it was changing player and telling me the other player had won.
+                To combat this, I added another <em>if</em> conditional that checked if there was a winner before changing player.
+            </p>
+            <pre><code>
+    if(!is_winner()) {
+        change_player();
+    }             
+            </code></pre>
+        </div>        
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My Portfolio</p>
+    </footer>
+</body>
+</html>
