@@ -1,0 +1,165 @@
+body {
+    font-family: Helvetica, Arial;
+    background-color: black;
+    font-size: 22px;
+    color: seashell;
+    opacity: 0.9;    
+}
+
+/* Header styles */
+
+header {
+    display: inline-flex;
+    flex-direction: row;
+    width: 100%;
+    height: 69px;
+    position: fixed;
+    top: 0;
+    border-bottom: 1px solid seashell;
+    justify-content: space-between;
+    background-color: black;
+    z-index: 2;
+}
+
+#logo {
+    height: 50px;
+    margin-left: 10px;
+    margin-top: 9.5px;
+}
+
+header nav {
+    margin-right: 20px;
+}
+
+header nav li {
+    display: inline-flex;
+    list-style-type: none;
+    padding: 0 15px;
+}
+
+header nav a {
+    color: seashell;
+}
+
+header nav a:hover {
+    color: grey;
+}
+
+/* Main content styles */
+
+main {
+    position: relative;
+    top: 69px;
+    z-index: 1;
+}
+
+div {
+    text-align: center;
+    justify-self: center;
+}
+
+/* Mission section styles */
+
+#mission {
+    height: 700px;
+    background-image: url("Resources/mission-background.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mission { 
+    width: 1200px;
+    background-color: black;
+    align-items: center;
+    opacity: 0.8;
+    padding: 5px;
+}
+
+.mission h2 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.mission h4 {
+    margin-bottom: 5px;
+}
+
+/* Featured teas section styles */
+
+#featuredtea {
+    width: 1000px;
+    display: inline;
+    justify-content: center;
+}
+
+.featuredtea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.teas figure {
+    display: inline-block;
+    margin: 20px;
+}
+
+.teas img {
+    height: 200px;
+    width: 300px;
+}
+
+.tea figcaption {
+    margin-top: 10px;
+}
+
+/* Location section styles */
+
+#locations {
+    justify-self: center;
+    height: 500px;
+    width: 1200px;
+    background-image: url('Resources/locations-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.boxes {
+    width: 1200px;
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.location {
+    background-color: black;
+    width: 300px;
+    height: 300px;
+    display: inline-flex;
+    flex-direction: column;
+    align-content: space-around;
+}
+
+.loctitle {
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+
+/* Contact section styles */
+
+#contact {
+    height: 200px;
+}
+
+/* Footer styles */
+
+footer {
+    text-align: left;
+    margin-left: 20px;
+}
