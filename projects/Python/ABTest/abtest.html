@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../resources/stylesheets/projects.css">
+    <link rel="stylesheet" href="resources/AB.css">
     <title>Traffic Data Analysis</title>
 </head>
 
@@ -45,10 +46,308 @@
         </div>
 
         <h2 class="sectiontitle">Method</h2>
+        <!--Task 1: Set up -->
         <div class="step">
-            
+            <h2>Importing Libraries and Data</h2>
+            <p>
+                Before I did any analysis, I first imported Pandas, NumPy and the data to my jupyter notebook. 
+                Then I took a look at the first 5 rows of the data to get an idea of what it looked like.
+            </p>
+            <pre><code>
+    import pandas as pd
+    import numpy as np
 
+    users = pd.read_csv('users.csv')
+    users.head()
+
+    advertisements = pd.read_csv('advertisements.csv')
+    advertisements.head()
+            </code></pre>
+            <div class="figure">
+                <figure>
+                    <img class="data" src="resources/userdata.png" alt="Users Data">
+                    <figcaption>Users Data</figcaption>
+                </figure>
+               <figure>
+                    <img class="data" src="resources/advertismentdata.png" alt="Advertisement Data">
+                    <figcaption>Advertisement Data</figcaption>
+                </figure>
+            </div>
+            <p>
+                From these you can see that they share columns such as 'user_id' and 'timestamp' which will be useful for merging the datasets later on.
+            </p>
+            
         </div>
+<!--Task 2: Data Cleaning -->
+        <div class="step">
+            <h2>Data Cleaning</h2>
+            <p>
+                Next, I checked how many unique users and advertisements were in each dataset to see if there were any duplicates.
+            </p>
+            <pre><code>
+    print(users.nunique())
+    print(advertisements.nunique())
+            </code></pre>
+            <div class="figure">
+                <figure>
+                    <img class="data" src="resources/task2users.png" alt="Unique Users">
+                    <figcaption>Unique Users</figcaption>
+                </figure>
+                <figure>
+                    <img class="data" src="resources/task2ads.png" alt="Unique Advertisements">
+                    <figcaption>Unique Advertisements</figcaption>
+                </figure>
+            </div>
+            <p>
+                From this data, I could see that there are a varing amount of unique users and advertisements in each dataset, which I will have to take into consideration when merging the two tables.
+                Because of the decrepancy in the number of data in each set I decided to use the <em>inner join</em> method to merge the datasets.
+                This will allow me to only keep the data that is present in both datasets.
+                As there are two columns that are shared between the two datasets, I will merge the datasets on both 'user_id' and 'timestamp' to ensure that the data is matched correctly.
+            </p>
+            <pre><code>
+    users_ads = pd.merge(left = users,
+                        right = advertisements,
+                        left_on = ['user_id', 'timestamp'],
+                        right_on = ['user_id', 'timestamp'],
+                        how = 'inner')
+    users_ads.head()        
+            </code></pre>   
+            <figure>
+                <img class="data" src="resources/users_ads.png" alt="Merged Data">
+                <figcaption>Merged Data</figcaption>
+            </figure> 
+        </div>
+
+        <div class="step">
+            <h2>Creating Click-Through Rate Column</h2>
+            <p>
+                Now that I have merged the datasets, I need to create a new column that will help me calculate the click-through rate for each ad version.
+                The click-through rate is calculated by dividing the number of clicks by the number of views. 
+                You can compute this by finding the mean of the 'clicked' column for each ad_version as the 'clicked' column contains 1 for a click and 0 for no click.
+            </p>
+            <p>
+                But before I did this I was curious if there was a difference in the number of views and the number of <em>unique</em> views for each ad version.
+            </p>
+            <pre><code>
+    ad_view_count = users_ads.groupby('ad_version').agg({'user_id' : ['count', 'nunique']})
+    ad_view_count.columns = ['num_views', 'nunique']
+    ad_view_count
+            </code></pre>
+            <img class="data" src="resources/ad_view_count.png" alt="Ad View Count">
+            <figcaption>Ad View Count</figcaption>
+            <p>
+                From this data, I can see that there is a difference in the number of views and unique views for each ad version.
+                This shows that some users have seen the ads multiple times.
+                However, for the purpose of calculating click-through rate, I will be using the total number of views as this is the standard method for calculating click-through rate.
+            </p>
+            <pre><code>
+    ad_ctr_pct = users_ads.groupby('ad_version').agg({'clicked' : 'mean'})
+    ad_ctr_pct.columns = ['click_rate']
+    ad_ctr_pct        
+            </code></pre>
+            <img class="data" src="resources/ad_ctr_pct.png" alt="Ad Click-Through Rate">
+            <figcaption>Ad Click-Through Rate</figcaption>
+<!--Analysis-->
+            <p>
+                From this data, I can see that ad version B has a higher click-through rate than ad version A, of over 7%.
+                This supports my hypothesis that version B would be more effective.
+            </p>
+        </div>
+
+<!--Task 3: Performance by Social Media Platform-->
+        <div class="step">
+            <h2>Performance by Social Media Platform</h2>
+            <p>
+                Next, I wanted to see if there was a difference in the effectiveness of the ads across different social media platforms.
+                To do this, I grouped the data by both 'ad_version' and 'platform' and calculated the click-through rate for each combination.
+            </p>
+            <pre><code>
+    ad_version = users_ads.groupby(['ad_source','ad_version']).agg({'clicked':'mean'})
+    ad_version.columns = ['ctr']
+    ad_version
+            </code></pre>
+            <img class="data" src="resources/ad_version.png" alt="Ad Version by Platform">
+            <figcaption>Click-Through Rate by Platform</figcaption>
+            <p>
+                When trying to interpret this data, I found it a bit difficult as it was not in a very clear format.
+                So, I decided to pivot the data to make it easier to read and compare the click-through rates across platforms.
+            </p>
+            <pre><code>
+    ad_social = pd.pivot_table(ad_version,
+                           index = 'ad_version',
+                           columns = 'ad_source',
+                           values = 'ctr'
+    )
+    ad_social
+            </code></pre>
+            <img class="data" src="resources/ad_social.png" alt="Pivoted Ad Version by Platform">
+            <figcaption>Pivoted Click-Through Rate by Platform</figcaption>
+            <p>
+                From this data, it is clear that the click-through rates vary across different social media platforms, however they all have the same trend of ad version B being more effective than ad version A.
+                This supports my hypothesis that the effectiveness of ads would vary across social media platforms.
+                Additionally, it is interesting to note that the highest click-through rate for version A is Meta, but for version B it is Twitter.
+                This suggests that different platforms may have different user behaviours and demographics that affect ad performance. 
+                It would be interesting, for a future analysis, to delve deeper into why this is the case, but looking at age groups and other demographic factors could provide more insights.
+            </p>
+        </div>
+
+<!--Task 4: Performance by Device Type-->
+        <div class="step">
+            <h2>Performance by Device Type</h2>
+            <p>
+                Before I begin any analysis, I first want to see the distribution of device types in the dataset.
+            </p>
+            <pre><code>
+    devices = pd.read_csv('devices.csv')
+    devices
+            </code></pre>
+            <img class="longdata" src="resources/devices.png" alt="Device Types">
+            <figcaption>Device Types</figcaption>
+            <p>
+                From this data, I can see that there are five device types: Mobile, PC, Smartwatch, Streaming and Tablet.
+                However, the ads have not been shown on Smartwatches or Streaming devices, so I will only be analysing Mobile, PC and Tablet devices.
+            </p>
+            <p>
+                Next, I shall merge the devices data with the users_ads data to get a complete dataset for analysis. 
+                I will be using a left join this time as I want to keep all the data from users_ads and only add the device type where there is a match.
+            </p>
+            <pre><code>
+    users_devices = pd.merge (left = users_ads,
+                          right = devices,
+                          left_on = 'device_id',
+                          right_on = 'device_id',
+                          how = 'left'
+    )
+    users_devices.head()
+            </code></pre>
+            <img class="data" src="resources/users_devices.png" alt="Merged Users and Devices Data">
+            <figcaption>Merged Users and Devices Data</figcaption>
+
+            <p>
+                Now that I have the complete dataset, I can group the data by 'ad_version' and 'device_type' to calculate the click-through rate for each combination.
+            </p>
+            <pre><code>    
+    ad_devices = pd.pivot_table(users_devices,
+                     index = 'ad_version',
+                     columns = 'device_type',
+                     values = 'clicked',
+                     aggfunc = 'mean')
+    ad_devices
+            </code></pre>
+
+            <img class="data" src="resources/ad_devices.png" alt="Click-Through Rate by Device Type">
+            <figcaption>Click-Through Rate by Device Type</figcaption>
+            <p>
+                From this data, I can see that the click-through rates vary across different device types, with the common trend of ad version B being more effective than ad version A.
+                This supports my hypothesis that targeting specific device types could be beneficial for future ad campaigns.
+                However, the differences in click-through rates across device types are not as pronounced as those across social media platforms.
+                Additionally, it is interesting to note that the highest click-through rate for version A is on Tablets, but for version B it is on Mobile devices.
+                This suggests that different device types may have different user behaviours that affect ad performance.
+            </p>
+        </div>
+
+<!--Task 5: Additional Analysis-->
+        <div class="step">
+            <h2>Weekday and Weekend Breakdown</h2>
+            <p>
+                Now that I've answered the main questions, I wanted to do some additional analysis to see if there were any other interesting insights that could be gained from the data.
+                I decided to look at the performance of the ads on weekdays versus weekends.
+                To do this, I will be using the Split-Apply-Combine (SAC) method. Initially, I will split the data into two groups: weekdays and weekends.
+            </p>
+            <h3>Splitting the Data</h3>
+            <pre><code>
+    # First, extract the day of the week from the timestamp
+    users_devices['day_of_week'] = users_devices['timestamp'].str.split(' ', expand=True)[2]
+
+    # Boolean mask to identify weekends
+    is_weekend = (users_devices['day_of_week']=='Saturday')|(users_devices['day_of_week']=='Sunday')
+    weekends = users_devices[is_weekend]
+    weekdays = users_devices[~is_weekend]
+    weekdays.head()
+    weekends.head()
+            </code></pre>
+            <div>
+                <figure>
+                    <img class="data" src="resources/weekday.png" alt="Weekdays Data">
+                    <figcaption>Weekdays Data</figcaption>
+                </figure>
+                <figure>
+                    <img class="data" src="resources/weekend.png" alt="Weekends Data">
+                    <figcaption>Weekends Data</figcaption>
+                </figure>
+            </div>
+
+            <h3>Applying Function to Data</h3>
+            <p>
+                Now that I have split the data into weekdays and weekends, I can apply the click-through rate calculation to each group.
+                I will group the data by 'device_type' and 'ad_version' to see if there are any differences in performance based on device type during weekdays and weekends.
+            </p>
+            <pre><code>
+    weekday_ctr = weekdays.groupby(['device_type', 'ad_version']).agg({'clicked':['count','mean']})
+    weekday_ctr.columns = ['weekday_views', 'weekday_rate']
+    weekday_ctr
+
+    weekend_ctr = weekends.groupby(['device_type', 'ad_version']).agg({'clicked':['count','mean']})
+    weekend_ctr.columns = ['weekend_views', 'weekend_rate']
+    weekend_ctr 
+            </code></pre>
+            <div class="figure">
+                <figure>
+                    <img class="data" src="resources/weekday_ctr.png" alt="Weekday Click-Through Rate">
+                    <figcaption>Weekday Click-Through Rate</figcaption>
+                </figure>
+                <figure>
+                    <img class="data" src="resources/weekend_ctr.png" alt="Weekend Click-Through Rate">
+                    <figcaption>Weekend Click-Through Rate</figcaption>
+                </figure>
+            </div>
+
+            <h3>Combining the Results</h3>
+            <p>
+                Finally, I will combine the results from the weekday and weekend analyses to see the differences in click-through rates.
+            </p>
+            <pre><code>
+    combined_ctr = pd.merge(left = weekday_ctr,
+                       right = weekend_ctr,
+                       left_on = ['device_type','ad_version'],
+                       right_on = ['device_type','ad_version'],
+                       how = 'inner')
+    combined_ctr
+            </code></pre>
+            <img class="data" src="resources/combined_ctr.png" alt="Combined Click-Through Rate">
+            <figcaption>Combined Click-Through Rate</figcaption>
+            <p>
+                From this data, I can see that there are big differences in click-through rates between weekdays and weekends, which is to be expected as there are more days in the week than at the weekend.
+                To combat this I will find the average click-through rate for weekdays and weekends.
+                This will give a better idea of the overall performance of the ads across different device types.
+            </p>
+            <pre><code>
+    combined_ctr['weekday_views'] = combined_ctr['weekday_views'] / 5
+    combined_ctr['weekend_views'] = combined_ctr['weekend_views'] / 2
+    combined_ctr
+            </code></pre>
+            <img class="data" src="resources/combined_ctr_daily.png" alt="Final Combined Click-Through Rate">
+            <figcaption>Final Combined Click-Through Rate</figcaption>
+            <p>
+                From this final data, I can see that the click-through rates are fairly consistent across weekdays and weekends, with ad version B being more effective across all device types.
+                This suggests that the ads perform similarly regardless of the day of the week.
+                Looking at the differences between version for each device type and day, it is clear that version B consistently outperforms version A.
+                This further supports the conclusion that version B is the more effective ad overall.
+            </p>
+        </div>
+
+        
+<!--Conclusion-->
+        <div id="conclusion">
+            <h2 class="sectiontitle">Conclusion</h2>
+            <p>
+                In conclusion, after analysing the data, it is clear that ad version B is more effective than ad version A across all social media platforms and device types.
+                The click-through rates for version B were consistently higher than those for version A, supporting my initial hypothesis.
+                Additionally, there were variations in ad performance across different social media platforms and device types, indicating that targeting specific platforms and devices could be beneficial for future ad campaigns.
+                Overall, this analysis provides valuable insights into ad effectiveness and can inform future marketing strategies.   
+            </p>
+        </div>
+
     </main>
 
     <footer>
