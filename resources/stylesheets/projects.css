@@ -215,6 +215,16 @@ pre {
     margin-right: auto;
     padding: 10px;
     border-radius: 10px;
+    transition: transform 0.25s ease; /* smooth enlarge */
+    cursor: zoom-in;
+}
+
+/* Enlarged redline appears above other content */
+.redline.enlarged {
+    transform: scale(3);
+    position: relative; /* create stacking context */
+    z-index: 1000; /* higher than logo (4) and other elements */
+    cursor: zoom-out;
 }
 
 /* Conclusion Section */

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../resources/stylesheets/projects.css">
+    <script src="../../../resources/jsscripts/projects.js" defer></script>
+    <title>Tea Cozy Website</title>
+</head>
+
+<body>
+    <logo>
+        <img id="logo" src="../../../resources/images/Logo.png">
+    </logo>
+    <header>
+    <h1>Projects</h1>
+    <nav>
+            <ul>
+            <li><a href="../../../index.html">Title Page</a></li>
+            <li><a href="../../../aboutme.html">About Me</a></li>
+            <li><a href="../../../projectscontents.html">Projects</a></li>
+            <li><a href="../../../contactme.html">Contact Me</a></li>
+            <li><a href="../../../eulersblog.html">Project Euler Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class = "projecttitle">Tea Cozy Website</h1>
+        <div id="intro">
+            <p>The Tea Cozy website is a project that involved creating a visually appealing and user-friendly website for a fictional tea company.
+            The website showcases the company's mission, featured teas, locations, and contact information.
+            The design emphasizes a cozy and inviting atmosphere, aligning with the brand's desired aesthetic.
+            </p>
+            <p>
+                At the beginning of the project I was given this redline (click to enlarge) of how the owner would like it to be designed, and it's my job to make their dreams a reality.
+            </p>
+            <img class="redline" src="Resources/tea-cozy-redline.jpg" alt="Redline of Tea Cozy Website" onclick="enlargeImg()" onmouseout="resetImg()">
+            <p> Below you will find the steps I took to complete this project, but <a href="teacozy.html">here</a> you will find the completed website, and <a href="teacozy.css">here</a> you will find the stylesheet.</p>
+        </div>
+
+        <h2 class="sectiontitle">Method</h2>
+
+        <div class="step">
+            <p>The first step in creating the Tea Cozy website was getting comfortable with the supplied redline. 
+                I added all the html code first, then when I was working through the stylesheet I started adding <em>ids</em> and <em>classes</em> to the sections to ensure it matched the design.
+                I also added a contact link into the navigation as it was missing from the redline but I felt it was important to include but didn't take anything away from the main design
+            </p>
+            <pre><code>
+    &ltheader>
+        &ltimg src="Resources/tea-cozy-logo.png" alt="Tea Cozy Logo" id="logo">
+        &ltnav>
+            &ltul>
+                &ltli>&lta href="#mission">Mission&lt/a>&lt/li>
+                &ltli>&lta href="#featuredtea">Featured Tea&lt/a>&lt/li>
+                &ltli>&lta href="#locations">Locations&lt/a>&lt/li>
+                &ltli>&lta href="#contact">Contact&lt/a>&lt/li>
+            &lt/ul>
+        &lt/nav>
+    &lt/header>
+            </code></pre>
+
+            <p>
+                Another things I did was use sematic HTML tags to ensure the website was structured properly.
+                For example, I used &ltheader> for the header section, &ltmain> for the main content and &ltfigure> and &ltfigcaption> for the tea images and their captions.
+                This also helped with the styling of the figures, as It allowed me just put each figure in with own box.
+            </p>
+            <pre><code>
+    &ltfigure>
+        &ltimg src = "Resources/berryblitz.jpg" alt="Berry Blitz Tea">
+        &ltfigcaption>&lth4>Berry Blitz Tea&lt/h4>&lt/figcaption>
+    &lt/figure>
+            </code></pre>
+
+            <p>The final thing I took the initiative with was the opacity of the Our Mission. 
+                I felt like it took too much away from the background image so I adjusted it to be more subtle. 
+            </p>
+            <p>
+                <strong>Obviously, if this was for an actual client I would run all these adaptations by them and get their approval before continuing.</strong> 
+                However, I would have sent them an example of both instances as I find some people struggle to visualise things from the written or spoken word. 
+            </p>
+        </div>
+
+        <div class="step">
+            <p>My next step was to complete the stylesheet for the website.
+                I was sure to add comments throughout the code to ensure I could keep track of what each section was doing.
+                These comments would make it easier if I came back to edit it, or if someone else needed to work on the code in the future.
+            </p>
+            <pre><code>
+    /* Main content styles */
+
+    main {
+        position: relative;
+        top: 69px;
+        z-index: 1;
+    }
+
+    div {
+        text-align: center;
+        justify-self: center;
+    }
+            </code></pre>     
+            <p>From the above code you can see that I changed the z-index of the main element to ensure it appeared below the fixed header elements on the page and prevented overlapping.</p>
+            <p>
+                I initally created CSS code for the body of the webpage to set the font family, background colour, and general styles for the entire page.
+                This allowed me to maintain a consistent look and feel throughout the website and to keep my code DRY (Don't Repeat Yourself).
+            </p>
+            <pre><code>
+    body {
+        font-family: Helvetica, Arial;
+        background-color: black;
+        font-size: 22px;
+        color: seashell;
+        opacity: 0.9;    
+    }
+            </code></pre>
+            <p>
+                Another thing that I did withing the stylesheet was to use flexbox to create a responsive layout for the featured teas section.
+                This allowed the tea images to adjust their size and position based on the screen size, ensuring a consistent and visually appealing layout across different devices.
+            </p>       
+            <pre><code>
+    .featuredtea {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+            </code></pre>
+
+            <p>
+                Finally, I added <em>justify-content: space-around</em> for the locations to ensure that the location boxes were evenly spaced within their container.
+                This created a balanced and visually appealing layout for the locations section.
+            </p>
+            <pre><code>
+    .boxes {
+        width: 1200px;
+        display: inline-flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+            </code></pre>
+        </div>
+
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My Portfolio</p>
+    </footer>
+</body>
+</html>
