@@ -219,6 +219,17 @@ pre {
     cursor: zoom-in;
 }
 
+.game {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.game img {
+    height: 300px;
+    padding: 10px;
+}
+
 /* Enlarged redline appears above other content */
 .redline.enlarged {
     transform: scale(3);
@@ -380,4 +391,10 @@ ol {
 @media (max-width: 600px) {
     #sorting-quiz { width: 94%; padding: 0.8rem; }
     button { font-size: 16px; height: 40px; }
+}
+
+/* Game Preview Section */
+#game {
+    display: flex;
+    justify-content: center;
 }

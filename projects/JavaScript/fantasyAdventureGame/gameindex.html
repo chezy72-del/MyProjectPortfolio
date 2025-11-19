@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../resources/stylesheets/projects.css">
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.16.2/dist/phaser.min.js"></script>
+    <script src="game.js"></script>
+    <title>CYOA</title>
+</head>
+
+<body>
+    <logo>
+        <img id="logo" src="../../../resources/images/Logo.png">
+    </logo>
+    <header>
+    <h1>Projects</h1>
+    <nav>
+            <ul>
+            <li><a href="../../../index.html">Title Page</a></li>
+            <li><a href="../../../aboutme.html">About Me</a></li>
+            <li><a href="../../../projectscontents.html">Projects</a></li>
+            <li><a href="../../../contactme.html">Contact Me</a></li>
+            <li><a href="../../../eulersblog.html">Project Euler Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class = "projecttitle">Create Your Own Adventure</h1>
+        <div id="intro">
+
+        </div>
+
+        <h2 class="sectiontitle">Result</h2>
+        <div id="game"></div>
+
+        <h2 class="sectiontitle">Method</h2>
+
+        <div class="step">
+            <h3>Creating The Game</h3>
+            <p>A lot of this project, given it being a beginner level project, was premade. The characters, images and backgrounds were provided by Codecademy.
+                Due to this, my main focus was on learning how to use Phaser and JavaScript to create an interactive game.
+                My first step was to set up the game environment creating the create function to set the background.
+            </p>
+            <pre><code>
+    function create(){
+        gameState.background = this.add.image(0, 0, 'bg');
+        gameState.background.setOrigin(0, 0);
+    }
+            </code></pre>
+            <p>
+                Once the create function was set up, I then moved onto rendering the character function.
+                In this I had to input the character image, set its scale and position on the screen.
+                Additionally, I had to ensure that if a character was already present on the screen, it would be destroyed before the new one was rendered.
+            </p>
+            <pre><code>
+    function renderCharacter(scene, key){
+        if(gameState.character){
+            gameState.character.destroy();
+        }
+        gameState.character = scene.add.image(270, 340, key);
+        gameState.character.setOrigin(.5, 1);
+        gameState.character.setScale(.7);
+    }
+            </code></pre>
+            <p>
+                My final step in this was to check that I had correctly rendered the character.
+                This was done by calling the renderCharacter function within the create function.
+            </p>
+            <pre><code>
+        function create(){
+            gameState.background = this.add.image(0, 0, 'bg');
+            gameState.background.setOrigin(0, 0);
+            renderCharacter(this, 'knight');
+        }
+            </code></pre>
+            <figure class="game">
+                <img src="Images/step1.png" alt="background and character in correct place" />
+            </figure>
+        </div>
+
+        <div class="step">
+            <h3>Creating The Dialogue</h3>
+            <p>The dialogue of the game have already been premade, so in this section I focused on integrating it into the game.
+                I used a premade InitializePage function to set up the dialogue box and text.
+                Then created a variable for the first page of the dialogue.
+                Finally, used a premade function to display the first page when the game starts.
+                I added all three of these into the create function.
+            </p>
+            <pre><code>
+    initializePage(this);
+    const firstPage = fetchPage(1);
+    displayPage(this, firstPage);
+            </code></pre>  
+            <figure class="game">
+                <img src="Images/step2.png" alt="dialogue box with text" />
+            </figure>
+        </div>
+
+        <div class="step">
+            <h3>Displaying Each Page To Make The Adventure Game</h3>
+            <p>The first thing I did in this step was render the character in the displayPage function in order to show the correct character and text combination.</p>
+            <pre><code>
+      renderCharacter(scene, page.character);
+            </code></pre>
+            <p>I then made the option boxes interactive using the <em>setInteractive</em> method.
+            Additionally, I added event listeners to handle user clicks and navigate through the pages of the game.
+            Another important aspect of the code was checking if the nextPage property was defined before attempting to navigate to it.
+            This ensured that the game would not attempt to navigate to an undefined page, preventing potential errors.
+        </p>
+            <pre><code>
+    optionBox.setInteractive();
+    optionBox.on('pointerup', function(){
+        const newPage = this.option.nextPage;
+        if(newPage !== undefined){
+            destroyPage();
+            displayPage(scene, fetchPage(newPage));
+        }
+    }, {option});
+    gameState.options.push({optionBox, optionText});
+            </code></pre>
+        <figure class="game">
+            <img src="Images/step3.png" alt="Interactive option boxes" />
+            <img src="Images/step3.2.png" alt="Another example of a character" />
+        </figure>
+        </div>
+
+        <div class="step">
+            <h3>Adding Interactivity And Choices</h3>
+            <p>
+                The final step was to add interactivity to the option boxes to enhance user engagement.
+                These made the option boxes visually respond to user interactions such as hovering over them with the mouse pointer.
+            </p>
+            <pre><code>
+    optionBox.on('pointerover', function(){
+        this.optionBox.setStrokeStyle(2, 0xffe014, 1);
+        this.optionText.setColor('#ffe014');
+    }, {optionBox, optionText});
+    optionBox.on('pointerout', function(){
+        this.optionBox.setStrokeStyle(1, 0xb38c03, 1);
+        this.optionText.setColor('#b39c0e');
+    }, {optionBox, optionText})
+            </code></pre>     
+            <figure class="game">
+                <img src="Images/step4.png" alt="option box hover effect" />
+            </figure>       
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My Portfolio</p>
+    </footer>
+</body>
+</html>
