@@ -1,0 +1,53 @@
+/* TextAdventure page-specific styles */
+
+/* Center controls and action areas */
+#story .controls,
+#story .actions {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 12px;
+	margin: 12px 0;
+}
+
+/* Two-column inputs grid */
+#story .adventure-form {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+#story .form-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(260px, 1fr));
+	gap: 16px 24px;
+	align-items: start;
+}
+
+#story .field label {
+	display: block;
+	margin-bottom: 6px;
+	font-weight: 600;
+	color: #3D5B59;
+}
+
+#story .field input[type="text"],
+#story .field input[type="number"] {
+	width: 100%;
+	height: 40px;
+	font-size: 16px;
+	padding: 6px 10px;
+	box-sizing: border-box;
+}
+
+/* Keep guess input compact */
+#story .controls input[type="number"] {
+	width: 180px;
+}
+
+/* Responsive: single column on small screens */
+@media (max-width: 700px) {
+	#story .form-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
