@@ -29,7 +29,9 @@
     <main>
         <h1 class = "projecttitle">Interactive Text Adventure</h1>
         <div id="intro">
-
+    This is a C++ project where I created an interactive story that changes depending on the user's input.
+    As I am still learning how to implement C++ code into a website, I have rewritten (with the help of AI) the code to run using JavaScript so it can be completed here.
+    If you want to see the complete C++ code then <a href="textAdventure.cpp">click here</a>.
         </div>
 
         <h2 class="sectiontitle">Result</h2>
@@ -38,17 +40,87 @@
         <h2 class="sectiontitle">Method</h2>
 
         <div class="step">
-            <p></p>
+            <p>The first step in my porject was to get the user input using prompts and store them in variables ready for use throughout the story.
+                When I first wrote this I used <em>cin << </em> which only reas the first word of the input. 
+                I kept writing 'ice cream' for food and wondered why it only used ice and then used cream for my next answer.
+                After a little research and asking my Codecademy classmates for help, I found out about <em>getline(cin, variable)</em> which reads the whole line including spaces.
+            </p>
             <pre><code>
-
+    //Collecting variables from user
+    //colour
+    std::string colour;
+    std::cout << "Input a colour: ";
+    std::getline(std::cin, colour);
+    //weather
+    std::string weather;
+    std::cout << "Input a description of a day (cold, windy, etc.): ";
+    std::getline(std::cin, weather);
+    //animals and names
+    std::string animal1;
+    std::cout << "Input your first animal: ";
+    std::getline(std::cin, animal1);
+    std::string name1;
+    std::cout << "Name your first animal: ";
+    std::getline(std::cin, name1);  
+    std::string animal2;
+    std::cout << "Input your second animal: ";
+    std::getline(std::cin, animal2);
             </code></pre>
         </div>
 
         <div class="step">
-            <p></p>
+            <p>The next part was to write the story itself, I knew at certain points in the story I had to give the user options which allowed for multiple outcomes.</p>
             <pre><code>
-
-            </code></pre>            
+    //First fork in the story
+    int option1;
+    std::cout << "What does " << name1 << " decide to do? ";
+    std::cin >> option1;
+    //check for valid response
+    while(option1 != 1 && option1 !=2){
+        std::cout << "Invalid response. Try again: ";
+        std::cin >> option1;
+    }
+            </code></pre> 
+            <p>
+                Then each option needed its own outcome, so I used <em>if and else if conditionals</em> to create the different paths the story could take.
+            </p>  
+            
+            <pre><code>
+    if (option1 == 1) { //bed
+        std::cout << "\n"<< name1 << " decided to go back to bed. \n";
+        std::cout << "While " << name1 << " slept, they had the most unusual dream. They were in a world where everything was made out of " << food << ".\n";
+        std::cout << "The first thing " << name1 << " did was take a massive bite out of the " << item << ".\n"; 
+        std::cout << name1 << " hears footsteps coming from behind. " << name1 << " turns around and screams as a " << size << " " << animal2 << " is running towards them trying to escape from the " << food << " monster! \n";
+        std::cout << "They both hide under a bridge and hear the monster stomp away.\n";
+        std::cout << name1 << " turns to the " << animal2 << " and introduces themself, the " << animal2 << " then introduces themself as " << name2 << ".\n";
+        std::cout << "Suddenly, " << name1 << "jolts awake and smile while thinking about their new friend " << name2 << " the " << animal2 <<".\nThe End.\n";
+        return 0;
+    } else { //outside
+        std::cout << "\n" << name1 << " puts on their favourite " << colour << " coat and visits a nature park.\n";
+        std::cout << "The nature park is very busy today and " << name1 << " doesn't like crowds so decided to go find a quiet place to read.\n";
+        std::cout << name1 << " sees two possible locations, the treehouse (1) or rent a boat and go on the lake (2).\n";
+        //fork number two in story
+        int option2;
+        std::cout << "Where does " << name1 << " decide to go? ";
+        std::cin >> option2;
+            </code></pre>
+            <p>
+                This process of giving options and creating different outcomes was repeated throughout the story to make it as interactive as possible.
+            </p>
+            <p>
+                Another problem I encountered when getting my mother to run through the story was that she kept entering invalid options such as Y or N instead of 1 or 2.
+                To fix this I added a <em>while loop</em> to check if the input was valid and if not, it would keep asking until a valid option was given.
+            </p>
+            <pre><code>
+    //check if valid response
+    while(option2 != 1 && option2 !=2){
+        std::cout << "Invalid response. Try again: ";
+        std::cin >> option2;
+    }
+            </code></pre>
+            <p>
+                After this everything worked perfectly and I was happy with how the story turned out.
+            </p>
         </div>
 
         
