@@ -160,3 +160,9 @@ a {
 a:hover {
     text-decoration: underline #077272;
 }
+
+.centre {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
